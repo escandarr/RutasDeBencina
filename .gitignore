@@ -1,0 +1,43 @@
+# ==============================
+# RutasDeBencina - .gitignore
+# ==============================
+
+# Archivos sensibles
+token.txt
+.env
+/salidas
+# Datos locales / ETL intermedios
+*.csv
+*.json
+*.geojson
+*.sqlite
+*.db
+
+# Carpeta temporal
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Archivos generados por VSCode / PyCharm
+.vscode/
+.idea/
+
+# Archivos de entorno y dependencias
+*.egg-info/
+*.egg
+dist/
+build/
+
+# Archivos de Docker temporales
+*.pid
+*.tar
+*.gz
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
