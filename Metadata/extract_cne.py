@@ -1,276 +1,214 @@
-# Metadata/extract_cne.py
-# -----------------------------------------------------------
-# Extracción CNE con auto-renovación de token (login si expira)
-# Salidas: cne.json (todo) y cne_sample.json (primeras 5)
-# -----------------------------------------------------------
-
-import os
-import sys
-import json
-import pathlib
-from datetime import datetime
-
+# Metadata/extract_cne_all.py
+import os, csv, json, sys, time
+from pathlib import Path
 import requests
 
-BASE = pathlib.Path(__file__).resolve().parent
-OUT_JSON = BASE / "cne.json"
-OUT_SAMPLE = BASE / "cne_sample.json"
-TOKEN_FILE_CANDIDATES = [
-    BASE.parent / "token.txt",  # raíz del repo
-    BASE / "token.txt",         # dentro de Metadata
-    pathlib.Path("token.txt"),  # cwd
-]
+LOGIN_URL = "https://api.cne.cl/api/login"
+EST_URL   = "https://api.cne.cl/api/v4/estaciones"
+#EST_URL   = "https://api.cne.cl/api/v3/combustible/calentacion/puntosdeventa"
 
-CNE_LOGIN_URL = "https://api.cne.cl/api/login"
-CNE_ESTACIONES_URL = "https://api.cne.cl/api/v4/estaciones"
+ROOT = Path(__file__).resolve().parent.parent
+OUT  = Path(__file__).resolve().parent / "salidas"
+OUT.mkdir(parents=True, exist_ok=True)
 
+TOKEN_FILE = ROOT / "token.txt"                 # guarda/lee el token aquí
+CREDS_FILE = ROOT / "secrets" / "cne_credentials.json"  # opcional (si no usas variables de entorno)
 
-# ------------------------------
-# Utilidades de token
-# ------------------------------
-def load_token():
-    """Primero ENV CNE_TOKEN. Si no, busca token.txt en rutas conocidas."""
-    token = os.environ.get("CNE_TOKEN")
-    if token:
-        return token.strip()
-    for p in TOKEN_FILE_CANDIDATES:
-        if p.exists():
-            t = p.read_text(encoding="utf-8").strip()
-            if t:
-                return t
+# ---------- utilidades ----------
+def read_json(path: Path):
+    if path.exists():
+        return json.loads(path.read_text(encoding="utf-8"))
     return None
 
+def write_json(path: Path, data):
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
 
-def save_token(token):
-    """Guarda el token en el primer token.txt disponible (o en Metadata)."""
-    if not token:
-        return
-    # prioriza la raíz del repo
-    for p in TOKEN_FILE_CANDIDATES:
+def normalize_price(v):
+    if v is None:
+        return None
+    if isinstance(v, (int, float)):
+        return float(v)
+    if isinstance(v, str):
+        s = v.strip().replace(".", "").replace(",", ".")
         try:
-            p.parent.mkdir(parents=True, exist_ok=True)
-            p.write_text(token, encoding="utf-8")
-            print(f"💾 Token guardado en: {p}")
-            return
-        except Exception as e:
-            # intenta siguiente candidato
-            continue
-    print("⚠️ No se pudo guardar token en token.txt (sin permisos o ruta inexistente).")
+            return float(s)
+        except:
+            return None
+    return None
 
-
-def login_cne():
-    """Hace login con ENV CNE_EMAIL y CNE_PASSWORD. Devuelve token o None."""
+# ---------- credenciales / token ----------
+def get_credentials():
     email = os.environ.get("CNE_EMAIL")
-    password = os.environ.get("CNE_PASSWORD")
-    if not email or not password:
-        print("⚠️ Falta CNE_EMAIL o CNE_PASSWORD en variables de entorno; no puedo reloguear.")
-        return None
+    password = os.environ.get("CNE_PASS")
+    if email and password:
+        return email, password
+    creds = read_json(CREDS_FILE)
+    if creds and "email" in creds and "password" in creds:
+        return creds["email"], creds["password"]
+    return None, None
 
-    try:
-        r = requests.post(
-            CNE_LOGIN_URL,
-            json={"email": email, "password": password},
-            timeout=30,
-            headers={"Content-Type": "application/json", "Accept": "application/json"},
-        )
-    except requests.RequestException as e:
-        print(f"❌ Error de red al hacer login CNE: {e}")
-        return None
-
+def login(email: str, password: str) -> str:
+    r = requests.post(LOGIN_URL, json={"email": email, "password": password}, timeout=30)
     if r.status_code != 200:
-        print(f"❌ Login CNE falló. Status {r.status_code}: {r.text[:300]}")
-        return None
-
-    try:
-        j = r.json()
-    except Exception:
-        print("❌ Respuesta de login no es JSON.")
-        return None
-
-    token = j.get("token")
+        raise RuntimeError(f"Login HTTP {r.status_code}: {r.text}")
+    data = r.json()
+    token = data.get("token")
     if not token:
-        print(f"❌ Login CNE sin 'token' en respuesta: {j}")
-        return None
+        raise RuntimeError(f"Login sin token: {data}")
     return token
 
-
-# ------------------------------
-# Normalización de estaciones
-# ------------------------------
-def normalize(e):
-    ubic = e.get("ubicacion") or {}
-    precios = e.get("precios") or {}
-
-    def get(d, *keys):
-        for k in keys:
-            if isinstance(d, dict) and k in d and d[k] not in (None, ""):
-                return d[k]
-        return None
-
-    def to_float(x):
+def probe_token(token: str) -> bool:
+    try:
+        r = requests.get(EST_URL, headers={"Authorization": f"Bearer {token}"}, timeout=30)
+        if r.status_code == 200:
+            return True
+        # algunos expirados devuelven 200 con {"status":"Token is Expired"}
+        if r.status_code == 401:
+            return False
         try:
-            return float(x)
+            j = r.json()
+            if isinstance(j, dict) and j.get("status", "").lower().startswith("token is expired"):
+                return False
         except Exception:
-            return None
+            pass
+        return r.ok
+    except Exception:
+        return False
 
-    lat = to_float(get(ubic, "latitud", "lat", "latitude", "y"))
-    lon = to_float(get(ubic, "longitud", "lng", "long", "longitude", "x"))
+def get_fresh_token() -> str:
+    """
+    1) Si hay token.txt y sirve -> úsalo.
+    2) Si no sirve o no existe -> login con credenciales (env o secrets/cne_credentials.json) y guarda token.txt.
+    """
+    if TOKEN_FILE.exists():
+        token = TOKEN_FILE.read_text(encoding="utf-8").strip()
+        if token and probe_token(token):
+            return token
+
+    email, password = get_credentials()
+    if not email or not password:
+        raise RuntimeError(
+            "No hay credenciales. Exporta CNE_EMAIL y CNE_PASS o crea secrets/cne_credentials.json"
+        )
+    token = login(email, password)
+    TOKEN_FILE.parent.mkdir(parents=True, exist_ok=True)
+    TOKEN_FILE.write_text(token, encoding="utf-8")
+    return token
+
+# ---------- extracción ----------
+def fetch_estaciones(token: str):
+    r = requests.get(EST_URL, headers={"Authorization": f"Bearer {token}"}, timeout=180)
+    if r.status_code == 401:
+        # token cayó entre probe y fetch -> reintentar con login directo:
+        email, password = get_credentials()
+        if not email or not password:
+            raise RuntimeError("401 y sin credenciales para renovar token.")
+        new_token = login(email, password)
+        TOKEN_FILE.write_text(new_token, encoding="utf-8")
+        r = requests.get(EST_URL, headers={"Authorization": f"Bearer {new_token}"}, timeout=180)
+    r.raise_for_status()
+    data = r.json()
+    return data if isinstance(data, list) else data.get("data", [])
+
+def normalize_station(e: dict) -> dict:
+    ubic = e.get("ubicacion", {}) or {}
+    precios = e.get("precios", {}) or {}
+
+    def precio_info(key):
+        info = precios.get(key) or {}
+        return {
+            "precio": normalize_price(info.get("precio")),
+            "unidad": info.get("unidad_cobro"),
+            "fecha": info.get("fecha_actualizacion"),
+            "hora": info.get("hora_actualizacion"),
+            "tipo_atencion": info.get("tipo_atencion"),
+        }
 
     return {
-        "station_id": get(e, "codigo", "id", "station_id"),
-        "name": (get(e, "nombre", "razon_social", "razonsocial", "nombre_fantasia", "empresa") or "").strip(),
-        "brand": (get(e.get("distribuidor") or {}, "marca") or None),
-        "address": get(ubic, "direccion", "address", "calle"),
-        "region_code": get(ubic, "codigo_region"),
-        "region_name": get(ubic, "nombre_region"),
-        "commune_code": get(ubic, "codigo_comuna"),
-        "commune_name": get(ubic, "nombre_comuna"),
-        "lat": lat,
-        "lon": lon,
-        "prices": {
-            "93":  (precios.get("93")  or {}).get("precio"),
-            "95":  (precios.get("95")  or {}).get("precio"),
-            "97":  (precios.get("97")  or {}).get("precio"),
-            "DI":  (precios.get("DI")  or {}).get("precio"),
-            "GLP": (precios.get("GLP") or {}).get("precio"),
-        },
-        "fetched_at": datetime.utcnow().isoformat(timespec="seconds") + "Z",
+        "codigo": e.get("codigo"),
+        "marca": (e.get("distribuidor", {}) or {}).get("marca"),
+        "razon_social": (e.get("razon_social") or "").strip(),
+        "direccion": (ubic.get("direccion") or "").strip(),
+        "region": ubic.get("nombre_region"),
+        "cod_region": (ubic.get("codigo_region") or "").strip(),
+        "comuna": ubic.get("nombre_comuna"),
+        "cod_comuna": ubic.get("codigo_comuna"),
+        "lat": ubic.get("latitud"),
+        "lng": ubic.get("longitud"),
+        # precios (todas estas llaves si existen en la API)
+        "precio_93": precio_info("93"),
+        "precio_95": precio_info("95"),
+        "precio_97": precio_info("97"),
+        "precio_DI": precio_info("DI"),
     }
 
+def flat_row(n: dict) -> dict:
+    """aplana para CSV: toma solo el valor numérico del precio y fechas"""
+    def pick(d, k):
+        v = d.get(k) or {}
+        return v.get("precio")
+    def pick_date(d, k):
+        v = d.get(k) or {}
+        return v.get("fecha")
 
-def first_list_of_dicts(obj):
-    """Busca recursivamente la primera lista de diccionarios en un JSON arbitrario."""
-    if isinstance(obj, list):
-        if len(obj) == 0 or isinstance(obj[0], dict):
-            return obj
-        return None
-    if isinstance(obj, dict):
-        for v in obj.values():
-            res = first_list_of_dicts(v)
-            if res is not None:
-                return res
-    return None
-
-
-# ------------------------------
-# Fetch con manejo de expiración
-# ------------------------------
-def fetch_estaciones_with_token(token):
-    headers = {
-        "Authorization": f"Bearer {token}",
-        "Accept": "application/json",
-        "User-Agent": "RutasDeBencina/1.0",
+    return {
+        "codigo": n["codigo"],
+        "marca": n["marca"],
+        "razon_social": n["razon_social"],
+        "direccion": n["direccion"],
+        "region": n["region"],
+        "cod_region": n["cod_region"],
+        "comuna": n["comuna"],
+        "cod_comuna": n["cod_comuna"],
+        "lat": n["lat"],
+        "lng": n["lng"],
+        "precio_93": pick(n, "precio_93"),
+        "precio_95": pick(n, "precio_95"),
+        "precio_97": pick(n, "precio_97"),
+        "precio_DI": pick(n, "precio_DI"),
+        "fecha_93": pick_date(n, "precio_93"),
+        "fecha_95": pick_date(n, "precio_95"),
+        "fecha_97": pick_date(n, "precio_97"),
+        "fecha_DI": pick_date(n, "precio_DI"),
     }
-    r = requests.get(CNE_ESTACIONES_URL, headers=headers, timeout=60)
-    return r
-
-
-def parse_estaciones(data):
-    """Intenta obtener la lista de estaciones cualquiera sea la estructura."""
-    estaciones = None
-    if isinstance(data, list):
-        estaciones = data
-    elif isinstance(data, dict):
-        # pruebas comunes
-        for k in ["data", "results", "estaciones", "items", "result"]:
-            v = data.get(k)
-            if isinstance(v, list):
-                estaciones = v
-                break
-            if isinstance(v, dict):
-                for kk in ["estaciones", "items", "results"]:
-                    inner = v.get(kk)
-                    if isinstance(inner, list):
-                        estaciones = inner
-                        break
-            if estaciones:
-                break
-
-    if estaciones is None:
-        estaciones = first_list_of_dicts(data)
-
-    return estaciones or []
-
 
 def main():
-    # 1) Cargar token inicial si existe
-    token = load_token()
+    t0 = time.time()
+    print("🔐 Obteniendo/renovando token…")
+    token = get_fresh_token()
+    print("✅ Token listo (longitud:", len(token), ")")
 
-    # 2) Primer intento
-    print(f"🔄 Llamando API CNE… {CNE_ESTACIONES_URL}")
-    try:
-        r = fetch_estaciones_with_token(token) if token else None
-    except requests.RequestException as e:
-        print(f"❌ Error de red: {e}")
-        sys.exit(1)
+    print("⬇️  Descargando estaciones…")
+    estaciones = fetch_estaciones(token)
+    print("Total estaciones recibidas:", len(estaciones))
 
-    need_login = False
-    resp_data = None
+    # ---- Guardar JSON crudo para trazabilidad
+    write_json(OUT / "cne_estaciones_full.json", estaciones)
 
-    if r is None:
-        need_login = True
-    else:
-        print("Status:", r.status_code)
-        if r.status_code == 200:
-            # revisar si contenido dice "Token is Expired"
-            ctype = r.headers.get("Content-Type", "")
-            if "application/json" in ctype.lower():
-                try:
-                    j = r.json()
-                    if isinstance(j, dict) and j.get("status") == "Token is Expired":
-                        need_login = True
-                    else:
-                        resp_data = j
-                except Exception:
-                    print("⚠️ Respuesta 200 no es JSON válido.")
-                    need_login = True
-            else:
-                # si no es JSON, forzamos login
-                need_login = True
-        elif r.status_code in (401, 403):
-            need_login = True
-        else:
-            print("❌ Error HTTP:", r.status_code, r.text[:300])
-            sys.exit(1)
+    # ---- Normalizar para consumo (incluye precios con metadatos)
+    normalizado = [normalize_station(e) for e in estaciones]
+    write_json(OUT / "cne_estaciones_normalizado.json", normalizado)
 
-    # 3) Si necesitamos login, lo hacemos y reintentamos una vez
-    if need_login:
-        print("🔐 Token inválido/ausente/expirado. Intentando login…")
-        new_token = login_cne()
-        if not new_token:
-            print("❌ No fue posible obtener un token nuevo (revisa CNE_EMAIL/CNE_PASSWORD).")
-            sys.exit(1)
-        save_token(new_token)  # persistimos para próximas ejecuciones
-        try:
-            r = fetch_estaciones_with_token(new_token)
-        except requests.RequestException as e:
-            print(f"❌ Error de red tras login: {e}")
-            sys.exit(1)
-        print("Status (reintento):", r.status_code)
-        if r.status_code != 200:
-            print("❌ Error HTTP tras login:", r.status_code, r.text[:300])
-            sys.exit(1)
-        try:
-            resp_data = r.json()
-        except Exception:
-            print("❌ Respuesta tras login no es JSON.")
-            sys.exit(1)
+    # ---- CSV plano (valores de precios y fechas)
+    rows = [flat_row(n) for n in normalizado]
+    campos = list(rows[0].keys()) if rows else [
+        "codigo","marca","razon_social","direccion","region","cod_region",
+        "comuna","cod_comuna","lat","lng",
+        "precio_93","precio_95","precio_97","precio_DI",
+        "fecha_93","fecha_95","fecha_97","fecha_DI"
+    ]
+    csv_path = OUT / "cne_estaciones.csv"
+    with csv_path.open("w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=campos)
+        w.writeheader()
+        w.writerows(rows)
 
-    # 4) Parsear estaciones (estructura flexible)
-    estaciones = parse_estaciones(resp_data)
-    if not estaciones:
-        print(f"⚠️ Estructura inesperada; dump completo en {OUT_SAMPLE}")
-        OUT_SAMPLE.write_text(json.dumps(resp_data, ensure_ascii=False, indent=2), encoding="utf-8")
-        sys.exit(0)
-
-    # 5) Normalizar y guardar
-    out = [normalize(e) for e in estaciones]
-    OUT_JSON.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
-    OUT_SAMPLE.write_text(json.dumps(out[:5], ensure_ascii=False, indent=2), encoding="utf-8")
-
-    print(f"✅ Guardado: {OUT_JSON}")
-    print(f"👀 Muestra:  {OUT_SAMPLE} (5 filas)")
-
+    dt = time.time() - t0
+    print("✅ Salidas:")
+    print(" -", OUT / "cne_estaciones_full.json")
+    print(" -", OUT / "cne_estaciones_normalizado.json")
+    print(" -", csv_path)
+    print(f"⏱️  Hecho en {dt:.1f}s")
 
 if __name__ == "__main__":
     main()

@@ -5,13 +5,8 @@
 # Archivos sensibles
 token.txt
 .env
-/salidas
+.venv
 # Datos locales / ETL intermedios
-*.csv
-*.json
-*.geojson
-*.sqlite
-*.db
 
 # Carpeta temporal
 __pycache__/
