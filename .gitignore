@@ -3,7 +3,7 @@
 # ==============================
 
 # Archivos sensibles
-/secrets
+secrets/
 token.txt
 .env
 .venv
