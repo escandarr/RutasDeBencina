@@ -11,7 +11,8 @@ from psycopg.rows import tuple_row
 @dataclass
 class RouteSegment:
     seq: int
-    path_id: int
+    path_seq: int
+    node_id: int
     edge_id: int
     cost: float
     agg_cost: float
@@ -29,7 +30,7 @@ def shortest_path(
     """Run pgr_dijkstra between two vertices and yield route segments."""
 
     sql = """
-        SELECT seq, path_id, edge, cost, agg_cost
+    SELECT seq, path_seq, node, edge, cost, agg_cost
         FROM pgr_dijkstra(
             %(sql)s,
             %(start)s,
@@ -48,5 +49,12 @@ def shortest_path(
                 "directed": directed,
             },
         )
-        for seq, path_id, edge_id, cost, agg_cost in cur:
-            yield RouteSegment(seq=seq, path_id=path_id, edge_id=edge_id, cost=cost, agg_cost=agg_cost)
+        for seq, path_seq, node_id, edge_id, cost, agg_cost in cur:
+            yield RouteSegment(
+                seq=seq,
+                path_seq=path_seq,
+                node_id=node_id,
+                edge_id=edge_id,
+                cost=cost,
+                agg_cost=agg_cost,
+            )

@@ -103,9 +103,9 @@ def resolve_conninfo(dsn: Optional[str]) -> str:
     params = {
         "host": os.getenv("PGHOST", "localhost"),
         "port": os.getenv("PGPORT", "5432"),
-        "user": os.getenv("PGUSER", os.getenv("POSTGRES_USER", "rutas_user")),
-        "password": os.getenv("PGPASSWORD", os.getenv("POSTGRES_PASSWORD")),
-        "dbname": os.getenv("PGDATABASE", os.getenv("POSTGRES_DB", "rutasdb")),
+        "user": os.getenv("PGUSER", "rutas_user"),
+        "password": os.getenv("PGPASSWORD", "supersecretpassword"),
+        "dbname": os.getenv("PGDATABASE", "rutasdb"),
     }
     parts = [
         f"host={params['host']}",

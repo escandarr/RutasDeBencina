@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Infraestructura Map</title>
+    <title>Calculadora de Ruta</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static', filename='js/leaflet/dist/leaflet.css') }}">
     <style>
@@ -53,62 +53,144 @@
             height: calc(100vh - 82px);
         }
 
+        main {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 360px;
+            gap: 1.5rem;
+            padding: 1.5rem;
+        }
+
         #map {
-            width: 75%;
-            height: 100%;
+            width: 100%;
+            height: calc(100vh - 180px);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.45);
         }
 
-        .map-overlay {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(15, 23, 42, 0.75);
-            padding: 1rem 1.2rem;
-            border-radius: 0.75rem;
-            box-shadow: 0 15px 40px rgba(15, 23, 42, 0.4);
+        aside {
+            background: rgba(15, 23, 42, 0.8);
             border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 1rem;
+            padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.45);
         }
 
-        .map-overlay h2 {
-            margin: 0 0 0.5rem;
-            font-size: 1.1rem;
+        aside h2 {
+            margin: 0;
+            font-size: 1.3rem;
             font-weight: 600;
         }
 
-        .map-overlay p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: rgba(226, 232, 240, 0.8);
+        .controls {
+            display: grid;
+            gap: 0.75rem;
         }
 
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.5rem;
-            }
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            background: rgba(30, 41, 59, 0.6);
+            padding: 0.75rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
 
+        .control-group strong {
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+        }
+
+        .control-group span {
+            font-size: 0.85rem;
+            color: rgba(226, 232, 240, 0.75);
+        }
+
+        button {
+            border: none;
+            border-radius: 999px;
+            padding: 0.55rem 1rem;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .cta {
+            background: linear-gradient(135deg, #38bdf8, #2563eb);
+            color: #0f172a;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .secondary {
+            background: rgba(148, 163, 184, 0.15);
+            color: #e2e8f0;
+            border: 1px solid rgba(148, 163, 184, 0.25);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        button:not(:disabled):hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
+        }
+
+        .status {
+            font-size: 0.9rem;
+            min-height: 2.2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        @media (max-width: 980px) {
             main {
-                height: calc(100vh - 130px);
+                grid-template-columns: minmax(0, 1fr);
+                padding: 1rem;
             }
 
-            .map-overlay {
-                position: static;
-                margin: 1rem;
+            #map {
+                height: 60vh;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Infraestructura de Rutas</h1>
+        <h1>Ruta más Corta</h1>
         <a href="{{ url_for('about') }}">Acerca de</a>
     </header>
     <main>
-        <div id="map"></div>
-        <aside class="map-overlay" aria-live="polite" aria-atomic="true">
-            <h2>Estado de los datos</h2>
-            <p id="map-status">Cargando infraestructura…</p>
+        <div id="map" role="application" aria-label="Mapa interactivo"></div>
+        <aside aria-live="polite" aria-atomic="true">
+            <h2>Planificador de trayecto</h2>
+            <div class="controls">
+                <div class="control-group">
+                    <strong>1. Selecciona el origen</strong>
+                    <span>Haz clic en el mapa con la opción "Origen" activa.</span>
+                    <button id="select-start" class="secondary" data-mode="start">Origen activo</button>
+                    <div id="start-summary"></div>
+                </div>
+                <div class="control-group">
+                    <strong>2. Selecciona el destino</strong>
+                    <span>Cambia a "Destino" y haz clic en el mapa.</span>
+                    <button id="select-end" class="secondary" data-mode="end">Seleccionar destino</button>
+                    <div id="end-summary"></div>
+                </div>
+                <div class="control-group">
+                    <strong>3. Calcula la ruta óptima</strong>
+                    <button id="compute-route" class="cta" disabled>Calcular ruta</button>
+                    <button id="clear-route" class="secondary">Limpiar</button>
+                </div>
+            </div>
+            <p class="status" id="status">Selecciona un origen para comenzar.</p>
         </aside>
     </main>
 
