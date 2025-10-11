@@ -1,0 +1,107 @@
+[
+  {
+    "titulo": "Banco Consorcio",
+    "banco": "Banco Consorcio",
+    "descuento": "$150, $100, $125",
+    "vigencia": "Lunes, Miércoles, Jueves, Martes, Domingo",
+    "fuente": "https://www.petrobrasdistribucion.cl/promociones/descuento-con-medios-de-pago/"
+  },
+  {
+    "titulo": "Descuento Ripley",
+    "banco": "Descuento Ripley",
+    "descuento": "$100, $125, $150",
+    "vigencia": "Miércoles, Jueves, Martes, Domingo",
+    "fuente": "https://www.petrobrasdistribucion.cl/promociones/descuento-con-medios-de-pago/"
+  },
+  {
+    "titulo": "Descuento La Polar Visa",
+    "banco": "Descuento La Polar Visa",
+    "descuento": "$150, $100",
+    "vigencia": "Jueves, Martes, Miércoles, Domingo",
+    "fuente": "https://www.petrobrasdistribucion.cl/promociones/descuento-con-medios-de-pago/"
+  },
+  {
+    "titulo": "Descuento ABC VISA",
+    "banco": "Descuento ABC VISA",
+    "descuento": "$150, $100",
+    "vigencia": "Martes, Miércoles, Domingo",
+    "fuente": "https://www.petrobrasdistribucion.cl/promociones/descuento-con-medios-de-pago/"
+  },
+  {
+    "titulo": "Sbpay",
+    "banco": "Sbpay",
+    "descuento": "$150, $100",
+    "vigencia": "Miércoles, Domingo",
+    "fuente": "https://www.petrobrasdistribucion.cl/promociones/descuento-con-medios-de-pago/"
+  },
+  {
+    "titulo": "Spin Visa",
+    "banco": "Spin Visa",
+    "descuento": "$150, $100",
+    "vigencia": "Domingo",
+    "fuente": "https://www.petrobrasdistribucion.cl/promociones/descuento-con-medios-de-pago/"
+  },
+  {
+    "titulo": "Descuento Hites",
+    "banco": "Descuento Hites",
+    "descuento": "$100",
+    "vigencia": "Domingo",
+    "fuente": "https://www.petrobrasdistribucion.cl/promociones/descuento-con-medios-de-pago/"
+  },
+  {
+    "titulo": "Caja Los Andes",
+    "banco": "RUT/Convenio",
+    "descuento": "$15, $25",
+    "vigencia": "Lunes, Martes",
+    "fuente": "https://www.petrobrasdistribucion.cl/promociones/descuento-con-tu-rut/"
+  },
+  {
+    "titulo": "Descuento Municipalidades Combustible",
+    "banco": "RUT/Convenio",
+    "descuento": "$15, $25",
+    "vigencia": "Lunes, Martes",
+    "fuente": "https://www.petrobrasdistribucion.cl/promociones/descuento-con-tu-rut/"
+  },
+  {
+    "titulo": "AMUCH",
+    "banco": "RUT/Convenio",
+    "descuento": "$15, $25",
+    "vigencia": "Lunes, Martes",
+    "fuente": "https://www.petrobrasdistribucion.cl/promociones/descuento-con-tu-rut/"
+  },
+  {
+    "titulo": "Alianza PDI",
+    "banco": "RUT/Convenio",
+    "descuento": "$15, $25",
+    "vigencia": "",
+    "fuente": "https://www.petrobrasdistribucion.cl/promociones/descuento-con-tu-rut/"
+  },
+  {
+    "titulo": "Alianza Armada de Chile",
+    "banco": "RUT/Convenio",
+    "descuento": "$15, $25",
+    "vigencia": "",
+    "fuente": "https://www.petrobrasdistribucion.cl/promociones/descuento-con-tu-rut/"
+  },
+  {
+    "titulo": "Carabineros de Chile",
+    "banco": "RUT/Convenio",
+    "descuento": "$15, $25",
+    "vigencia": "",
+    "fuente": "https://www.petrobrasdistribucion.cl/promociones/descuento-con-tu-rut/"
+  },
+  {
+    "titulo": "Ejército",
+    "banco": "RUT/Convenio",
+    "descuento": "$15, $25",
+    "vigencia": "",
+    "fuente": "https://www.petrobrasdistribucion.cl/promociones/descuento-con-tu-rut/"
+  },
+  {
+    "titulo": "Alianza FACH",
+    "banco": "RUT/Convenio",
+    "descuento": "$15, $25",
+    "vigencia": "",
+    "fuente": "https://www.petrobrasdistribucion.cl/promociones/descuento-con-tu-rut/"
+  }
+]
