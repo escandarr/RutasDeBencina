@@ -1,15 +1,18 @@
 from __future__ import annotations
 
 import json
+import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict
+
+sys.path.insert(0, str(Path(__file__).parent.parent / "services"))
 
 import PatenteChileCalls
 import ConsumoVehicularCalls
 
 
-OUTPUT_FILE = Path(__file__).with_name("resultado_consumo.json")
+OUTPUT_FILE = Path(__file__).parent.parent / "outputs" / "consumo" / "resultado_consumo.json"
 
 
 def save_results_to_json(payload: Dict[str, Any], output_path: Path = OUTPUT_FILE) -> None:

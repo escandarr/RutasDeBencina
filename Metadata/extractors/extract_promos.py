@@ -36,7 +36,7 @@ SOURCES = [
     # Puedes agregar otras páginas de bancos aliados aquí...
 ]
 
-OUT_DIR = os.path.join("salidas promos")
+OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "outputs", "promos")
 JSON_PATH = os.path.join(OUT_DIR, "promos_aliados.json")
 CSV_PATH  = os.path.join(OUT_DIR, "promos_aliados.csv")
 

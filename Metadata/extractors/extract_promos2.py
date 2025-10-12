@@ -34,7 +34,7 @@ DAYS_MAP = {
     "jueves": "Jueves", "viernes": "Viernes", "sabado": "Sábado", "sábado": "Sábado", "domingo": "Domingo"
 }
 
-OUT_DIR = os.path.join("data", "metadata")
+OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "outputs", "promos")
 JSON_PATH = os.path.join(OUT_DIR, "promos_estatico.json")
 CSV_PATH  = os.path.join(OUT_DIR, "promos_estatico.csv")
 

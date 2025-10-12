@@ -7,8 +7,8 @@ LOGIN_URL = "https://api.cne.cl/api/login"
 EST_URL   = "https://api.cne.cl/api/v4/estaciones"
 #EST_URL   = "https://api.cne.cl/api/v3/combustible/calentacion/puntosdeventa"
 
-ROOT = Path(__file__).resolve().parent.parent
-OUT  = Path(__file__).resolve().parent / "salidas"
+ROOT = Path(__file__).resolve().parent.parent.parent
+OUT  = Path(__file__).resolve().parent.parent / "outputs" / "cne"
 OUT.mkdir(parents=True, exist_ok=True)
 
 TOKEN_FILE = ROOT / "token.txt"                 # guarda/lee el token aquí
