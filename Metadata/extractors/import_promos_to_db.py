@@ -1,8 +1,12 @@
-"""Import fuel promotions from banks and payment methods into PostgreSQL.
+"""Import fuel promotions into PostgreSQL using the data-access layer.
 
-This script reads the JSON outputs from extract_promos.py and extract_promos2.py
-and persists them into the metadata schema. It automatically links promotions
-to gas station brands based on text matching.
+This script consumes the JSON outputs from:
+    * extract_promos.py        -> aliados promotions
+    * extract_promos2.py       -> static promotions
+    * extract_promos3.py       -> descuentosrata recurring promotions
+
+Records are upserted (by fuente_tipo + external_id) and linked to brands via
+the shared data_access metadata repositories.
 
 Usage (inside the repo virtualenv):
 
@@ -22,11 +26,12 @@ import logging
 import os
 import pathlib
 import sys
+from datetime import date, datetime
 from typing import Dict, List, Optional, Sequence
 
 try:
     import psycopg
-    from psycopg import Cursor
+    from psycopg import Connection, Cursor
 except ImportError as exc:
     raise SystemExit(
         "psycopg (v3) is required. Install it with `pip install psycopg[binary]`."
@@ -36,8 +41,30 @@ BASE_DIR = pathlib.Path(__file__).resolve().parent
 OUTPUTS_DIR = BASE_DIR.parent / "outputs" / "promos"
 DEFAULT_ALIADOS = OUTPUTS_DIR / "promos_aliados.json"
 DEFAULT_ESTATICO = OUTPUTS_DIR / "promos_estatico.json"
+DEFAULT_RATA = OUTPUTS_DIR / "promos_rata.json"
 
 LOG = logging.getLogger("import_promos")
+
+ROOT_DIR = pathlib.Path(__file__).resolve().parents[2]
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
+
+from db.data_access.metadata_repositories import (  # noqa: E402
+    auto_link_promocion_to_marcas,
+    create_scrape_run,
+    delete_promociones_by_fuente,
+    insert_promocion,
+)
+
+DAY_CODE_LABELS = {
+    "lu": "Lunes",
+    "ma": "Martes",
+    "mi": "Miércoles",
+    "ju": "Jueves",
+    "vi": "Viernes",
+    "sa": "Sábado",
+    "do": "Domingo",
+}
 
 
 def resolve_conninfo(dsn: Optional[str]) -> str:
@@ -65,105 +92,137 @@ def resolve_conninfo(dsn: Optional[str]) -> str:
     return " ".join(p for p in parts if p)
 
 
-def create_scrape_run(cur: Cursor, source_type: str, record_count: int) -> int:
-    """Create a scrape run record and return its ID."""
-    cur.execute(
-        """
-        INSERT INTO metadata.scrape_runs (source_type, record_count, success)
-        VALUES (%s, %s, %s)
-        RETURNING id
-        """,
-        (source_type, record_count, True)
-    )
-    scrape_run_id = cur.fetchone()[0]
-    LOG.info("Created scrape run id=%s for %s", scrape_run_id, source_type)
-    return scrape_run_id
-
-
-def extract_marca_ids_from_promo(cur: Cursor, promo_text: str) -> List[int]:
-    """
-    Find brand IDs mentioned in promotion text.
-    Returns list of marca_ids that match.
-    """
-    cur.execute("""
-        SELECT id, nombre, nombre_display 
-        FROM metadata.marcas
-        WHERE activo = TRUE
-        ORDER BY LENGTH(nombre) DESC
-    """)
-    
-    marca_ids = []
-    for row in cur.fetchall():
-        marca_id, nombre, nombre_display = row
-        if nombre.upper() in promo_text.upper() or (nombre_display and nombre_display.upper() in promo_text.upper()):
-            marca_ids.append(marca_id)
-    
-    return marca_ids
-
-
 def insert_promociones(
-    cur: Cursor, 
-    promociones: List[Dict], 
+    conn: Connection,
+    promociones: List[Dict],
     fuente_tipo: str,
     scrape_run_id: int,
     *,
     truncate: bool = False
 ) -> int:
     """
-    Insert promotions and auto-link to brands.
-    Returns count of promotions inserted.
+    Insert or update promotions using the data-access layer.
+    Returns count of promotions processed.
     """
     if truncate:
-        LOG.info("Truncating existing %s promotions", fuente_tipo)
-        cur.execute(
-            "DELETE FROM metadata.promociones WHERE fuente_tipo = %s",
-            (fuente_tipo,)
-        )
+        deleted = delete_promociones_by_fuente(conn, fuente_tipo)
+        LOG.info("🗑️  Removed %s existing '%s' promotions", deleted, fuente_tipo)
     
     LOG.info("Inserting %s %s promotions", len(promociones), fuente_tipo)
     
-    inserted_count = 0
-    linked_count = 0
+    processed_count = 0
     
     for promo in promociones:
-        titulo = promo.get('titulo', '')
-        banco = promo.get('banco', '')
-        descuento = promo.get('descuento', '')
-        vigencia = promo.get('vigencia', '')
-        fuente_url = promo.get('fuente', '')
+        marca_ids = _coerce_marca_ids(promo.get("marca_ids"))
+        fecha_inicio = coerce_date(promo.get("fecha_inicio"))
+        fecha_fin = coerce_date(promo.get("fecha_fin"))
         
-        # Insert promotion
-        cur.execute(
-            """
-            INSERT INTO metadata.promociones
-                (titulo, banco, descuento, vigencia, fuente_url, fuente_tipo, scrape_run_id)
-            VALUES (%s, %s, %s, %s, %s, %s, %s)
-            RETURNING id
-            """,
-            (titulo, banco, descuento, vigencia, fuente_url, fuente_tipo, scrape_run_id)
+        promocion_id = insert_promocion(
+            conn,
+            titulo=promo.get("titulo", ""),
+            banco=promo.get("banco"),
+            descuento=promo.get("descuento"),
+            vigencia=promo.get("vigencia"),
+            fuente_url=promo.get("fuente") or promo.get("fuente_url"),
+            fuente_tipo=fuente_tipo,
+            marca_ids=marca_ids,
+            scrape_run_id=scrape_run_id,
+            external_id=promo.get("external_id"),
+            fecha_inicio=fecha_inicio,
+            fecha_fin=fecha_fin,
+            activo=promo.get("activo", True),
         )
-        promocion_id = cur.fetchone()[0]
-        inserted_count += 1
         
-        # Auto-link to brands based on text
-        search_text = f"{titulo} {banco} {descuento}"
-        marca_ids = extract_marca_ids_from_promo(cur, search_text)
+        if not marca_ids:
+            auto_link_promocion_to_marcas(conn, promocion_id)
         
-        for marca_id in marca_ids:
-            cur.execute(
-                """
-                INSERT INTO metadata.promociones_marcas (promocion_id, marca_id)
-                VALUES (%s, %s)
-                ON CONFLICT DO NOTHING
-                """,
-                (promocion_id, marca_id)
-            )
-            linked_count += 1
+        processed_count += 1
     
-    LOG.info("✅ Inserted %s promotions", inserted_count)
-    LOG.info("🔗 Created %s promotion-brand links", linked_count)
+    LOG.info("✅ Upserted %s promotions", processed_count)
     
-    return inserted_count
+    return processed_count
+
+
+def _format_day_labels(days: List[str]) -> str:
+    if not days:
+        return ""
+    labels = []
+    for code in days:
+        labels.append(DAY_CODE_LABELS.get(code.lower(), code))
+    return ", ".join(dict.fromkeys(labels))
+
+
+def _parse_date(value: Optional[str]) -> Optional[date]:
+    if not value:
+        return None
+    cleaned = value.replace("Z", "+00:00")
+    try:
+        return datetime.fromisoformat(cleaned).date()
+    except ValueError:
+        return None
+
+
+def normalize_rata_promos(promos: List[Dict]) -> List[Dict]:
+    """Convert descuentosrata payload into the legacy import schema."""
+    normalized: List[Dict] = []
+    for item in promos:
+        title = item.get("title") or item.get("nombre") or ""
+        partner_info = item.get("partner") or {}
+        partner = partner_info.get("name") or partner_info.get("slug") or ""
+
+        brand_info = item.get("brand") or {}
+        brand_id = brand_info.get("brand_id")
+        discount = item.get("discount_amount") or ""
+
+        day_block = _format_day_labels(item.get("days") or [])
+        vigencia = day_block
+
+        normalized.append(
+            {
+                "titulo": title,
+                "banco": partner,
+                "descuento": discount,
+                "vigencia": vigencia,
+                "fuente": item.get("source_url") or item.get("url_rateada") or "",
+                "external_id": str(item.get("id")) if item.get("id") is not None else None,
+                "fecha_inicio": _parse_date(item.get("valid_from")),
+                "fecha_fin": _parse_date(item.get("valid_to")),
+                "marca_ids": [brand_id] if isinstance(brand_id, int) else None,
+                "activo": bool(item.get("activo", True)),
+            }
+        )
+    return normalized
+
+
+def coerce_date(value: Optional[object]) -> Optional[date]:
+    if value is None:
+        return None
+    if isinstance(value, date):
+        return value
+    if isinstance(value, str):
+        return _parse_date(value)
+    return None
+
+
+def _coerce_marca_ids(value: Optional[object]) -> Optional[List[int]]:
+    if value is None:
+        return None
+    if isinstance(value, int):
+        return [value]
+    if isinstance(value, (list, tuple)):
+        ids = []
+        for element in value:
+            if element is None:
+                continue
+            try:
+                ids.append(int(element))
+            except (TypeError, ValueError):
+                continue
+        return ids or None
+    try:
+        return [int(value)]
+    except (TypeError, ValueError):
+        return None
 
 
 def show_summary(cur: Cursor) -> None:
@@ -248,6 +307,12 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         help="Path to estatico JSON file (default: %(default)s)"
     )
     parser.add_argument(
+        "--rata",
+        type=pathlib.Path,
+        default=DEFAULT_RATA,
+        help="Path to descuentosrata JSON file (default: %(default)s)"
+    )
+    parser.add_argument(
         "--aliados-only",
         action="store_true",
         help="Import only aliados promotions"
@@ -256,6 +321,11 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
         "--estatico-only",
         action="store_true",
         help="Import only estatico promotions"
+    )
+    parser.add_argument(
+        "--rata-only",
+        action="store_true",
+        help="Import only descuentosrata promotions"
     )
     parser.add_argument(
         "--truncate",
@@ -278,21 +348,33 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
     # Determine which files to process
     files_to_process = []
     
-    if not args.estatico_only:
-        if args.aliados.exists():
-            files_to_process.append(('aliados', args.aliados))
+    if args.rata_only:
+        if args.rata.exists():
+            files_to_process.append(('rata', args.rata))
         else:
-            LOG.warning("Aliados file not found: %s", args.aliados)
-    
-    if not args.aliados_only:
-        if args.estatico.exists():
-            files_to_process.append(('estatico', args.estatico))
-        else:
-            LOG.warning("Estatico file not found: %s", args.estatico)
-    
+            LOG.warning("Descuentosrata file not found: %s", args.rata)
+    else:
+        if not args.estatico_only and not args.rata_only:
+            if args.aliados.exists():
+                files_to_process.append(('aliados', args.aliados))
+            else:
+                LOG.warning("Aliados file not found: %s", args.aliados)
+        
+        if not args.aliados_only and not args.rata_only:
+            if args.estatico.exists():
+                files_to_process.append(('estatico', args.estatico))
+            else:
+                LOG.warning("Estatico file not found: %s", args.estatico)
+        
+        if not args.aliados_only and not args.estatico_only:
+            if args.rata.exists():
+                files_to_process.append(('rata', args.rata))
+            else:
+                LOG.warning("Descuentosrata file not found: %s", args.rata)
+
     if not files_to_process:
         LOG.error("No promotion files found to import")
-        LOG.error("Run extract_promos.py and/or extract_promos2.py first")
+        LOG.error("Run extract_promos.py, extract_promos2.py and/or extract_promos3.py first")
         return 1
 
     conninfo = resolve_conninfo(args.dsn)
@@ -300,60 +382,59 @@ def main(argv: Optional[Sequence[str]] = None) -> int:
 
     try:
         with psycopg.connect(conninfo) as conn:
-            with conn.cursor() as cur:
-                total_imported = 0
-                
-                for fuente_tipo, file_path in files_to_process:
-                    LOG.info("")
-                    LOG.info("=" * 60)
-                    LOG.info("Processing %s promotions from %s", fuente_tipo, file_path)
-                    LOG.info("=" * 60)
-                    
-                    try:
-                        with open(file_path, 'r', encoding='utf-8') as f:
-                            promociones = json.load(f)
-                    except json.JSONDecodeError as e:
-                        LOG.error("Failed to parse %s: %s", file_path, e)
-                        continue
-                    
-                    if not isinstance(promociones, list):
-                        LOG.error("Expected a list in %s, got %s", file_path, type(promociones))
-                        continue
-                    
-                    if not promociones:
-                        LOG.warning("No promotions found in %s", file_path)
-                        continue
-                    
-                    LOG.info("Loaded %s promotions", len(promociones))
-                    
-                    # Create scrape run
-                    scrape_run_id = create_scrape_run(
-                        cur,
-                        f'promos_{fuente_tipo}',
-                        len(promociones)
-                    )
-                    
-                    # Import promotions
-                    count = insert_promociones(
-                        cur,
-                        promociones,
-                        fuente_tipo,
-                        scrape_run_id,
-                        truncate=args.truncate
-                    )
-                    total_imported += count
-                
-                # Show summary
+            total_imported = 0
+
+            for fuente_tipo, file_path in files_to_process:
                 LOG.info("")
+                LOG.info("=" * 60)
+                LOG.info("Processing %s promotions from %s", fuente_tipo, file_path)
+                LOG.info("=" * 60)
+
+                try:
+                    with open(file_path, 'r', encoding='utf-8') as f:
+                        promociones = json.load(f)
+                except json.JSONDecodeError as e:
+                    LOG.error("Failed to parse %s: %s", file_path, e)
+                    continue
+
+                if not isinstance(promociones, list):
+                    LOG.error("Expected a list in %s, got %s", file_path, type(promociones))
+                    continue
+
+                if not promociones:
+                    LOG.warning("No promotions found in %s", file_path)
+                    continue
+
+                if fuente_tipo == 'rata':
+                    promociones = normalize_rata_promos(promociones)
+
+                LOG.info("Loaded %s promotions", len(promociones))
+
+                scrape_run_id = create_scrape_run(
+                    conn,
+                    source_type=f'promos_{fuente_tipo}',
+                    record_count=len(promociones),
+                )
+
+                count = insert_promociones(
+                    conn,
+                    promociones,
+                    fuente_tipo,
+                    scrape_run_id,
+                    truncate=args.truncate,
+                )
+                total_imported += count
+
+            LOG.info("")
+            with conn.cursor() as cur:
                 show_summary(cur)
-                
-            conn.commit()
+
             LOG.info("")
             LOG.info("=" * 60)
             LOG.info("✅ Import complete! Imported %s promotions total", total_imported)
             LOG.info("=" * 60)
             return 0
-            
+
     except psycopg.Error as e:
         LOG.error("Database error: %s", e)
         return 1

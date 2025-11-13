@@ -33,6 +33,12 @@
             letter-spacing: 0.03em;
         }
 
+        header nav {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
         header a {
             color: #f8fafc;
             text-decoration: none;
@@ -150,6 +156,163 @@
             align-items: center;
         }
 
+        .input-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            color: rgba(226, 232, 240, 0.6);
+        }
+
+        select,
+        input[type="text"] {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            color: #e2e8f0;
+            border-radius: 0.6rem;
+            padding: 0.45rem 0.75rem;
+            font-size: 0.95rem;
+            transition: border-color 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        select:focus,
+        input[type="text"]:focus {
+            outline: none;
+            border-color: rgba(56, 189, 248, 0.8);
+            box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2);
+        }
+
+        .station-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+            max-height: 220px;
+            overflow-y: auto;
+            margin-top: 0.6rem;
+        }
+
+        .station-card {
+            background: rgba(15, 23, 42, 0.65);
+            border: 1px solid rgba(148, 163, 184, 0.15);
+            border-radius: 0.75rem;
+            padding: 0.6rem 0.7rem;
+            display: grid;
+            gap: 0.3rem;
+        }
+
+        .station-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .station-meta {
+            font-size: 0.8rem;
+            color: rgba(226, 232, 240, 0.7);
+        }
+
+        .price-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .price-tag {
+            background: rgba(37, 99, 235, 0.18);
+            color: #bfdbfe;
+            border-radius: 999px;
+            padding: 0.2rem 0.6rem;
+            font-size: 0.78rem;
+        }
+
+        .price-tag--active {
+            background: rgba(56, 189, 248, 0.3);
+            color: #f8fafc;
+        }
+
+        .matricula-input {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .matricula-input input {
+            flex: 1;
+        }
+
+        .form-error {
+            color: #fca5a5;
+            font-size: 0.8rem;
+            min-height: 1rem;
+        }
+
+        .matricula-result {
+            display: grid;
+            gap: 0.4rem;
+            background: rgba(15, 23, 42, 0.65);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 0.75rem;
+            padding: 0.7rem;
+            font-size: 0.9rem;
+        }
+
+        .matricula-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.75rem;
+        }
+
+        .matricula-result strong {
+            color: #38bdf8;
+        }
+
+        .empty-state {
+            font-size: 0.85rem;
+            color: rgba(226, 232, 240, 0.6);
+            padding-top: 0.35rem;
+        }
+
+        .leaflet-marker-icon.station-marker-icon {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        .station-marker-logo {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(15, 23, 42, 0.92);
+            border: 2px solid rgba(148, 163, 184, 0.35);
+            box-shadow: 0 14px 28px rgba(15, 23, 42, 0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .station-marker-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #fff;
+            border-radius: 50%;
+        }
+
+        .leaflet-marker-icon.station-marker-icon::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 16px;
+            height: 16px;
+            background: rgba(15, 23, 42, 0.92);
+            border-radius: 3px;
+            box-shadow: 0 10px 20px rgba(15, 23, 42, 0.35);
+        }
+
         @media (max-width: 980px) {
             main {
                 grid-template-columns: minmax(0, 1fr);
@@ -165,7 +328,10 @@
 <body>
     <header>
         <h1>Ruta más Corta</h1>
-        <a href="{{ url_for('about') }}">Acerca de</a>
+        <nav>
+            <a href="{{ url_for('about') }}">Acerca de</a>
+            <a href="{{ url_for('admin_dashboard') }}">Gestión de datos</a>
+        </nav>
     </header>
     <main>
         <div id="map" role="application" aria-label="Mapa interactivo"></div>
@@ -191,6 +357,35 @@
                 </div>
             </div>
             <p class="status" id="status">Selecciona un origen para comenzar.</p>
+
+            <div class="control-group">
+                <strong>Estaciones cercanas</strong>
+                <span>Ver precios actuales de combustible.</span>
+                <label class="input-label" for="fuel-filter">Combustible</label>
+                <select id="fuel-filter" aria-label="Filtro de combustible">
+                    <option value="">Todos</option>
+                    <option value="93">93</option>
+                    <option value="95">95</option>
+                    <option value="97">97</option>
+                    <option value="DI">Diésel</option>
+                </select>
+                <div id="station-list" class="station-list" role="list"></div>
+            </div>
+
+            <div class="control-group">
+                <strong>Consulta por matrícula</strong>
+                <span>Obtén metadatos del vehículo asociado.</span>
+                <form id="matricula-form" novalidate>
+                    <label class="input-label" for="matricula-input">Matrícula</label>
+                    <div class="matricula-input">
+                        <input type="text" id="matricula-input" name="matricula" placeholder="Ej: AB1234"
+                               maxlength="8" autocomplete="off" required>
+                        <button type="submit" class="cta" id="matricula-submit">C</button>
+                    </div>
+                    <div id="matricula-error" class="form-error" role="alert" aria-live="polite"></div>
+                </form>
+                <div id="matricula-result" class="matricula-result" aria-live="polite"></div>
+            </div>
         </aside>
     </main>
 

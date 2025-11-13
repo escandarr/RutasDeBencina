@@ -77,6 +77,7 @@ class Promocion:
     vigencia: Optional[str] = None
     fuente_url: Optional[str] = None
     fuente_tipo: Optional[str] = None
+    external_id: Optional[str] = None
     fecha_inicio: Optional[date] = None
     fecha_fin: Optional[date] = None
     activo: bool = True
@@ -91,6 +92,9 @@ class PromocionConMarca:
     descuento: Optional[str] = None
     vigencia: Optional[str] = None
     fuente_url: Optional[str] = None
+    external_id: Optional[str] = None
+    fecha_inicio: Optional[date] = None
+    fecha_fin: Optional[date] = None
     marca_id: Optional[int] = None
     marca_nombre: Optional[str] = None
     marca_display: Optional[str] = None

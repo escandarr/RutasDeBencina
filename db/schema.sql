@@ -248,12 +248,14 @@ CREATE TABLE IF NOT EXISTS promociones (
 	vigencia        TEXT,                  -- Days valid, e.g., 'Lunes, Miércoles'
 	fuente_url      TEXT,                  -- Source URL where scraped
 	fuente_tipo     TEXT,                  -- 'aliados', 'estatico', etc.
+	external_id     TEXT,                  -- Provider-specific identifier (optional)
 	fecha_inicio    DATE,                  -- Optional: promo start date
 	fecha_fin       DATE,                  -- Optional: promo end date
 	activo          BOOLEAN     NOT NULL DEFAULT TRUE,
 	scrape_run_id   BIGINT REFERENCES scrape_runs (id) ON DELETE SET NULL,
 	created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-	updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
+	updated_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+	CONSTRAINT promociones_fuente_external_unique UNIQUE (fuente_tipo, external_id)
 );
 
 CREATE INDEX IF NOT EXISTS promociones_banco_idx ON promociones (banco);
@@ -342,13 +344,16 @@ SELECT
 	p.descuento,
 	p.vigencia,
 	p.fuente_url,
+	p.external_id,
+	p.fecha_inicio,
+	p.fecha_fin,
 	p.activo,
 	m.id AS marca_id,
 	m.nombre AS marca_nombre,
 	m.nombre_display AS marca_display
 FROM promociones p
 LEFT JOIN promociones_marcas pm ON p.id = pm.promocion_id
-LEFT JOIN marcas m ON pm.marca_id = m.marca_id
+LEFT JOIN marcas m ON pm.marca_id = m.id
 WHERE p.activo = TRUE;
 
 COMMENT ON VIEW promociones_con_marcas IS 'Promotions with their associated brands for easy querying.';

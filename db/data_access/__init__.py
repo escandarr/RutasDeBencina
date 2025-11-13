@@ -45,6 +45,7 @@ from .metadata_repositories import (
 	insert_promocion,
 	link_promocion_to_marca,
 	auto_link_promocion_to_marcas,
+	delete_promociones_by_fuente,
 	# Estaciones con promociones
 	get_estaciones_con_promociones,
 	get_promociones_estacion,
@@ -111,6 +112,7 @@ __all__ = [
 	"insert_promocion",
 	"link_promocion_to_marca",
 	"auto_link_promocion_to_marcas",
+	"delete_promociones_by_fuente",
 	"get_estaciones_con_promociones",
 	"get_promociones_estacion",
 	"create_scrape_run",
