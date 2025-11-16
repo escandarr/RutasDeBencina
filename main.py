@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # main.py — Orquestador E2E para RutasDeBencina
 # Uso rápido:
+#   python main.py            # corre flujo completo por defecto (token+docker+etl+web)
 #   python main.py all --wait-db --bbox -33.6 -70.9 -33.3 -70.5
 #   python main.py up --wait-db
 #   python main.py schema
@@ -10,6 +11,9 @@
 #   python main.py web
 
 import argparse
+import base64
+import datetime
+import json
 import os
 import sys
 import time
@@ -36,53 +40,14 @@ IMPORT_PROMOS_DB= EXTRACTORS_DIR / "import_promos_to_db.py"
 
 WEB_APP_MODULE  = "web.web"  # Flask app: web/web.py
 
-# Config (se puede sobreescribir con .env/vars de entorno)
-DSN = os.getenv("RUTAS_DSN", "postgresql://rutas_user:supersecretpassword@localhost:5432/rutasdb")
-FLASK_HOST = os.getenv("FLASK_HOST", "0.0.0.0")
-FLASK_PORT = os.getenv("FLASK_PORT", "5000")
-
-def run(cmd, cwd=None, env=None, check=True):
-    print(f"[CMD] {' '.join(map(str, cmd))}")
-    return subprocess.run(cmd, cwd=cwd, env=env or os.environ, check=check)
-
-def docker_compose_cmd():
-    # Compatibilidad con docker compose v2
-    return ["docker", "compose", "-f", str(DOCKER_COMPOSE)]
-
-def service_container_id(service):
-    ps = subprocess.run(docker_compose_cmd() + ["ps", "-q", service],
-                        capture_output=True, text=True)
-    return ps.stdout.strip()
-
-def up(args):
-    if not DOCKER_COMPOSE.exists():
-        print(f"[WARN] No encontrado: {DOCKER_COMPOSE}")
-        return
-    run(docker_compose_cmd() + ["up", "-d"])
-    if args.wait_db:
-        wait_db(timeout=args.db_timeout)
-
-def down(_):
-    if DOCKER_COMPOSE.exists():
-        run(docker_compose_cmd() + ["down"])
-
 def wait_db(timeout=180):
-    print(f"[INFO] Esperando BD lista ({DSN})...")
-    t0 = time.time()
-    while time.time() - t0 < timeout:
-        cid = service_container_id("db")
-        if cid:
-            r = subprocess.run(["docker", "exec", cid, "pg_isready", "-d", DSN], capture_output=True)
-            if r.returncode == 0:
-                print("[INFO] Postgres listo (contenedor).")
-                return
-        # Fallback: psql local si existe
-        if which("psql"):
-            r = subprocess.run(["psql", DSN, "-c", "SELECT 1"], capture_output=True)
-            if r.returncode == 0:
-                print("[INFO] Postgres listo (psql local).")
-                return
-        time.sleep(3)
+    # Fallback: psql local si existe
+    if which("psql"):
+        r = subprocess.run(["psql", DSN, "-c", "SELECT 1"], capture_output=True)
+        if r.returncode == 0:
+            print("[INFO] Postgres listo (psql local).")
+            return
+    time.sleep(3)
     print("[ERROR] Timeout esperando la BD.")
     sys.exit(1)
 
@@ -101,10 +66,44 @@ def schema(_):
         print("[ERROR] No hay contenedor 'db' ni psql local.")
         sys.exit(1)
 
-def ensure_token():
-    # Ejecuta save_token.py si falta token.txt
+# Ejecuta save_token.py si falta token.txt
+def decode_jwt_exp(token: str):
+    try:
+        parts = token.split(".")
+        if len(parts) < 2:
+            return None
+        payload_b64 = parts[1]
+        rem = len(payload_b64) % 4
+        if rem:
+            payload_b64 += "=" * (4 - rem)
+        payload = base64.urlsafe_b64decode(payload_b64.encode("utf-8"))
+        data = json.loads(payload.decode("utf-8"))
+        exp = data.get("exp")
+        if exp:
+            return datetime.datetime.utcfromtimestamp(int(exp))
+    except Exception:
+        return None
+    return None
+
+
+def token_is_valid(token_file: Path, min_valid_minutes: int = 10) -> bool:
+    if not token_file.exists() or token_file.stat().st_size == 0:
+        return False
+    token = token_file.read_text(encoding="utf-8").strip()
+    if not token:
+        return False
+    exp_dt = decode_jwt_exp(token)
+    if exp_dt is None:
+        # Si no es JWT asumimos que sigue válido
+        return True
+    remaining = exp_dt - datetime.datetime.utcnow()
+    return remaining.total_seconds() > min_valid_minutes * 60
+
+
+def ensure_token(force=False):
+    """Genera o renueva token.txt usando save_token.py"""
     token_file = ROOT / "token.txt"
-    if token_file.exists() and token_file.stat().st_size > 0:
+    if not force and token_is_valid(token_file):
         return
     save_token = ROOT / "save_token.py"
     if save_token.exists():
@@ -130,28 +129,10 @@ def infra(args):
 
 def etl(_):
     """
-    Ejecuta extractores para generar/actualizar JSON en Metadata/outputs/*
-    """
-    ensure_token()  # por si extract_cne necesita token
-    executed = False
-    for script in [EXTRACT_CNE, EXTRACT_PROMOS, EXTRACT_PROMOS2, EXTRACT_CONSUMO]:
-        if script.exists():
-            print(f"[INFO] Ejecutando extractor: {script.name}")
-            run([sys.executable, str(script)])
-            executed = True
-    if IMPORT_ALL_META.exists():
-        print(f"[INFO] Ejecutando import_all_metadata.py (procesa/normaliza salidas locales)")
-        run([sys.executable, str(IMPORT_ALL_META)])
-        executed = True
-    if not executed:
-        print("[INFO] No se encontraron extractores para ejecutar.")
-
+@@ -155,82 +192,92 @@ 
+"""
 def import_to_db(_):
-    """
-    Importa metadata a Postgres (CNE, Promos, etc.).
-    """
-    # Carga directa por scripts del repo (aceptan DSN por CLI)
-    ran = False
+
     if IMPORT_CNE_DB.exists():
         print("[INFO] Importando CNE a BD...")
         run([sys.executable, str(IMPORT_CNE_DB), "--dsn", DSN])
@@ -177,6 +158,7 @@ def web(_):
     run([sys.executable, "-m", "flask", "run"], env=env)
 
 def all_steps(args):
+    ensure_token(force=args.force_token if hasattr(args, "force_token") else False)
     up(args)
     schema(args)
     infra(args)
@@ -187,6 +169,10 @@ def all_steps(args):
 def parse_args():
     p = argparse.ArgumentParser(description="RutasDeBencina Orquestador")
     sub = p.add_subparsers(dest="cmd", required=True)
+
+    sp_token = sub.add_parser("token", help="Obtiene/renueva token.txt")
+    sp_token.add_argument("--force", action="store_true", help="Regenera incluso si parece vigente")
+    sp_token.set_defaults(func=lambda a: ensure_token(force=a.force))
 
     sp_up = sub.add_parser("up", help="Levanta Docker")
     sp_up.add_argument("--wait-db", action="store_true")
@@ -214,23 +200,28 @@ def parse_args():
 
     sp_web = sub.add_parser("web", help="Levanta la web Flask")
     sp_web.set_defaults(func=web)
-
-    sp_all = sub.add_parser("all", help="Todo: up -> schema -> infra -> etl -> import -> web")
+    sp_all = sub.add_parser("all", help="Todo: token -> up -> schema -> infra -> etl -> import -> web")
+    sp_all.add_argument("--wait-db", action="store_true")
     sp_all.add_argument("--wait-db", action="store_true")
     sp_all.add_argument("--db-timeout", type=int, default=180)
     sp_all.add_argument("--bbox", nargs=4, type=float, metavar=("LAT_MIN","LON_MIN","LAT_MAX","LON_MAX"))
     sp_all.add_argument("--input")
     sp_all.add_argument("--no-truncate", action="store_true")
     sp_all.add_argument("--skip-topology", action="store_true")
+    sp_all.add_argument("--force-token", action="store_true", help="Regenera token antes de comenzar")
     sp_all.set_defaults(func=all_steps)
 
     return p.parse_args()
+    return p
+
 
 def main():
     if not DOCKER_COMPOSE.exists():
         print(f"[WARN] No se encontró {DOCKER_COMPOSE}. Puedes ejecutar 'schema/infra/etl/import/web' en local si tienes Postgres y dependencias instaladas.")
-    args = parse_args()
+    parser = parse_args()
+    args = parser.parse_args()
     args.func(args)
+
 
 if __name__ == "__main__":
     main()

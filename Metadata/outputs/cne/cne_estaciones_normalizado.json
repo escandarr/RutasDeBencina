@@ -472,10 +472,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1013000.0,
+      "precio": 1012000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "08:43:36",
+      "fecha": "2025-11-13",
+      "hora": "09:35:49",
       "tipo_atencion": "Asistido"
     }
   },
@@ -512,10 +512,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1013000.0,
+      "precio": 1012000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "09:49:22",
+      "fecha": "2025-11-13",
+      "hora": "09:01:25",
       "tipo_atencion": "Asistido"
     }
   },
@@ -1491,31 +1491,31 @@
     "lat": "-23.782598",
     "lng": "-70.316837",
     "precio_93": {
-      "precio": 1322000.0,
+      "precio": 1295000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-09",
-      "hora": "00:17:18",
+      "fecha": "2025-11-12",
+      "hora": "23:58:49",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1346000.0,
+      "precio": 1319000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-09",
-      "hora": "00:17:18",
+      "fecha": "2025-11-12",
+      "hora": "23:58:49",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1365000.0,
+      "precio": 1338000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-09",
-      "hora": "00:17:18",
+      "fecha": "2025-11-12",
+      "hora": "23:58:49",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1060000.0,
+      "precio": 1038000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-09",
-      "hora": "00:17:18",
+      "fecha": "2025-11-12",
+      "hora": "23:58:49",
       "tipo_atencion": "Asistido"
     }
   },
@@ -2072,10 +2072,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1040000.0,
+      "precio": 1039000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "09:25:14",
+      "fecha": "2025-11-13",
+      "hora": "18:27:46",
       "tipo_atencion": "Asistido"
     }
   },
@@ -2112,10 +2112,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1036000.0,
+      "precio": 1035000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "09:07:35",
+      "fecha": "2025-11-13",
+      "hora": "09:12:01",
       "tipo_atencion": "Asistido"
     }
   },
@@ -3192,10 +3192,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1054000.0,
+      "precio": 1053000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-12",
-      "hora": "10:35:56",
+      "fecha": "2025-11-13",
+      "hora": "15:50:58",
       "tipo_atencion": "Asistido"
     }
   },
@@ -3912,10 +3912,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1034000.0,
+      "precio": 1033000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "14:06:12",
+      "fecha": "2025-11-13",
+      "hora": "15:51:00",
       "tipo_atencion": "Asistido"
     }
   },
@@ -4032,10 +4032,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1036000.0,
+      "precio": 1037000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "14:06:17",
+      "fecha": "2025-11-13",
+      "hora": "15:51:05",
       "tipo_atencion": "Asistido"
     }
   },
@@ -4992,10 +4992,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1033000.0,
+      "precio": 1070000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "12:40:35",
+      "fecha": "2025-11-14",
+      "hora": "17:14:19",
       "tipo_atencion": "Asistido"
     }
   },
@@ -5211,31 +5211,31 @@
     "lat": "-29.88855998937283",
     "lng": "-71.24258279800415",
     "precio_93": {
-      "precio": 1276000.0,
+      "precio": 1270000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "09:34:49",
+      "fecha": "2025-11-14",
+      "hora": "09:45:38",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1305000.0,
+      "precio": 1299000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "09:34:49",
+      "fecha": "2025-11-14",
+      "hora": "09:45:38",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1334000.0,
+      "precio": 1328000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "09:34:49",
+      "fecha": "2025-11-14",
+      "hora": "09:45:38",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1029000.0,
+      "precio": 1023000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "09:34:49",
+      "fecha": "2025-11-14",
+      "hora": "09:45:38",
       "tipo_atencion": "Asistido"
     }
   },
@@ -5291,31 +5291,31 @@
     "lat": "-29.88777781654734",
     "lng": "-71.24636913408506",
     "precio_93": {
-      "precio": 1276000.0,
+      "precio": 1270000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "08:35:36",
+      "fecha": "2025-11-14",
+      "hora": "17:14:27",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1305000.0,
+      "precio": 1299000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "08:35:36",
+      "fecha": "2025-11-14",
+      "hora": "17:14:27",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1334000.0,
+      "precio": 1328000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "08:35:36",
+      "fecha": "2025-11-14",
+      "hora": "17:14:27",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1029000.0,
+      "precio": 1023000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "08:35:36",
+      "fecha": "2025-11-14",
+      "hora": "17:14:27",
       "tipo_atencion": "Asistido"
     }
   },
@@ -5333,29 +5333,29 @@
     "precio_93": {
       "precio": 1275000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-09",
-      "hora": "20:13:21",
+      "fecha": "2025-11-16",
+      "hora": "17:58:54",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
       "precio": 1304000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-09",
-      "hora": "20:13:21",
+      "fecha": "2025-11-16",
+      "hora": "17:58:54",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
       "precio": 1332000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-09",
-      "hora": "20:13:21",
+      "fecha": "2025-11-16",
+      "hora": "17:58:54",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
       "precio": 1028000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-09",
-      "hora": "20:13:21",
+      "fecha": "2025-11-16",
+      "hora": "17:58:54",
       "tipo_atencion": "Asistido"
     }
   },
@@ -5592,10 +5592,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1035000.0,
+      "precio": 1034000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "10:53:18",
+      "fecha": "2025-11-13",
+      "hora": "10:43:42",
       "tipo_atencion": "Asistido"
     }
   },
@@ -6460,22 +6460,22 @@
     "precio_95": {
       "precio": 1293000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "07:54:27",
+      "fecha": "2025-11-13",
+      "hora": "08:44:31",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
       "precio": 1322000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "07:54:27",
+      "fecha": "2025-11-13",
+      "hora": "08:44:31",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
       "precio": 1019000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-07",
-      "hora": "16:37:08",
+      "fecha": "2025-11-13",
+      "hora": "08:44:31",
       "tipo_atencion": "Asistido"
     }
   },
@@ -6672,10 +6672,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1035000.0,
+      "precio": 1034000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-31",
-      "hora": "01:23:14",
+      "fecha": "2025-11-13",
+      "hora": "11:43:33",
       "tipo_atencion": "Asistido"
     }
   },
@@ -9345,10 +9345,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1280000.0,
+      "precio": 1282000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-04",
-      "hora": "11:01:45",
+      "fecha": "2025-11-13",
+      "hora": "10:02:28",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
@@ -10411,31 +10411,31 @@
     "lat": "-33.017239539671095",
     "lng": "-71.55068814754486",
     "precio_93": {
-      "precio": 1226000.0,
+      "precio": 1221000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "08:57:28",
+      "fecha": "2025-11-14",
+      "hora": "15:01:03",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1260000.0,
+      "precio": 1255000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "08:57:28",
+      "fecha": "2025-11-14",
+      "hora": "15:01:03",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1296000.0,
+      "precio": 1291000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "08:57:28",
+      "fecha": "2025-11-14",
+      "hora": "15:01:03",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 976000.0,
+      "precio": 971000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "08:57:28",
+      "fecha": "2025-11-14",
+      "hora": "15:01:03",
       "tipo_atencion": "Asistido"
     }
   },
@@ -10891,31 +10891,31 @@
     "lat": "-33.023515152109916",
     "lng": "-71.50845985288697",
     "precio_93": {
-      "precio": 1219000.0,
+      "precio": 1214000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "12:34:38",
+      "fecha": "2025-11-14",
+      "hora": "15:16:48",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1254000.0,
+      "precio": 1249000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "12:34:38",
+      "fecha": "2025-11-14",
+      "hora": "15:16:48",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1293000.0,
+      "precio": 1288000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "12:34:38",
+      "fecha": "2025-11-14",
+      "hora": "15:16:48",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 976000.0,
+      "precio": 971000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "12:34:38",
+      "fecha": "2025-11-14",
+      "hora": "15:16:48",
       "tipo_atencion": "Asistido"
     }
   },
@@ -11371,31 +11371,31 @@
     "lat": "-33.0208964193099",
     "lng": "-71.51540100574493",
     "precio_93": {
-      "precio": 1220000.0,
+      "precio": 1219000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "10:56:35",
+      "fecha": "2025-11-13",
+      "hora": "12:50:11",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1255000.0,
+      "precio": 1253000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "10:56:35",
+      "fecha": "2025-11-13",
+      "hora": "12:50:11",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1294000.0,
+      "precio": 1293000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "10:56:35",
+      "fecha": "2025-11-13",
+      "hora": "12:50:11",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 977000.0,
+      "precio": 976000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "10:56:35",
+      "fecha": "2025-11-13",
+      "hora": "12:50:11",
       "tipo_atencion": "Asistido"
     }
   },
@@ -12491,24 +12491,24 @@
     "lat": "-32.25244246265905",
     "lng": "-70.9358024597168",
     "precio_93": {
-      "precio": 1234000.0,
+      "precio": 1229000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-29",
-      "hora": "22:00:05",
+      "fecha": "2025-11-12",
+      "hora": "22:34:00",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1269000.0,
+      "precio": 1264000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-29",
-      "hora": "22:00:05",
+      "fecha": "2025-11-12",
+      "hora": "22:34:00",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1303000.0,
+      "precio": 1298000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-29",
-      "hora": "22:00:05",
+      "fecha": "2025-11-12",
+      "hora": "22:34:00",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
@@ -12531,31 +12531,31 @@
     "lat": "-32.555933478890736",
     "lng": "-71.4555287361145",
     "precio_93": {
-      "precio": 1259000.0,
+      "precio": 1232000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-09",
-      "hora": "10:41:49",
+      "fecha": "2025-11-13",
+      "hora": "09:20:23",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1292000.0,
+      "precio": 1265000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-09",
-      "hora": "10:41:49",
+      "fecha": "2025-11-13",
+      "hora": "09:20:23",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1325000.0,
+      "precio": 1298000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-09",
-      "hora": "10:41:49",
+      "fecha": "2025-11-13",
+      "hora": "09:20:23",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1012000.0,
+      "precio": 991000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-09",
-      "hora": "10:41:49",
+      "fecha": "2025-11-13",
+      "hora": "09:20:23",
       "tipo_atencion": "Asistido"
     }
   },
@@ -19891,31 +19891,31 @@
     "lat": "-34.435560161295214",
     "lng": "-71.08876079320908",
     "precio_93": {
-      "precio": 1280000.0,
+      "precio": 1253000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-16",
-      "hora": "13:24:31",
+      "fecha": "2025-11-14",
+      "hora": "10:40:37",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1304000.0,
+      "precio": 1277000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-16",
-      "hora": "13:24:31",
+      "fecha": "2025-11-14",
+      "hora": "10:40:37",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1330000.0,
+      "precio": 1303000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-16",
-      "hora": "13:24:31",
+      "fecha": "2025-11-14",
+      "hora": "10:40:37",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1030000.0,
+      "precio": 1009000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-16",
-      "hora": "13:24:31",
+      "fecha": "2025-11-14",
+      "hora": "10:40:37",
       "tipo_atencion": "Asistido"
     }
   },
@@ -22771,17 +22771,17 @@
     "lat": "-35.42829497467605",
     "lng": "-71.64147019386291",
     "precio_93": {
-      "precio": 1214000.0,
+      "precio": 1174000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "15:23:58",
+      "fecha": "2025-11-14",
+      "hora": "15:52:49",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1226000.0,
+      "precio": 1187000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "15:23:58",
+      "fecha": "2025-11-14",
+      "hora": "15:52:49",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -22811,17 +22811,17 @@
     "lat": "-35.42829497467605",
     "lng": "-71.64147019386291",
     "precio_93": {
-      "precio": 1214000.0,
+      "precio": 1174000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "15:23:58",
+      "fecha": "2025-11-14",
+      "hora": "15:52:49",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1226000.0,
+      "precio": 1187000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "15:23:58",
+      "fecha": "2025-11-14",
+      "hora": "15:52:49",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -22851,17 +22851,17 @@
     "lat": "-35.42829497467605",
     "lng": "-71.64147019386291",
     "precio_93": {
-      "precio": 1214000.0,
+      "precio": 1174000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "15:23:58",
+      "fecha": "2025-11-14",
+      "hora": "15:52:49",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1226000.0,
+      "precio": 1187000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "15:23:58",
+      "fecha": "2025-11-14",
+      "hora": "15:52:49",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -22891,17 +22891,17 @@
     "lat": "-35.41146647085815",
     "lng": "-71.65110737085342",
     "precio_93": {
-      "precio": 1212000.0,
+      "precio": 1172000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "16:04:57",
+      "fecha": "2025-11-13",
+      "hora": "16:00:04",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1224000.0,
+      "precio": 1184000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "16:04:57",
+      "fecha": "2025-11-13",
+      "hora": "16:00:04",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -22931,17 +22931,17 @@
     "lat": "-35.41146647085815",
     "lng": "-71.65110737085342",
     "precio_93": {
-      "precio": 1212000.0,
+      "precio": 1172000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "16:04:57",
+      "fecha": "2025-11-13",
+      "hora": "16:00:04",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1224000.0,
+      "precio": 1184000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "16:04:57",
+      "fecha": "2025-11-13",
+      "hora": "16:00:04",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -22971,17 +22971,17 @@
     "lat": "-35.41146647085815",
     "lng": "-71.65110737085342",
     "precio_93": {
-      "precio": 1212000.0,
+      "precio": 1172000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "16:04:57",
+      "fecha": "2025-11-13",
+      "hora": "16:00:04",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1224000.0,
+      "precio": 1184000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "16:04:57",
+      "fecha": "2025-11-13",
+      "hora": "16:00:04",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -23011,17 +23011,17 @@
     "lat": "-35.4320456",
     "lng": "-71.6775878",
     "precio_93": {
-      "precio": 1215000.0,
+      "precio": 1175000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "10:14:29",
+      "fecha": "2025-11-14",
+      "hora": "16:14:16",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1239000.0,
+      "precio": 1199000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "10:14:29",
+      "fecha": "2025-11-14",
+      "hora": "16:14:16",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -23032,10 +23032,10 @@
       "tipo_atencion": null
     },
     "precio_DI": {
-      "precio": 1058000.0,
+      "precio": 1055000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "10:14:29",
+      "fecha": "2025-11-14",
+      "hora": "16:14:16",
       "tipo_atencion": "Asistido"
     }
   },
@@ -23051,17 +23051,17 @@
     "lat": "-35.4320456",
     "lng": "-71.6775878",
     "precio_93": {
-      "precio": 1215000.0,
+      "precio": 1175000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "10:14:29",
+      "fecha": "2025-11-14",
+      "hora": "16:14:16",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1239000.0,
+      "precio": 1199000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "10:14:29",
+      "fecha": "2025-11-14",
+      "hora": "16:14:16",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -23072,10 +23072,10 @@
       "tipo_atencion": null
     },
     "precio_DI": {
-      "precio": 1058000.0,
+      "precio": 1055000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "10:14:29",
+      "fecha": "2025-11-14",
+      "hora": "16:14:16",
       "tipo_atencion": "Asistido"
     }
   },
@@ -23091,17 +23091,17 @@
     "lat": "-35.4320456",
     "lng": "-71.6775878",
     "precio_93": {
-      "precio": 1215000.0,
+      "precio": 1175000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "10:14:29",
+      "fecha": "2025-11-14",
+      "hora": "16:14:16",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1239000.0,
+      "precio": 1199000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "10:14:29",
+      "fecha": "2025-11-14",
+      "hora": "16:14:16",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -23112,10 +23112,10 @@
       "tipo_atencion": null
     },
     "precio_DI": {
-      "precio": 1058000.0,
+      "precio": 1055000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "10:14:29",
+      "fecha": "2025-11-14",
+      "hora": "16:14:16",
       "tipo_atencion": "Asistido"
     }
   },
@@ -24891,17 +24891,17 @@
     "lat": "-35.53680114456449",
     "lng": "-71.49030089378357",
     "precio_93": {
-      "precio": 1206000.0,
+      "precio": 1166000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-03",
-      "hora": "15:05:42",
+      "fecha": "2025-11-13",
+      "hora": "22:50:45",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1240000.0,
+      "precio": 1200000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-03",
-      "hora": "15:05:42",
+      "fecha": "2025-11-13",
+      "hora": "22:50:45",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -24912,10 +24912,10 @@
       "tipo_atencion": null
     },
     "precio_DI": {
-      "precio": 959000.0,
+      "precio": 969000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "15:02:08",
+      "fecha": "2025-11-13",
+      "hora": "15:01:29",
       "tipo_atencion": "Asistido"
     }
   },
@@ -24931,17 +24931,17 @@
     "lat": "-35.53680114456449",
     "lng": "-71.49030089378357",
     "precio_93": {
-      "precio": 1206000.0,
+      "precio": 1166000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-03",
-      "hora": "15:05:42",
+      "fecha": "2025-11-13",
+      "hora": "22:50:45",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1240000.0,
+      "precio": 1200000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-03",
-      "hora": "15:05:42",
+      "fecha": "2025-11-13",
+      "hora": "22:50:45",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -24952,10 +24952,10 @@
       "tipo_atencion": null
     },
     "precio_DI": {
-      "precio": 959000.0,
+      "precio": 969000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "15:02:08",
+      "fecha": "2025-11-13",
+      "hora": "15:01:29",
       "tipo_atencion": "Asistido"
     }
   },
@@ -24971,17 +24971,17 @@
     "lat": "-35.53680114456449",
     "lng": "-71.49030089378357",
     "precio_93": {
-      "precio": 1206000.0,
+      "precio": 1166000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-03",
-      "hora": "15:05:42",
+      "fecha": "2025-11-13",
+      "hora": "22:50:45",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1240000.0,
+      "precio": 1200000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-03",
-      "hora": "15:05:42",
+      "fecha": "2025-11-13",
+      "hora": "22:50:45",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -24992,10 +24992,10 @@
       "tipo_atencion": null
     },
     "precio_DI": {
-      "precio": 959000.0,
+      "precio": 969000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "15:02:08",
+      "fecha": "2025-11-13",
+      "hora": "15:01:29",
       "tipo_atencion": "Asistido"
     }
   },
@@ -26931,17 +26931,17 @@
     "lat": "-35.109085281681565",
     "lng": "-71.2778753042221",
     "precio_93": {
-      "precio": 1201000.0,
+      "precio": 1161000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "15:16:42",
+      "fecha": "2025-11-14",
+      "hora": "16:09:16",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1233000.0,
+      "precio": 1193000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "15:16:42",
+      "fecha": "2025-11-14",
+      "hora": "16:09:16",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -28691,17 +28691,17 @@
     "lat": "-35.95956296835251",
     "lng": "-71.68489515781402",
     "precio_93": {
-      "precio": 1230000.0,
+      "precio": 1190000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "09:14:42",
+      "fecha": "2025-11-14",
+      "hora": "15:38:36",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1246000.0,
+      "precio": 1207000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "09:14:42",
+      "fecha": "2025-11-14",
+      "hora": "15:38:36",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -28851,24 +28851,24 @@
     "lat": "-36.13414018244484",
     "lng": "-71.80796027183533",
     "precio_93": {
-      "precio": 1244000.0,
+      "precio": 1242000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-29",
-      "hora": "20:19:38",
+      "fecha": "2025-11-13",
+      "hora": "11:41:21",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1266000.0,
+      "precio": 1267000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-29",
-      "hora": "20:19:38",
+      "fecha": "2025-11-13",
+      "hora": "11:41:21",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1283000.0,
+      "precio": 1287000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-29",
-      "hora": "20:19:38",
+      "fecha": "2025-11-13",
+      "hora": "11:41:21",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
@@ -28931,17 +28931,17 @@
     "lat": "-36.1353896",
     "lng": "-71.8352343",
     "precio_93": {
-      "precio": 1214000.0,
+      "precio": 1174000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "09:06:11",
+      "fecha": "2025-11-14",
+      "hora": "15:56:37",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1235000.0,
+      "precio": 1195000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "09:06:11",
+      "fecha": "2025-11-14",
+      "hora": "15:56:37",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -28971,17 +28971,17 @@
     "lat": "-36.1353896",
     "lng": "-71.8352343",
     "precio_93": {
-      "precio": 1214000.0,
+      "precio": 1174000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "09:06:11",
+      "fecha": "2025-11-14",
+      "hora": "15:56:37",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1235000.0,
+      "precio": 1195000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "09:06:11",
+      "fecha": "2025-11-14",
+      "hora": "15:56:37",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -29011,17 +29011,17 @@
     "lat": "-36.1353896",
     "lng": "-71.8352343",
     "precio_93": {
-      "precio": 1214000.0,
+      "precio": 1174000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "09:06:11",
+      "fecha": "2025-11-14",
+      "hora": "15:56:37",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1235000.0,
+      "precio": 1195000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "09:06:11",
+      "fecha": "2025-11-14",
+      "hora": "15:56:37",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -29691,31 +29691,31 @@
     "lat": "-36.198883401239755",
     "lng": "-71.62606641693117",
     "precio_93": {
-      "precio": 1247000.0,
+      "precio": 1220000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-09",
-      "hora": "22:22:47",
+      "fecha": "2025-11-12",
+      "hora": "21:20:07",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1269000.0,
+      "precio": 1242000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-09",
-      "hora": "22:22:47",
+      "fecha": "2025-11-12",
+      "hora": "21:20:07",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1302000.0,
+      "precio": 1274000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-09",
-      "hora": "22:22:47",
+      "fecha": "2025-11-12",
+      "hora": "21:20:07",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 998000.0,
+      "precio": 977000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-09",
-      "hora": "22:22:47",
+      "fecha": "2025-11-12",
+      "hora": "21:20:07",
       "tipo_atencion": "Asistido"
     }
   },
@@ -29891,17 +29891,17 @@
     "lat": "-35.60076151468326",
     "lng": "-71.7081069946289",
     "precio_93": {
-      "precio": 1226000.0,
+      "precio": 1186000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "07:57:37",
+      "fecha": "2025-11-14",
+      "hora": "15:54:35",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1250000.0,
+      "precio": 1210000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "07:57:37",
+      "fecha": "2025-11-14",
+      "hora": "15:54:35",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -29931,17 +29931,17 @@
     "lat": "-35.60076151468326",
     "lng": "-71.7081069946289",
     "precio_93": {
-      "precio": 1226000.0,
+      "precio": 1186000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "07:57:37",
+      "fecha": "2025-11-14",
+      "hora": "15:54:35",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1250000.0,
+      "precio": 1210000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "07:57:37",
+      "fecha": "2025-11-14",
+      "hora": "15:54:35",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -29971,17 +29971,17 @@
     "lat": "-35.60076151468326",
     "lng": "-71.7081069946289",
     "precio_93": {
-      "precio": 1226000.0,
+      "precio": 1186000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "07:57:37",
+      "fecha": "2025-11-14",
+      "hora": "15:54:35",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1250000.0,
+      "precio": 1210000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "07:57:37",
+      "fecha": "2025-11-14",
+      "hora": "15:54:35",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -30211,17 +30211,17 @@
     "lat": "-35.67612791546993",
     "lng": "-71.7438742518425",
     "precio_93": {
-      "precio": 1208000.0,
+      "precio": 1168000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "08:23:01",
+      "fecha": "2025-11-14",
+      "hora": "15:58:01",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1237000.0,
+      "precio": 1197000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "08:23:01",
+      "fecha": "2025-11-14",
+      "hora": "15:58:01",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -30232,10 +30232,10 @@
       "tipo_atencion": null
     },
     "precio_DI": {
-      "precio": 955000.0,
+      "precio": 957000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-03",
-      "hora": "16:03:29",
+      "fecha": "2025-11-14",
+      "hora": "15:58:02",
       "tipo_atencion": "Asistido"
     }
   },
@@ -30251,17 +30251,17 @@
     "lat": "-35.67612791546993",
     "lng": "-71.7438742518425",
     "precio_93": {
-      "precio": 1208000.0,
+      "precio": 1168000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "08:23:01",
+      "fecha": "2025-11-14",
+      "hora": "15:58:01",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1237000.0,
+      "precio": 1197000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "08:23:01",
+      "fecha": "2025-11-14",
+      "hora": "15:58:01",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -30272,10 +30272,10 @@
       "tipo_atencion": null
     },
     "precio_DI": {
-      "precio": 955000.0,
+      "precio": 957000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-03",
-      "hora": "16:03:29",
+      "fecha": "2025-11-14",
+      "hora": "15:58:02",
       "tipo_atencion": "Asistido"
     }
   },
@@ -30291,17 +30291,17 @@
     "lat": "-35.67612791546993",
     "lng": "-71.7438742518425",
     "precio_93": {
-      "precio": 1208000.0,
+      "precio": 1168000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "08:23:01",
+      "fecha": "2025-11-14",
+      "hora": "15:58:01",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1237000.0,
+      "precio": 1197000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "08:23:01",
+      "fecha": "2025-11-14",
+      "hora": "15:58:01",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -30312,10 +30312,10 @@
       "tipo_atencion": null
     },
     "precio_DI": {
-      "precio": 955000.0,
+      "precio": 957000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-03",
-      "hora": "16:03:29",
+      "fecha": "2025-11-14",
+      "hora": "15:58:02",
       "tipo_atencion": "Asistido"
     }
   },
@@ -30472,10 +30472,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 975000.0,
+      "precio": 977000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "01:06:51",
+      "fecha": "2025-11-14",
+      "hora": "13:26:08",
       "tipo_atencion": "Asistido"
     }
   },
@@ -30531,10 +30531,10 @@
     "lat": "-36.81801151665735",
     "lng": "-72.98872232437134",
     "precio_93": {
-      "precio": 1235000.0,
+      "precio": 1234000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "15:11:18",
+      "fecha": "2025-11-13",
+      "hora": "00:12:08",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
@@ -30545,10 +30545,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1281000.0,
+      "precio": 1280000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "15:11:18",
+      "fecha": "2025-11-13",
+      "hora": "00:12:08",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
@@ -30792,10 +30792,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 963000.0,
+      "precio": 957000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "08:10:07",
+      "fecha": "2025-11-14",
+      "hora": "13:10:38",
       "tipo_atencion": "Asistido"
     }
   },
@@ -34752,10 +34752,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 973000.0,
+      "precio": 974000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "11:51:14",
+      "fecha": "2025-11-14",
+      "hora": "12:51:09",
       "tipo_atencion": "Asistido"
     }
   },
@@ -35891,17 +35891,17 @@
     "lat": "-37.4571912006302",
     "lng": "-72.3462518491757",
     "precio_93": {
-      "precio": 1210000.0,
+      "precio": 1170000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-09",
-      "hora": "22:58:20",
+      "fecha": "2025-11-13",
+      "hora": "23:13:38",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1230000.0,
+      "precio": 1190000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-09",
-      "hora": "22:58:20",
+      "fecha": "2025-11-13",
+      "hora": "23:13:38",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -35931,17 +35931,17 @@
     "lat": "-37.4571912006302",
     "lng": "-72.3462518491757",
     "precio_93": {
-      "precio": 1210000.0,
+      "precio": 1170000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-09",
-      "hora": "22:58:20",
+      "fecha": "2025-11-13",
+      "hora": "23:13:38",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1230000.0,
+      "precio": 1190000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-09",
-      "hora": "22:58:20",
+      "fecha": "2025-11-13",
+      "hora": "23:13:38",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -35971,17 +35971,17 @@
     "lat": "-37.4571912006302",
     "lng": "-72.3462518491757",
     "precio_93": {
-      "precio": 1210000.0,
+      "precio": 1170000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-09",
-      "hora": "22:58:20",
+      "fecha": "2025-11-13",
+      "hora": "23:13:38",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1230000.0,
+      "precio": 1190000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-09",
-      "hora": "22:58:20",
+      "fecha": "2025-11-13",
+      "hora": "23:13:38",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -36131,24 +36131,24 @@
     "lat": "-37.465763914283904",
     "lng": "-72.32615232467651",
     "precio_93": {
-      "precio": 1211000.0,
+      "precio": 1212000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "07:59:55",
+      "fecha": "2025-11-13",
+      "hora": "08:14:56",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1235000.0,
+      "precio": 1236000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "07:59:55",
+      "fecha": "2025-11-13",
+      "hora": "08:14:56",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1246000.0,
+      "precio": 1247000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "07:59:55",
+      "fecha": "2025-11-13",
+      "hora": "08:14:56",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
@@ -36211,31 +36211,31 @@
     "lat": "-37.472872",
     "lng": "-72.354452",
     "precio_93": {
-      "precio": 1209000.0,
+      "precio": 1206000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "12:46:58",
+      "fecha": "2025-11-13",
+      "hora": "16:51:23",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1232000.0,
+      "precio": 1229000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "12:46:58",
+      "fecha": "2025-11-13",
+      "hora": "16:51:23",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1257000.0,
+      "precio": 1255000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "12:46:58",
+      "fecha": "2025-11-13",
+      "hora": "16:51:23",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 963000.0,
+      "precio": 961000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "11:51:06",
+      "fecha": "2025-11-13",
+      "hora": "16:51:23",
       "tipo_atencion": "Asistido"
     }
   },
@@ -36251,17 +36251,17 @@
     "lat": "-37.4511985898693",
     "lng": "-72.33827322721481",
     "precio_93": {
-      "precio": 1209000.0,
+      "precio": 1210000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "17:36:01",
+      "fecha": "2025-11-13",
+      "hora": "16:51:24",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1233000.0,
+      "precio": 1234000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "17:36:01",
+      "fecha": "2025-11-13",
+      "hora": "16:51:24",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -36451,31 +36451,31 @@
     "lat": "-37.463667582347696",
     "lng": "-72.35084903638925",
     "precio_93": {
-      "precio": 1226000.0,
+      "precio": 1207000.0,
       "unidad": "$/L",
-      "fecha": "2025-09-18",
-      "hora": "09:03:41",
+      "fecha": "2025-11-13",
+      "hora": "10:13:46",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1253000.0,
+      "precio": 1232000.0,
       "unidad": "$/L",
-      "fecha": "2025-09-18",
-      "hora": "09:03:41",
+      "fecha": "2025-11-13",
+      "hora": "10:13:46",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1269000.0,
+      "precio": 1246000.0,
       "unidad": "$/L",
-      "fecha": "2025-09-18",
-      "hora": "09:03:41",
+      "fecha": "2025-11-13",
+      "hora": "10:13:46",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 977000.0,
+      "precio": 966000.0,
       "unidad": "$/L",
-      "fecha": "2025-09-18",
-      "hora": "09:03:41",
+      "fecha": "2025-11-13",
+      "hora": "10:13:46",
       "tipo_atencion": "Asistido"
     }
   },
@@ -36491,24 +36491,24 @@
     "lat": "-37.44068109237955",
     "lng": "-72.32754707336426",
     "precio_93": {
-      "precio": 1211000.0,
+      "precio": 1212000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "17:21:19",
+      "fecha": "2025-11-13",
+      "hora": "16:51:44",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1235000.0,
+      "precio": 1236000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "17:21:19",
+      "fecha": "2025-11-13",
+      "hora": "16:51:44",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1246000.0,
+      "precio": 1247000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "17:21:19",
+      "fecha": "2025-11-13",
+      "hora": "16:51:44",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
@@ -37272,10 +37272,10 @@
       "tipo_atencion": null
     },
     "precio_DI": {
-      "precio": 9986100.0,
+      "precio": 986000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "22:11:26",
+      "fecha": "2025-11-13",
+      "hora": "16:07:36",
       "tipo_atencion": "Asistido"
     }
   },
@@ -39058,10 +39058,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1276000.0,
+      "precio": 1277000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "12:51:06",
+      "fecha": "2025-11-13",
+      "hora": "17:36:09",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -39811,24 +39811,24 @@
     "lat": "-38.95747744198969",
     "lng": "-72.62629687786102",
     "precio_93": {
-      "precio": 1256000.0,
+      "precio": 1257000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-01",
-      "hora": "11:36:18",
+      "fecha": "2025-11-15",
+      "hora": "11:21:23",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1279000.0,
+      "precio": 1280000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-01",
-      "hora": "11:36:18",
+      "fecha": "2025-11-15",
+      "hora": "11:21:23",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1302000.0,
+      "precio": 1303000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-01",
-      "hora": "11:36:18",
+      "fecha": "2025-11-15",
+      "hora": "11:21:23",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
@@ -39952,10 +39952,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 998000.0,
+      "precio": 997000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "10:27:43",
+      "fecha": "2025-11-13",
+      "hora": "10:58:50",
       "tipo_atencion": "Asistido"
     }
   },
@@ -40133,29 +40133,29 @@
     "precio_93": {
       "precio": 1256000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "14:49:50",
+      "fecha": "2025-11-13",
+      "hora": "16:06:03",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
       "precio": 1277000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "14:49:50",
+      "fecha": "2025-11-13",
+      "hora": "16:06:03",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
       "precio": 1297000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "14:49:50",
+      "fecha": "2025-11-13",
+      "hora": "16:06:03",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
       "precio": 994000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "14:49:50",
+      "fecha": "2025-11-13",
+      "hora": "16:06:03",
       "tipo_atencion": "Asistido"
     }
   },
@@ -41131,31 +41131,31 @@
     "lat": "-39.27965230111365",
     "lng": "-71.97688043117523",
     "precio_93": {
-      "precio": 1272000.0,
+      "precio": 1265000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-01",
-      "hora": "10:35:35",
+      "fecha": "2025-11-13",
+      "hora": "09:30:16",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1292000.0,
+      "precio": 1285000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-01",
-      "hora": "10:35:35",
+      "fecha": "2025-11-13",
+      "hora": "09:30:16",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1311000.0,
+      "precio": 1307000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-01",
-      "hora": "10:35:35",
+      "fecha": "2025-11-13",
+      "hora": "09:30:16",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1020000.0,
+      "precio": 1014000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-01",
-      "hora": "10:35:35",
+      "fecha": "2025-11-13",
+      "hora": "09:30:16",
       "tipo_atencion": "Asistido"
     }
   },
@@ -42011,31 +42011,31 @@
     "lat": "-39.28954679230152",
     "lng": "-72.22831606864929",
     "precio_93": {
-      "precio": 1259000.0,
+      "precio": 1260000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "12:46:28",
+      "fecha": "2025-11-13",
+      "hora": "17:17:43",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1282000.0,
+      "precio": 1284000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "12:46:28",
+      "fecha": "2025-11-13",
+      "hora": "17:17:43",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1305000.0,
+      "precio": 1306000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "12:46:28",
+      "fecha": "2025-11-13",
+      "hora": "17:17:43",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1008000.0,
+      "precio": 1009000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "11:51:08",
+      "fecha": "2025-11-13",
+      "hora": "17:17:43",
       "tipo_atencion": "Asistido"
     }
   },
@@ -42411,17 +42411,17 @@
     "lat": "-37.81625327080114",
     "lng": "-72.6766500159332",
     "precio_93": {
-      "precio": 1232000.0,
+      "precio": 1192000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "09:02:32",
+      "fecha": "2025-11-14",
+      "hora": "14:20:34",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1256000.0,
+      "precio": 1218000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "09:02:32",
+      "fecha": "2025-11-14",
+      "hora": "14:20:34",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -42432,10 +42432,10 @@
       "tipo_atencion": null
     },
     "precio_DI": {
-      "precio": 970000.0,
+      "precio": 971000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "09:02:32",
+      "fecha": "2025-11-14",
+      "hora": "08:38:49",
       "tipo_atencion": "Asistido"
     }
   },
@@ -45011,31 +45011,31 @@
     "lat": "-41.456234",
     "lng": "-72.930370",
     "precio_93": {
-      "precio": 1284000.0,
+      "precio": 1282000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-07",
-      "hora": "13:21:41",
+      "fecha": "2025-11-13",
+      "hora": "18:21:11",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1304000.0,
+      "precio": 1302000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-07",
-      "hora": "13:21:41",
+      "fecha": "2025-11-13",
+      "hora": "18:21:11",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1325000.0,
+      "precio": 1323000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "11:36:14",
+      "fecha": "2025-11-13",
+      "hora": "18:21:11",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1038000.0,
+      "precio": 1036000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-07",
-      "hora": "13:21:41",
+      "fecha": "2025-11-13",
+      "hora": "18:21:11",
       "tipo_atencion": "Asistido"
     }
   },
@@ -45112,10 +45112,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1029000.0,
+      "precio": 1030000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-07",
-      "hora": "13:21:38",
+      "fecha": "2025-11-13",
+      "hora": "18:21:07",
       "tipo_atencion": "Asistido"
     }
   },
@@ -45632,10 +45632,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1034000.0,
+      "precio": 1033000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "12:56:22",
+      "fecha": "2025-11-13",
+      "hora": "08:48:48",
       "tipo_atencion": "Asistido"
     }
   },
@@ -46538,10 +46538,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1325000.0,
+      "precio": 1356000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-07",
-      "hora": "15:42:06",
+      "fecha": "2025-11-13",
+      "hora": "14:41:37",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -46552,10 +46552,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1052000.0,
+      "precio": 1051000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-07",
-      "hora": "15:42:06",
+      "fecha": "2025-11-13",
+      "hora": "14:41:37",
       "tipo_atencion": "Asistido"
     }
   },
@@ -47272,10 +47272,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1055000.0,
+      "precio": 1054000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "10:08:39",
+      "fecha": "2025-11-13",
+      "hora": "10:00:41",
       "tipo_atencion": "Asistido"
     }
   },
@@ -48952,10 +48952,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1091000.0,
+      "precio": 1090000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "08:52:35",
+      "fecha": "2025-11-13",
+      "hora": "08:56:01",
       "tipo_atencion": "Asistido"
     }
   },
@@ -50171,31 +50171,31 @@
     "lat": "-53.11593011601982",
     "lng": "-70.87722301483154",
     "precio_93": {
-      "precio": 1281000.0,
+      "precio": 1280000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "13:36:03",
+      "fecha": "2025-11-13",
+      "hora": "18:21:10",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1316000.0,
+      "precio": 1315000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "13:36:03",
+      "fecha": "2025-11-13",
+      "hora": "18:21:10",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1352000.0,
+      "precio": 1351000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "13:36:03",
+      "fecha": "2025-11-13",
+      "hora": "18:21:10",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1106000.0,
+      "precio": 1105000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "13:36:03",
+      "fecha": "2025-11-13",
+      "hora": "18:21:10",
       "tipo_atencion": "Asistido"
     }
   },
@@ -50211,31 +50211,31 @@
     "lat": "-53.18313730611049",
     "lng": "-70.92664003372192",
     "precio_93": {
-      "precio": 1278000.0,
+      "precio": 1277000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "13:36:03",
+      "fecha": "2025-11-13",
+      "hora": "18:21:10",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1313000.0,
+      "precio": 1312000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "13:36:03",
+      "fecha": "2025-11-13",
+      "hora": "18:21:10",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1350000.0,
+      "precio": 1349000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "13:36:03",
+      "fecha": "2025-11-13",
+      "hora": "18:21:10",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1102000.0,
+      "precio": 1101000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "13:36:03",
+      "fecha": "2025-11-13",
+      "hora": "18:21:10",
       "tipo_atencion": "Asistido"
     }
   },
@@ -50571,10 +50571,10 @@
     "lat": "-52.260135016132686",
     "lng": "-68.93033891916275",
     "precio_93": {
-      "precio": 1349000.0,
+      "precio": 1340000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "19:29:09",
+      "fecha": "2025-11-13",
+      "hora": "20:17:13",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
@@ -50592,10 +50592,10 @@
       "tipo_atencion": null
     },
     "precio_DI": {
-      "precio": 1152000.0,
+      "precio": 1151000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "19:29:09",
+      "fecha": "2025-11-13",
+      "hora": "20:17:13",
       "tipo_atencion": "Asistido"
     }
   },
@@ -50611,10 +50611,10 @@
     "lat": "-52.6003498339191",
     "lng": "-70.1951265335083",
     "precio_93": {
-      "precio": 1330000.0,
+      "precio": 1321000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "19:29:09",
+      "fecha": "2025-11-13",
+      "hora": "20:17:13",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
@@ -50632,10 +50632,10 @@
       "tipo_atencion": null
     },
     "precio_DI": {
-      "precio": 1138000.0,
+      "precio": 1137000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "19:29:09",
+      "fecha": "2025-11-13",
+      "hora": "20:17:13",
       "tipo_atencion": "Asistido"
     }
   },
@@ -50691,31 +50691,31 @@
     "lat": "-53.30073575452835",
     "lng": "-70.36494255065918",
     "precio_93": {
-      "precio": 1363000.0,
+      "precio": 1360000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "09:05:06",
+      "fecha": "2025-11-13",
+      "hora": "09:15:38",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1401000.0,
+      "precio": 1398000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "09:05:06",
+      "fecha": "2025-11-13",
+      "hora": "09:15:38",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1438000.0,
+      "precio": 1435000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "09:05:06",
+      "fecha": "2025-11-13",
+      "hora": "09:15:38",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1175000.0,
+      "precio": 1171000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "09:25:58",
+      "fecha": "2025-11-13",
+      "hora": "09:15:38",
       "tipo_atencion": "Asistido"
     }
   },
@@ -50731,10 +50731,10 @@
     "lat": "-52.7731222085566",
     "lng": "-69.28799271583557",
     "precio_93": {
-      "precio": 1464000.0,
+      "precio": 1455000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "19:29:09",
+      "fecha": "2025-11-13",
+      "hora": "20:17:13",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
@@ -50752,10 +50752,10 @@
       "tipo_atencion": null
     },
     "precio_DI": {
-      "precio": 1199000.0,
+      "precio": 1198000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "19:29:09",
+      "fecha": "2025-11-13",
+      "hora": "20:17:13",
       "tipo_atencion": "Asistido"
     }
   },
@@ -50771,10 +50771,10 @@
     "lat": "-52.88579659619905",
     "lng": "-68.8629698753357",
     "precio_93": {
-      "precio": 1516000.0,
+      "precio": 1507000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "19:29:09",
+      "fecha": "2025-11-13",
+      "hora": "20:17:13",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
@@ -50792,10 +50792,10 @@
       "tipo_atencion": null
     },
     "precio_DI": {
-      "precio": 1246000.0,
+      "precio": 1245000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "19:29:09",
+      "fecha": "2025-11-13",
+      "hora": "20:17:13",
       "tipo_atencion": "Asistido"
     }
   },
@@ -50891,17 +50891,17 @@
     "lat": "-51.71472559803582",
     "lng": "-72.48345851898193",
     "precio_93": {
-      "precio": 1310000.0,
+      "precio": 1309000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-07",
-      "hora": "13:21:40",
+      "fecha": "2025-11-13",
+      "hora": "18:21:10",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1345000.0,
+      "precio": 1344000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-07",
-      "hora": "13:21:40",
+      "fecha": "2025-11-13",
+      "hora": "18:21:10",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -50912,10 +50912,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1125000.0,
+      "precio": 1124000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "10:06:22",
+      "fecha": "2025-11-13",
+      "hora": "18:21:10",
       "tipo_atencion": "Asistido"
     }
   },
@@ -51371,10 +51371,10 @@
     "lat": "-33.47205925444164",
     "lng": "-70.65635114908218",
     "precio_93": {
-      "precio": 1196000.0,
+      "precio": 1202000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-04",
-      "hora": "08:10:39",
+      "fecha": "2025-11-14",
+      "hora": "14:31:46",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
@@ -51392,10 +51392,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 952000.0,
+      "precio": 958000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-11",
-      "hora": "08:16:12",
+      "fecha": "2025-11-14",
+      "hora": "14:31:46",
       "tipo_atencion": "Asistido"
     }
   },
@@ -51611,31 +51611,31 @@
     "lat": "-33.47731245812742",
     "lng": "-70.67188918590546",
     "precio_93": {
-      "precio": 1202000.0,
+      "precio": 1198000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "11:35:15",
+      "fecha": "2025-11-14",
+      "hora": "12:45:33",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1253000.0,
+      "precio": 1249000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "11:35:15",
+      "fecha": "2025-11-14",
+      "hora": "12:45:33",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1303000.0,
+      "precio": 1299000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "11:35:15",
+      "fecha": "2025-11-14",
+      "hora": "12:45:33",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 960000.0,
+      "precio": 961000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "11:35:15",
+      "fecha": "2025-11-14",
+      "hora": "12:45:33",
       "tipo_atencion": "Asistido"
     }
   },
@@ -52811,31 +52811,31 @@
     "lat": "-33.429538652714285",
     "lng": "-70.73823630809784",
     "precio_93": {
-      "precio": 1158000.0,
+      "precio": 1160000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-12",
-      "hora": "10:51:22",
+      "fecha": "2025-11-14",
+      "hora": "10:51:08",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1188000.0,
+      "precio": 1190000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-12",
-      "hora": "10:51:22",
+      "fecha": "2025-11-14",
+      "hora": "10:51:08",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1224000.0,
+      "precio": 1226000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-12",
-      "hora": "10:51:22",
+      "fecha": "2025-11-14",
+      "hora": "10:51:08",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 943000.0,
+      "precio": 945000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-12",
-      "hora": "10:51:22",
+      "fecha": "2025-11-14",
+      "hora": "10:51:08",
       "tipo_atencion": "Asistido"
     }
   },
@@ -53811,31 +53811,31 @@
     "lat": "-33.46311375659555",
     "lng": "-70.7230818271637",
     "precio_93": {
-      "precio": 1198000.0,
+      "precio": 1171000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-09",
-      "hora": "14:26:46",
+      "fecha": "2025-11-14",
+      "hora": "11:39:02",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1225000.0,
+      "precio": 1198000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-09",
-      "hora": "14:26:46",
+      "fecha": "2025-11-14",
+      "hora": "11:39:02",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1251000.0,
+      "precio": 1224000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-09",
-      "hora": "14:26:46",
+      "fecha": "2025-11-14",
+      "hora": "11:39:02",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 964000.0,
+      "precio": 944000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-16",
-      "hora": "18:05:40",
+      "fecha": "2025-11-14",
+      "hora": "11:39:02",
       "tipo_atencion": "Asistido"
     }
   },
@@ -54331,31 +54331,31 @@
     "lat": "-33.38022000290473",
     "lng": "-70.64535140991211",
     "precio_93": {
-      "precio": 1182000.0,
+      "precio": 1180000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-05",
-      "hora": "09:47:47",
+      "fecha": "2025-11-14",
+      "hora": "10:37:01",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1238000.0,
+      "precio": 1236000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-05",
-      "hora": "09:47:47",
+      "fecha": "2025-11-14",
+      "hora": "10:37:01",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1293000.0,
+      "precio": 1291000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-05",
-      "hora": "09:47:47",
+      "fecha": "2025-11-14",
+      "hora": "10:37:01",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 985000.0,
+      "precio": 983000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-05",
-      "hora": "09:47:47",
+      "fecha": "2025-11-14",
+      "hora": "10:37:01",
       "tipo_atencion": "Asistido"
     }
   },
@@ -54978,10 +54978,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1205000.0,
+      "precio": 1207000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-11",
-      "hora": "09:05:30",
+      "fecha": "2025-11-14",
+      "hora": "09:05:18",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -55192,10 +55192,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 943000.0,
+      "precio": 942000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "13:39:16",
+      "fecha": "2025-11-13",
+      "hora": "09:00:03",
       "tipo_atencion": "Asistido"
     }
   },
@@ -58211,10 +58211,10 @@
     "lat": "-33.533590552264315",
     "lng": "-70.69927650345767",
     "precio_93": {
-      "precio": 1132000.0,
+      "precio": 1131000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "16:06:03",
+      "fecha": "2025-11-13",
+      "hora": "16:41:03",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
@@ -58225,10 +58225,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1200000.0,
+      "precio": 1201000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "16:06:03",
+      "fecha": "2025-11-13",
+      "hora": "16:41:03",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
@@ -58714,8 +58714,8 @@
     "precio_DI": {
       "precio": 957000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "11:51:12",
+      "fecha": "2025-11-13",
+      "hora": "10:05:13",
       "tipo_atencion": "Asistido"
     }
   },
@@ -61232,10 +61232,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 959000.0,
+      "precio": 952000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "11:51:01",
+      "fecha": "2025-11-14",
+      "hora": "14:06:01",
       "tipo_atencion": "Asistido"
     }
   },
@@ -62931,31 +62931,31 @@
     "lat": "-33.43016990035761",
     "lng": "-70.74119746685028",
     "precio_93": {
-      "precio": 1154000.0,
+      "precio": 1156000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-12",
-      "hora": "16:21:31",
+      "fecha": "2025-11-14",
+      "hora": "15:30:36",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1184000.0,
+      "precio": 1186000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-12",
-      "hora": "16:21:31",
+      "fecha": "2025-11-14",
+      "hora": "15:30:36",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1220000.0,
+      "precio": 1222000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-12",
-      "hora": "16:21:31",
+      "fecha": "2025-11-14",
+      "hora": "15:30:36",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 939000.0,
+      "precio": 941000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-12",
-      "hora": "16:21:58",
+      "fecha": "2025-11-14",
+      "hora": "15:30:36",
       "tipo_atencion": "Asistido"
     }
   },
@@ -63931,10 +63931,10 @@
     "lat": "-33.43257844847753",
     "lng": "-70.69205939769745",
     "precio_93": {
-      "precio": 1132000.0,
+      "precio": 1131000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "07:11:03",
+      "fecha": "2025-11-13",
+      "hora": "16:59:04",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
@@ -63945,10 +63945,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1200000.0,
+      "precio": 1201000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "07:11:03",
+      "fecha": "2025-11-13",
+      "hora": "16:59:05",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
@@ -64211,10 +64211,10 @@
     "lat": "-33.43326787187986",
     "lng": "-70.69204330444336",
     "precio_93": {
-      "precio": 1127000.0,
+      "precio": 1126000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "16:11:15",
+      "fecha": "2025-11-13",
+      "hora": "16:20:09",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
@@ -64225,10 +64225,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1195000.0,
+      "precio": 1196000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "16:11:15",
+      "fecha": "2025-11-13",
+      "hora": "16:20:09",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
@@ -64571,31 +64571,31 @@
     "lat": "-33.4306847443271",
     "lng": "-70.71941792964935",
     "precio_93": {
-      "precio": 1158000.0,
+      "precio": 1160000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-12",
-      "hora": "10:51:27",
+      "fecha": "2025-11-14",
+      "hora": "14:06:07",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1188000.0,
+      "precio": 1190000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-12",
-      "hora": "10:51:27",
+      "fecha": "2025-11-14",
+      "hora": "14:06:07",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1224000.0,
+      "precio": 1226000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "11:51:12",
+      "fecha": "2025-11-14",
+      "hora": "14:06:07",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 943000.0,
+      "precio": 945000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "11:51:12",
+      "fecha": "2025-11-14",
+      "hora": "14:06:07",
       "tipo_atencion": "Asistido"
     }
   },
@@ -66312,10 +66312,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 942000.0,
+      "precio": 943000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "10:15:28",
+      "fecha": "2025-11-13",
+      "hora": "17:23:09",
       "tipo_atencion": "Asistido"
     }
   },
@@ -67432,10 +67432,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 973000.0,
+      "precio": 972000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "10:03:31",
+      "fecha": "2025-11-13",
+      "hora": "10:31:30",
       "tipo_atencion": "Asistido"
     }
   },
@@ -67952,10 +67952,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 949000.0,
+      "precio": 946000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-05",
-      "hora": "09:51:06",
+      "fecha": "2025-11-14",
+      "hora": "10:51:10",
       "tipo_atencion": "Asistido"
     }
   },
@@ -68611,31 +68611,31 @@
     "lat": "-33.254232225251464",
     "lng": "-70.69731477182768",
     "precio_93": {
-      "precio": 1261000.0,
+      "precio": 1244000.0,
       "unidad": "$/L",
-      "fecha": "2025-08-08",
-      "hora": "08:19:19",
+      "fecha": "2025-11-14",
+      "hora": "12:20:20",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1298000.0,
+      "precio": 1286000.0,
       "unidad": "$/L",
-      "fecha": "2025-08-08",
-      "hora": "08:19:19",
+      "fecha": "2025-11-14",
+      "hora": "12:20:20",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": null,
-      "unidad": null,
-      "fecha": null,
-      "hora": null,
-      "tipo_atencion": null
+      "precio": 1329000.0,
+      "unidad": "$/L",
+      "fecha": "2025-11-14",
+      "hora": "12:20:20",
+      "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1034000.0,
+      "precio": 1001000.0,
       "unidad": "$/L",
-      "fecha": "2025-08-08",
-      "hora": "08:19:19",
+      "fecha": "2025-11-14",
+      "hora": "12:20:20",
       "tipo_atencion": "Asistido"
     }
   },
@@ -68651,31 +68651,31 @@
     "lat": "-33.254232225251464",
     "lng": "-70.69731477182768",
     "precio_93": {
-      "precio": 1261000.0,
+      "precio": 1244000.0,
       "unidad": "$/L",
-      "fecha": "2025-08-08",
-      "hora": "08:19:19",
+      "fecha": "2025-11-14",
+      "hora": "12:20:20",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1298000.0,
+      "precio": 1286000.0,
       "unidad": "$/L",
-      "fecha": "2025-08-08",
-      "hora": "08:19:19",
+      "fecha": "2025-11-14",
+      "hora": "12:20:20",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": null,
-      "unidad": null,
-      "fecha": null,
-      "hora": null,
-      "tipo_atencion": null
+      "precio": 1329000.0,
+      "unidad": "$/L",
+      "fecha": "2025-11-14",
+      "hora": "12:20:20",
+      "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1034000.0,
+      "precio": 1001000.0,
       "unidad": "$/L",
-      "fecha": "2025-08-08",
-      "hora": "08:19:19",
+      "fecha": "2025-11-14",
+      "hora": "12:20:20",
       "tipo_atencion": "Asistido"
     }
   },
@@ -68691,31 +68691,31 @@
     "lat": "-33.254232225251464",
     "lng": "-70.69731477182768",
     "precio_93": {
-      "precio": 1261000.0,
+      "precio": 1244000.0,
       "unidad": "$/L",
-      "fecha": "2025-08-08",
-      "hora": "08:19:19",
+      "fecha": "2025-11-14",
+      "hora": "12:20:20",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1298000.0,
+      "precio": 1286000.0,
       "unidad": "$/L",
-      "fecha": "2025-08-08",
-      "hora": "08:19:19",
+      "fecha": "2025-11-14",
+      "hora": "12:20:20",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": null,
-      "unidad": null,
-      "fecha": null,
-      "hora": null,
-      "tipo_atencion": null
+      "precio": 1329000.0,
+      "unidad": "$/L",
+      "fecha": "2025-11-14",
+      "hora": "12:20:20",
+      "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1034000.0,
+      "precio": 1001000.0,
       "unidad": "$/L",
-      "fecha": "2025-08-08",
-      "hora": "08:19:19",
+      "fecha": "2025-11-14",
+      "hora": "12:20:20",
       "tipo_atencion": "Asistido"
     }
   },
@@ -69731,10 +69731,10 @@
     "lat": "-33.53315572669205",
     "lng": "-70.70232689380646",
     "precio_93": {
-      "precio": 1132000.0,
+      "precio": 1131000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-31",
-      "hora": "12:25:34",
+      "fecha": "2025-11-14",
+      "hora": "18:03:52",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
@@ -69745,10 +69745,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1203000.0,
+      "precio": 1204000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-03",
-      "hora": "15:37:13",
+      "fecha": "2025-11-14",
+      "hora": "18:03:52",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
@@ -69931,10 +69931,10 @@
     "lat": "-33.534356757962854",
     "lng": "-70.699542760849",
     "precio_93": {
-      "precio": 1127000.0,
+      "precio": 1126000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "16:11:15",
+      "fecha": "2025-11-13",
+      "hora": "16:20:09",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
@@ -69945,10 +69945,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1195000.0,
+      "precio": 1196000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "16:11:15",
+      "fecha": "2025-11-13",
+      "hora": "16:20:09",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
@@ -69971,10 +69971,10 @@
     "lat": "-33.53249657901126",
     "lng": "-70.7041722536087",
     "precio_93": {
-      "precio": 1132000.0,
+      "precio": 1131000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-03",
-      "hora": "10:20:58",
+      "fecha": "2025-11-14",
+      "hora": "10:51:08",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
@@ -69985,10 +69985,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1203000.0,
+      "precio": 1204000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-03",
-      "hora": "10:20:58",
+      "fecha": "2025-11-14",
+      "hora": "10:51:08",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
@@ -71411,31 +71411,31 @@
     "lat": "-33.623014",
     "lng": "-70.798946",
     "precio_93": {
-      "precio": 1219000.0,
+      "precio": 1217000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-12",
-      "hora": "12:03:46",
+      "fecha": "2025-11-14",
+      "hora": "15:15:01",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1247000.0,
+      "precio": 1245000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-12",
-      "hora": "12:03:46",
+      "fecha": "2025-11-14",
+      "hora": "15:15:01",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1273000.0,
+      "precio": 1271000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-12",
-      "hora": "12:03:46",
+      "fecha": "2025-11-14",
+      "hora": "15:15:01",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 978000.0,
+      "precio": 976000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-12",
-      "hora": "12:03:46",
+      "fecha": "2025-11-14",
+      "hora": "15:15:01",
       "tipo_atencion": "Asistido"
     }
   },
@@ -71451,31 +71451,31 @@
     "lat": "-33.6273325183283",
     "lng": "-70.76911926269531",
     "precio_93": {
-      "precio": 1217000.0,
+      "precio": 1219000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-05",
-      "hora": "12:39:20",
+      "fecha": "2025-11-13",
+      "hora": "08:52:09",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1245000.0,
+      "precio": 1247000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-05",
-      "hora": "12:39:20",
+      "fecha": "2025-11-13",
+      "hora": "08:52:09",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1271000.0,
+      "precio": 1273000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-05",
-      "hora": "12:39:20",
+      "fecha": "2025-11-13",
+      "hora": "08:52:09",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 976000.0,
+      "precio": 978000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-05",
-      "hora": "12:39:20",
+      "fecha": "2025-11-13",
+      "hora": "08:52:09",
       "tipo_atencion": "Asistido"
     }
   },
@@ -71491,24 +71491,24 @@
     "lat": "-33.5937809132398",
     "lng": "-70.78310966491699",
     "precio_93": {
-      "precio": 1217000.0,
+      "precio": 1219000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "10:12:55",
+      "fecha": "2025-11-13",
+      "hora": "11:16:34",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1245000.0,
+      "precio": 1247000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "10:12:55",
+      "fecha": "2025-11-13",
+      "hora": "11:16:34",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1271000.0,
+      "precio": 1273000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "10:12:55",
+      "fecha": "2025-11-13",
+      "hora": "11:16:34",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
@@ -73131,31 +73131,31 @@
     "lat": "-33.683406",
     "lng": "-70.989503",
     "precio_93": {
-      "precio": 1219000.0,
+      "precio": 1192000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-16",
-      "hora": "18:26:34",
+      "fecha": "2025-11-14",
+      "hora": "16:03:14",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1265000.0,
+      "precio": 1238000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-16",
-      "hora": "18:26:34",
+      "fecha": "2025-11-14",
+      "hora": "16:03:14",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1311000.0,
+      "precio": 1284000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-16",
-      "hora": "18:26:34",
+      "fecha": "2025-11-14",
+      "hora": "16:03:14",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 962000.0,
+      "precio": 941000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-16",
-      "hora": "18:26:34",
+      "fecha": "2025-11-14",
+      "hora": "16:03:14",
       "tipo_atencion": "Asistido"
     }
   },
@@ -74213,29 +74213,29 @@
     "precio_93": {
       "precio": 1276000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "08:26:41",
+      "fecha": "2025-11-15",
+      "hora": "10:00:09",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
       "precio": 1304000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "08:26:41",
+      "fecha": "2025-11-15",
+      "hora": "10:00:09",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
       "precio": 1326000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "08:26:41",
+      "fecha": "2025-11-15",
+      "hora": "10:00:09",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
       "precio": 1026000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "09:57:23",
+      "fecha": "2025-11-15",
+      "hora": "10:00:09",
       "tipo_atencion": "Asistido"
     }
   },
@@ -74392,10 +74392,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1035000.0,
+      "precio": 1034000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "14:24:39",
+      "fecha": "2025-11-14",
+      "hora": "20:37:09",
       "tipo_atencion": "Asistido"
     }
   },
@@ -74792,10 +74792,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1033000.0,
+      "precio": 1032000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "21:09:31",
+      "fecha": "2025-11-14",
+      "hora": "20:37:54",
       "tipo_atencion": "Asistido"
     }
   },
@@ -75352,10 +75352,10 @@
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1019000.0,
+      "precio": 1018000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "16:16:26",
+      "fecha": "2025-11-13",
+      "hora": "11:40:52",
       "tipo_atencion": "Asistido"
     }
   },
@@ -75811,31 +75811,31 @@
     "lat": "-40.128810539937525",
     "lng": "-72.37857339741866",
     "precio_93": {
-      "precio": 1320000.0,
+      "precio": 1293000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-14",
-      "hora": "16:16:30",
+      "fecha": "2025-11-13",
+      "hora": "11:05:56",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1341000.0,
+      "precio": 1314000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-14",
-      "hora": "16:16:30",
+      "fecha": "2025-11-13",
+      "hora": "11:05:56",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1262000.0,
+      "precio": 1335000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-14",
-      "hora": "16:16:30",
+      "fecha": "2025-11-13",
+      "hora": "11:09:38",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 1062000.0,
+      "precio": 1040000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-14",
-      "hora": "16:16:30",
+      "fecha": "2025-11-13",
+      "hora": "11:05:56",
       "tipo_atencion": "Asistido"
     }
   },
@@ -77531,17 +77531,17 @@
     "lat": "-36.62034995591607",
     "lng": "-72.12193965911865",
     "precio_93": {
-      "precio": 1209000.0,
+      "precio": 1169000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "09:19:47",
+      "fecha": "2025-11-14",
+      "hora": "14:45:52",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1236000.0,
+      "precio": 1196000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "09:19:47",
+      "fecha": "2025-11-14",
+      "hora": "14:45:52",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -77571,17 +77571,17 @@
     "lat": "-36.62034995591607",
     "lng": "-72.12193965911865",
     "precio_93": {
-      "precio": 1209000.0,
+      "precio": 1169000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "09:19:47",
+      "fecha": "2025-11-14",
+      "hora": "14:45:52",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1236000.0,
+      "precio": 1196000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-10",
-      "hora": "09:19:47",
+      "fecha": "2025-11-14",
+      "hora": "14:45:52",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
@@ -77651,31 +77651,31 @@
     "lat": "-36.621107722352995",
     "lng": "-72.08602488040924",
     "precio_93": {
-      "precio": 1231000.0,
+      "precio": 1204000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-09",
-      "hora": "10:47:22",
+      "fecha": "2025-11-13",
+      "hora": "09:48:37",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1270000.0,
+      "precio": 1243000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-09",
-      "hora": "10:47:22",
+      "fecha": "2025-11-13",
+      "hora": "09:48:37",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1293000.0,
+      "precio": 1265000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-09",
-      "hora": "10:47:22",
+      "fecha": "2025-11-13",
+      "hora": "09:48:37",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
-      "precio": 980000.0,
+      "precio": 958000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-09",
-      "hora": "10:47:22",
+      "fecha": "2025-11-13",
+      "hora": "09:48:37",
       "tipo_atencion": "Asistido"
     }
   },
@@ -79851,24 +79851,24 @@
     "lat": "-36.47290424138901",
     "lng": "-72.00612389085168",
     "precio_93": {
-      "precio": 1243000.0,
+      "precio": 1241000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "00:07:51",
+      "fecha": "2025-11-13",
+      "hora": "11:07:23",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1262000.0,
+      "precio": 1263000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "00:07:51",
+      "fecha": "2025-11-13",
+      "hora": "11:07:23",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
-      "precio": 1281000.0,
+      "precio": 1285000.0,
       "unidad": "$/L",
-      "fecha": "2025-10-30",
-      "hora": "00:07:51",
+      "fecha": "2025-11-13",
+      "hora": "11:07:23",
       "tipo_atencion": "Asistido"
     },
     "precio_DI": {
@@ -80011,17 +80011,17 @@
     "lat": "-36.49905",
     "lng": "-72.03259",
     "precio_93": {
-      "precio": 1243000.0,
+      "precio": 1241000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "12:51:03",
+      "fecha": "2025-11-14",
+      "hora": "12:51:04",
       "tipo_atencion": "Asistido"
     },
     "precio_95": {
-      "precio": 1262000.0,
+      "precio": 1263000.0,
       "unidad": "$/L",
-      "fecha": "2025-11-06",
-      "hora": "12:51:03",
+      "fecha": "2025-11-14",
+      "hora": "12:51:04",
       "tipo_atencion": "Asistido"
     },
     "precio_97": {
