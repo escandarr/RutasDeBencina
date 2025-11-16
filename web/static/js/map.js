@@ -5,6 +5,7 @@ const STATIONS_ENDPOINT = "/api/stations";
 const MATRICULA_ENDPOINT = "/api/matriculas";
 const START_BUTTON_ID = "select-start";
 const END_BUTTON_ID = "select-end";
+const USE_CURRENT_LOCATION_BUTTON_ID = "use-current-location";
 const COMPUTE_BUTTON_ID = "compute-route";
 const CLEAR_BUTTON_ID = "clear-route";
 const START_SUMMARY_ID = "start-summary";
@@ -287,6 +288,7 @@ function filterStationData() {
 
 function updateStationDisplays() {
 	const filteredStations = filterStationData();
+	renderStationMarkers(filteredStations);
 	renderStationList(filteredStations);
 }
 
@@ -637,6 +639,44 @@ function setMode(mode) {
 	updateStatus(mode === "start" ? "Haz clic para establecer el origen." : "Haz clic para establecer el destino.");
 }
 
+function useCurrentLocationAsStart() {
+	if (!navigator.geolocation) {
+		updateStatus("Tu navegador no soporta geolocalización.", true);
+		return;
+	}
+
+	updateStatus("Obteniendo tu ubicación…");
+	navigator.geolocation.getCurrentPosition(
+		(position) => {
+			const { latitude, longitude } = position.coords;
+			const latlng = L.latLng(latitude, longitude);
+			setMode("start");
+			placeMarker(latlng);
+			if (map) {
+				const targetZoom = Math.max(map.getZoom(), 15);
+				map.setView(latlng, targetZoom, { animate: true });
+			}
+			updateStatus("Origen establecido con tu ubicación actual.");
+		},
+		(error) => {
+			let message = "No se pudo obtener la ubicación.";
+			if (error.code === error.PERMISSION_DENIED) {
+				message = "Permiso de ubicación denegado.";
+			} else if (error.code === error.POSITION_UNAVAILABLE) {
+				message = "Ubicación no disponible.";
+			} else if (error.code === error.TIMEOUT) {
+				message = "Tiempo de espera agotado al obtener la ubicación.";
+			}
+			updateStatus(message, true);
+		},
+		{
+			enableHighAccuracy: true,
+			timeout: 10000,
+			maximumAge: 60000
+		}
+	);
+}
+
 function placeMarker(latlng) {
 	const markerOptions = {
 		draggable: true,
@@ -787,6 +827,7 @@ function clearRoute() {
 function attachUiHandlers() {
 	const startButton = document.getElementById(START_BUTTON_ID);
 	const endButton = document.getElementById(END_BUTTON_ID);
+	const useCurrentLocationButton = document.getElementById(USE_CURRENT_LOCATION_BUTTON_ID);
 	const computeButton = document.getElementById(COMPUTE_BUTTON_ID);
 	const clearButton = document.getElementById(CLEAR_BUTTON_ID);
 	const modeSelect = document.getElementById(MODE_SELECT_ID);
@@ -797,6 +838,12 @@ function attachUiHandlers() {
 
 	if (endButton) {
 		endButton.addEventListener("click", () => setMode("end"));
+	}
+
+	if (useCurrentLocationButton) {
+		useCurrentLocationButton.addEventListener("click", () => {
+			useCurrentLocationAsStart();
+		});
 	}
 
 	if (computeButton) {
