@@ -16,6 +16,12 @@ const MATRICULA_INPUT_ID = "matricula-input";
 const MATRICULA_SUBMIT_ID = "matricula-submit";
 const MATRICULA_ERROR_ID = "matricula-error";
 const MATRICULA_RESULT_ID = "matricula-result";
+const STATION_TOGGLE_ID = "station-toggle";
+const CUSTOM_CONSUMPTION_TOGGLE_ID = "custom-consumption-toggle";
+const CUSTOM_CONSUMPTION_ID = "custom-consumption";
+const CONSUMPTION_CITY_ID = "consumption-city";
+const CONSUMPTION_HIGHWAY_ID = "consumption-highway";
+const CONSUMPTION_MIXED_ID = "consumption-mixed";
 
 const STATION_PRECISION_DIGITS = 5;
 
@@ -62,6 +68,11 @@ function clearStationMarkers() {
 	}
 }
 
+function isStationToggleEnabled() {
+	const toggle = document.getElementById(STATION_TOGGLE_ID);
+	return toggle ? toggle.checked : true;
+}
+
 function escapeAttribute(value = "") {
 	return value
 		.replace(/&/g, "&amp;")
@@ -105,6 +116,11 @@ function renderStationMarkers(stations) {
 		stationMarkersLayer = L.layerGroup().addTo(map);
 	} else {
 		clearStationMarkers();
+	}
+
+	// Check if stations should be shown
+	if (!isStationToggleEnabled()) {
+		return;
 	}
 
 	stations.forEach((station) => {
@@ -252,10 +268,19 @@ async function fetchStations() {
 	}
 }
 
+function handleStationToggleChange() {
+	updateStationDisplays();
+}
+
 function setupStationDataHandlers() {
 	const fuelFilter = document.getElementById(FUEL_FILTER_ID);
 	if (fuelFilter) {
 		fuelFilter.addEventListener("change", handleFuelFilterChange);
+	}
+
+	const stationToggle = document.getElementById(STATION_TOGGLE_ID);
+	if (stationToggle) {
+		stationToggle.addEventListener("change", handleStationToggleChange);
 	}
 
 	if (map) {
@@ -282,17 +307,24 @@ function renderMatriculaResult(data) {
 		return;
 	}
 
+	// Check for custom consumption values
+	const customConsumption = getCustomConsumptionValues();
 	const rendimiento = data.rendimiento || {};
+	
+	// Use custom values if available, otherwise use the API values
+	const finalRendimiento = customConsumption || rendimiento;
+	const isCustom = customConsumption !== null;
+	
 	const rows = [
 		["Patente", data.patente],
 		["Marca", data.marca],
 		["Modelo", data.modelo],
 		["Año", data.anio],
 		["Combustible", data.tipo_combustible],
-		["Rendimiento mixto", rendimiento.mixto ? `${rendimiento.mixto} km/L` : "—"],
-		["Rendimiento ciudad", rendimiento.ciudad ? `${rendimiento.ciudad} km/L` : "—"],
-		["Rendimiento carretera", rendimiento.carretera ? `${rendimiento.carretera} km/L` : "—"],
-		["Fuente", data.fuente],
+		["Rendimiento mixto", finalRendimiento.mixto ? `${finalRendimiento.mixto} km/L${isCustom ? " (personalizado)" : ""}` : "—"],
+		["Rendimiento ciudad", finalRendimiento.ciudad ? `${finalRendimiento.ciudad} km/L${isCustom ? " (personalizado)" : ""}` : "—"],
+		["Rendimiento carretera", finalRendimiento.carretera ? `${finalRendimiento.carretera} km/L${isCustom ? " (personalizado)" : ""}` : "—"],
+		["Fuente", isCustom ? "Valores personalizados" : data.fuente],
 		["Actualizado", data.actualizado_en ? new Date(data.actualizado_en).toLocaleString("es-CL") : "—"],
 	];
 
@@ -300,6 +332,13 @@ function renderMatriculaResult(data) {
 		.filter(([, value]) => value !== undefined && value !== null)
 		.map(([label, value]) => `<div class="matricula-row"><strong>${label}:</strong> ${value}</div>`)
 		.join("");
+	
+	// Store the data for later use (e.g., in route calculations)
+	result.dataset.matriculaData = JSON.stringify({
+		...data,
+		rendimiento: finalRendimiento,
+		isCustom: isCustom
+	});
 }
 
 function setMatriculaError(message) {
@@ -355,6 +394,45 @@ function handleMatriculaSubmit(event) {
 	fetchMatriculaData(value);
 }
 
+function getCustomConsumptionValues() {
+	const customToggle = document.getElementById(CUSTOM_CONSUMPTION_TOGGLE_ID);
+	if (!customToggle || !customToggle.checked) {
+		return null;
+	}
+
+	const cityInput = document.getElementById(CONSUMPTION_CITY_ID);
+	const highwayInput = document.getElementById(CONSUMPTION_HIGHWAY_ID);
+	const mixedInput = document.getElementById(CONSUMPTION_MIXED_ID);
+
+	const city = cityInput ? parseFloat(cityInput.value) : null;
+	const highway = highwayInput ? parseFloat(highwayInput.value) : null;
+	const mixed = mixedInput ? parseFloat(mixedInput.value) : null;
+
+	// Return null if all values are empty
+	if (!city && !highway && !mixed) {
+		return null;
+	}
+
+	return {
+		ciudad: city || null,
+		carretera: highway || null,
+		mixto: mixed || null
+	};
+}
+
+function toggleCustomConsumption() {
+	const toggle = document.getElementById(CUSTOM_CONSUMPTION_TOGGLE_ID);
+	const container = document.getElementById(CUSTOM_CONSUMPTION_ID);
+	
+	if (toggle && container) {
+		if (toggle.checked) {
+			container.classList.add("active");
+		} else {
+			container.classList.remove("active");
+		}
+	}
+}
+
 function setupMatriculaForm() {
 	const form = document.getElementById(MATRICULA_FORM_ID);
 	if (!form) {
@@ -371,6 +449,47 @@ function setupMatriculaForm() {
 			setMatriculaError("");
 		});
 	}
+
+	// Setup custom consumption toggle
+	const customToggle = document.getElementById(CUSTOM_CONSUMPTION_TOGGLE_ID);
+	if (customToggle) {
+		customToggle.addEventListener("change", () => {
+			toggleCustomConsumption();
+			// Re-render the result if we have data
+			const resultDiv = document.getElementById(MATRICULA_RESULT_ID);
+			if (resultDiv && resultDiv.dataset.matriculaData) {
+				try {
+					const data = JSON.parse(resultDiv.dataset.matriculaData);
+					// Remove the custom flag to re-fetch original data
+					delete data.isCustom;
+					renderMatriculaResult(data);
+				} catch (e) {
+					console.error("Error re-rendering matricula data:", e);
+				}
+			}
+		});
+	}
+
+	// Setup custom consumption input listeners
+	const consumptionInputs = [CONSUMPTION_CITY_ID, CONSUMPTION_HIGHWAY_ID, CONSUMPTION_MIXED_ID];
+	consumptionInputs.forEach(id => {
+		const input = document.getElementById(id);
+		if (input) {
+			input.addEventListener("input", () => {
+				const resultDiv = document.getElementById(MATRICULA_RESULT_ID);
+				if (resultDiv && resultDiv.dataset.matriculaData) {
+					try {
+						const data = JSON.parse(resultDiv.dataset.matriculaData);
+						// Remove the custom flag to re-fetch original data
+						delete data.isCustom;
+						renderMatriculaResult(data);
+					} catch (e) {
+						console.error("Error re-rendering matricula data:", e);
+					}
+				}
+			});
+		}
+	});
 }
 function updateStatus(message, isError = false) {
 	const statusEl = document.getElementById(STATUS_ELEMENT_ID);
