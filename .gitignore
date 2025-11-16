@@ -37,3 +37,5 @@ build/
 # Archivos del sistema
 .DS_Store
 Thumbs.db
+/Infraestructura
+db/backups/rutasdb_osm_backup.dump
