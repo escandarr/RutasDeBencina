@@ -20,6 +20,13 @@
         <aside aria-live="polite" aria-atomic="true">
             <h2>Planificador de trayecto</h2>
             <div class="controls">
+                <div class="mode-select-group">
+                    <label for="mode-select">Modo de cálculo</label>
+                    <select id="mode-select" class="mode-select" aria-label="Selecciona el modo de cálculo">
+                        <option value="shortest">Ruta más corta</option>
+                        <option value="cheapest">Ruta más barata</option>
+                    </select>
+                </div>
                 <div class="control-group">
                     <strong>1. Selecciona el origen</strong>
                     <span>Haz clic en el mapa con la opción "Origen" activa.</span>
@@ -40,13 +47,13 @@
             </div>
             <p class="status" id="status">Selecciona un origen para comenzar.</p>
 
-            <div class="control-group">
+            <div class="control-group hidden" id="station-section">
                 <strong>Estaciones cercanas</strong>
                 <span>Ver precios actuales de combustible.</span>
                 <div class="toggle-container">
                     <label class="toggle-label" for="station-toggle">Mostrar estaciones</label>
                     <label class="toggle-switch">
-                        <input type="checkbox" id="station-toggle" checked>
+                        <input type="checkbox" id="station-toggle">
                         <div class="toggle-slider"></div>
                     </label>
                 </div>
@@ -61,39 +68,88 @@
                 <div id="station-list" class="station-list" role="list"></div>
             </div>
 
-            <div class="control-group">
-                <strong>Consulta por matrícula</strong>
-                <span>Obtén metadatos del vehículo asociado.</span>
+            <div class="control-group hidden" id="vehicle-section">
+                <strong>Datos del vehículo</strong>
+                <span>Ingresa los datos manualmente o búscalos por matrícula.</span>
+                
+                <!-- Búsqueda por matrícula -->
+                <div class="section-divider">
+                    <div class="section-title">Búsqueda por matrícula</div>
+                </div>
                 <form id="matricula-form" novalidate>
-                    <label class="input-label" for="matricula-input">Matrícula</label>
                     <div class="matricula-input">
                         <input type="text" id="matricula-input" name="matricula" placeholder="Ej: AB1234"
-                               maxlength="8" autocomplete="off" required>
-                        <button type="submit" class="cta" id="matricula-submit">Consultar</button>
+                               maxlength="8" autocomplete="off">
+                        <button type="submit" class="cta" id="matricula-submit">Buscar</button>
                     </div>
                     <div id="matricula-error" class="form-error" role="alert" aria-live="polite"></div>
                 </form>
-                <div id="matricula-result" class="matricula-result" aria-live="polite"></div>
-                <div class="toggle-container">
-                    <label class="toggle-label" for="custom-consumption-toggle">Usar consumo personalizado</label>
-                    <label class="toggle-switch">
-                        <input type="checkbox" id="custom-consumption-toggle">
-                        <div class="toggle-slider"></div>
-                    </label>
+                
+                <!-- Datos del vehículo -->
+                <div class="section-divider">
+                    <div class="section-title">Información del vehículo</div>
                 </div>
-                <div id="custom-consumption" class="custom-consumption">
-                    <div class="consumption-inputs">
-                        <div class="consumption-input-group">
-                            <label for="consumption-city">Ciudad:</label>
-                            <input type="number" id="consumption-city" step="0.1" min="0" placeholder="km/L">
-                        </div>
-                        <div class="consumption-input-group">
-                            <label for="consumption-highway">Carretera:</label>
-                            <input type="number" id="consumption-highway" step="0.1" min="0" placeholder="km/L">
-                        </div>
-                        <div class="consumption-input-group">
-                            <label for="consumption-mixed">Mixto:</label>
-                            <input type="number" id="consumption-mixed" step="0.1" min="0" placeholder="km/L">
+                <div class="vehicle-inputs">
+                    <div class="vehicle-input-group">
+                        <label for="vehicle-brand">Marca:</label>
+                        <input type="text" id="vehicle-brand" placeholder="Ej: Toyota">
+                    </div>
+                    <div class="vehicle-input-group">
+                        <label for="vehicle-model">Modelo:</label>
+                        <input type="text" id="vehicle-model" placeholder="Ej: Corolla">
+                    </div>
+                    <div class="vehicle-input-group">
+                        <label for="vehicle-year">Año:</label>
+                        <input type="number" id="vehicle-year" min="1900" max="2030" placeholder="Ej: 2020">
+                    </div>
+                    <div class="vehicle-input-group">
+                        <label for="vehicle-fuel-type">Combustible:</label>
+                        <select id="vehicle-fuel-type">
+                            <option value="">Seleccionar...</option>
+                            <option value="93">Gasolina 93</option>
+                            <option value="95">Gasolina 95</option>
+                            <option value="97">Gasolina 97</option>
+                            <option value="DI">Diésel</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Consumo -->
+                <div class="section-divider">
+                    <div class="section-title">Consumo (km/L)</div>
+                </div>
+                <div class="consumption-inputs">
+                    <div class="consumption-input-group">
+                        <label for="consumption-city">Ciudad:</label>
+                        <input type="number" id="consumption-city" step="0.1" min="0" placeholder="km/L">
+                    </div>
+                    <div class="consumption-input-group">
+                        <label for="consumption-highway">Carretera:</label>
+                        <input type="number" id="consumption-highway" step="0.1" min="0" placeholder="km/L">
+                    </div>
+                    <div class="consumption-input-group">
+                        <label for="consumption-mixed">Mixto:</label>
+                        <input type="number" id="consumption-mixed" step="0.1" min="0" placeholder="km/L">
+                    </div>
+                </div>
+                
+                <!-- Tanque de combustible -->
+                <div class="section-divider">
+                    <div class="section-title">Tanque de combustible</div>
+                </div>
+                <div class="tank-inputs">
+                    <div class="tank-input-group">
+                        <label for="tank-capacity">Capacidad (L):</label>
+                        <input type="number" id="tank-capacity" step="1" min="0" placeholder="Ej: 50">
+                    </div>
+                    <div class="tank-slider-group">
+                        <label for="tank-level">Nivel actual:</label>
+                        <div class="tank-slider-container">
+                            <input type="range" id="tank-level" min="0" max="100" value="50" class="tank-slider">
+                            <div class="tank-level-display">
+                                <span id="tank-percentage">50%</span>
+                                <span id="tank-liters">(25 L)</span>
+                            </div>
                         </div>
                     </div>
                 </div>

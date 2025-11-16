@@ -17,11 +17,25 @@ const MATRICULA_SUBMIT_ID = "matricula-submit";
 const MATRICULA_ERROR_ID = "matricula-error";
 const MATRICULA_RESULT_ID = "matricula-result";
 const STATION_TOGGLE_ID = "station-toggle";
-const CUSTOM_CONSUMPTION_TOGGLE_ID = "custom-consumption-toggle";
-const CUSTOM_CONSUMPTION_ID = "custom-consumption";
+const STATION_SECTION_ID = "station-section";
+const VEHICLE_SECTION_ID = "vehicle-section";
+const VEHICLE_BRAND_ID = "vehicle-brand";
+const VEHICLE_MODEL_ID = "vehicle-model";
+const VEHICLE_YEAR_ID = "vehicle-year";
+const VEHICLE_FUEL_TYPE_ID = "vehicle-fuel-type";
 const CONSUMPTION_CITY_ID = "consumption-city";
 const CONSUMPTION_HIGHWAY_ID = "consumption-highway";
 const CONSUMPTION_MIXED_ID = "consumption-mixed";
+const TANK_CAPACITY_ID = "tank-capacity";
+const TANK_LEVEL_ID = "tank-level";
+const TANK_PERCENTAGE_ID = "tank-percentage";
+const TANK_LITERS_ID = "tank-liters";
+const MODE_SELECT_ID = "mode-select";
+
+const ROUTE_MODES = {
+	shortest: "shortest",
+	cheapest: "cheapest"
+};
 
 const STATION_PRECISION_DIGITS = 5;
 
@@ -35,6 +49,21 @@ const DEFAULT_MARKER_ICON = L.icon({
 	popupAnchor: [1, -34]
 });
 
+const ENDPOINT_MARKER_ICON = L.divIcon({
+	html: '<div class="endpoint-marker-dot"></div>',
+	className: "endpoint-marker",
+	iconSize: [24, 24],
+	iconAnchor: [12, 12]
+});
+
+const HIGHLIGHT_STATION_ICON = L.divIcon({
+	html: '<div class="highlight-station-marker-dot"></div>',
+	className: "highlight-station-marker",
+	iconSize: [34, 34],
+	iconAnchor: [17, 34],
+	popupAnchor: [0, -32]
+});
+
 const brandIconCache = new Map();
 
 let map;
@@ -43,6 +72,7 @@ let endMarker = null;
 let routeLayer = null;
 let currentMode = "start";
 let stationMarkersLayer = null;
+let highlightedStationLayer = null;
 let stationDataCache = [];
 let stationFetchAbortController = null;
 
@@ -62,10 +92,52 @@ function formatPrice(value) {
 	});
 }
 
+function formatCurrencyCLP(value) {
+	if (value === null || value === undefined || Number.isNaN(value)) {
+		return "—";
+	}
+	return Number(value).toLocaleString("es-CL", {
+		style: "currency",
+		currency: "CLP",
+		maximumFractionDigits: 0
+	});
+}
+
+function ensureStationLayer() {
+	if (!map) {
+		return null;
+	}
+	if (!stationMarkersLayer) {
+		stationMarkersLayer = L.layerGroup().addTo(map);
+	}
+	return stationMarkersLayer;
+}
+
+function ensureHighlightedLayer() {
+	if (!map) {
+		return null;
+	}
+	if (!highlightedStationLayer) {
+		highlightedStationLayer = L.layerGroup().addTo(map);
+	}
+	return highlightedStationLayer;
+}
+
 function clearStationMarkers() {
 	if (stationMarkersLayer) {
 		stationMarkersLayer.clearLayers();
 	}
+}
+
+function clearHighlightedStation() {
+	if (highlightedStationLayer) {
+		highlightedStationLayer.clearLayers();
+	}
+}
+
+function clearAllStationLayers() {
+	clearStationMarkers();
+	clearHighlightedStation();
 }
 
 function isStationToggleEnabled() {
@@ -112,13 +184,13 @@ function renderStationMarkers(stations) {
 		return;
 	}
 
-	if (!stationMarkersLayer) {
-		stationMarkersLayer = L.layerGroup().addTo(map);
-	} else {
-		clearStationMarkers();
+	const layer = ensureStationLayer();
+	if (!layer) {
+		return;
 	}
 
-	// Check if stations should be shown
+	layer.clearLayers();
+
 	if (!isStationToggleEnabled()) {
 		return;
 	}
@@ -134,6 +206,7 @@ function renderStationMarkers(stations) {
 			riseOnHover: true,
 			title: station.marca || "Estación"
 		});
+
 		const fuelType = getFuelFilterValue();
 		let priceText = "";
 		if (fuelType) {
@@ -158,7 +231,7 @@ function renderStationMarkers(stations) {
 		`;
 
 		marker.bindPopup(popup);
-		stationMarkersLayer.addLayer(marker);
+		layer.addLayer(marker);
 	});
 }
 
@@ -214,8 +287,26 @@ function filterStationData() {
 
 function updateStationDisplays() {
 	const filteredStations = filterStationData();
-	renderStationMarkers(filteredStations);
 	renderStationList(filteredStations);
+}
+
+function getSelectedMode() {
+	const select = document.getElementById(MODE_SELECT_ID);
+	return select ? select.value : ROUTE_MODES.shortest;
+}
+
+function updateModeUI() {
+	const mode = getSelectedMode();
+	const stationSection = document.getElementById(STATION_SECTION_ID);
+	const vehicleSection = document.getElementById(VEHICLE_SECTION_ID);
+
+	const shouldShowExtras = mode === ROUTE_MODES.cheapest;
+	if (stationSection) {
+		stationSection.classList.toggle("hidden", !shouldShowExtras);
+	}
+	if (vehicleSection) {
+		vehicleSection.classList.toggle("hidden", !shouldShowExtras);
+	}
 }
 
 function handleFuelFilterChange() {
@@ -289,6 +380,117 @@ function setupStationDataHandlers() {
 	}
 }
 
+function updateTankDisplay() {
+	const tankLevel = document.getElementById(TANK_LEVEL_ID);
+	const tankCapacity = document.getElementById(TANK_CAPACITY_ID);
+	const tankPercentage = document.getElementById(TANK_PERCENTAGE_ID);
+	const tankLiters = document.getElementById(TANK_LITERS_ID);
+	
+	if (!tankLevel || !tankPercentage || !tankLiters) return;
+	
+	const percentage = parseInt(tankLevel.value);
+	tankPercentage.textContent = `${percentage}%`;
+	
+	if (tankCapacity && tankCapacity.value) {
+		const capacity = parseFloat(tankCapacity.value);
+		const liters = (capacity * percentage / 100).toFixed(1);
+		tankLiters.textContent = `(${liters} L)`;
+	} else {
+		tankLiters.textContent = "";
+	}
+}
+
+function highlightCheapestStations(stations) {
+	clearHighlightedStation();
+	if (!map || !Array.isArray(stations) || !stations.length) {
+		return;
+	}
+	const layer = ensureHighlightedLayer();
+	if (!layer) {
+		return;
+	}
+
+	let firstMarker = null;
+
+	stations.forEach((station) => {
+		if (!station) {
+			return;
+		}
+		const latNum = typeof station.lat === "number" ? station.lat : parseFloat(station.lat);
+		const lngNum = typeof station.lng === "number" ? station.lng : parseFloat(station.lng);
+		if (Number.isNaN(latNum) || Number.isNaN(lngNum)) {
+			return;
+		}
+
+		const marker = L.marker([latNum, lngNum], {
+			icon: HIGHLIGHT_STATION_ICON,
+			title: station.marca || "Estación seleccionada",
+			riseOnHover: true
+		});
+
+		const priceText = station.precio ? `<strong>Precio</strong>: ${formatPrice(station.precio)}` : "";
+		const litersText = station.liters_planned ? `<br><small>Recargar: ${station.liters_planned} L</small>` : "";
+		const popup = `
+			<div>
+				<strong>${station.marca || "Estación"}</strong><br>
+				${station.direccion || "Sin dirección"}
+				${priceText ? `<br>${priceText}` : ""}
+				${litersText}
+			</div>
+		`;
+		marker.bindPopup(popup);
+		layer.addLayer(marker);
+		if (!firstMarker) {
+			firstMarker = marker;
+		}
+	});
+
+	if (firstMarker && typeof firstMarker.openPopup === "function") {
+		firstMarker.openPopup();
+	}
+}
+
+function collectVehicleData() {
+	const brand = document.getElementById(VEHICLE_BRAND_ID)?.value || null;
+	const model = document.getElementById(VEHICLE_MODEL_ID)?.value || null;
+	const yearValue = document.getElementById(VEHICLE_YEAR_ID)?.value;
+	const fuelType = document.getElementById(VEHICLE_FUEL_TYPE_ID)?.value || null;
+	const cityValue = document.getElementById(CONSUMPTION_CITY_ID)?.value;
+	const highwayValue = document.getElementById(CONSUMPTION_HIGHWAY_ID)?.value;
+	const mixedValue = document.getElementById(CONSUMPTION_MIXED_ID)?.value;
+	const tankCapacityValue = document.getElementById(TANK_CAPACITY_ID)?.value;
+	const tankLevelValue = document.getElementById(TANK_LEVEL_ID)?.value;
+
+	return {
+		marca: brand,
+		modelo: model,
+		anio: yearValue ? parseInt(yearValue) : null,
+		fuel_type: fuelType,
+		consumption: {
+			city_km_l: cityValue ? parseFloat(cityValue) : null,
+			highway_km_l: highwayValue ? parseFloat(highwayValue) : null,
+			mixed_km_l: mixedValue ? parseFloat(mixedValue) : null
+		},
+		tank: {
+			capacity_l: tankCapacityValue ? parseFloat(tankCapacityValue) : null,
+			level_percent: tankLevelValue ? parseInt(tankLevelValue) : 50
+		}
+	};
+}
+
+function setVehicleData(data) {
+	if (data.marca) document.getElementById(VEHICLE_BRAND_ID).value = data.marca;
+	if (data.modelo) document.getElementById(VEHICLE_MODEL_ID).value = data.modelo;
+	if (data.anio) document.getElementById(VEHICLE_YEAR_ID).value = data.anio;
+	if (data.tipo_combustible) document.getElementById(VEHICLE_FUEL_TYPE_ID).value = data.tipo_combustible;
+	
+	if (data.rendimiento) {
+		if (data.rendimiento.ciudad) document.getElementById(CONSUMPTION_CITY_ID).value = data.rendimiento.ciudad;
+		if (data.rendimiento.carretera) document.getElementById(CONSUMPTION_HIGHWAY_ID).value = data.rendimiento.carretera;
+		if (data.rendimiento.mixto) document.getElementById(CONSUMPTION_MIXED_ID).value = data.rendimiento.mixto;
+	}
+}
+
 function clearMatriculaResult() {
 	const result = document.getElementById(MATRICULA_RESULT_ID);
 	if (result) {
@@ -301,45 +503,6 @@ function clearMatriculaResult() {
 	}
 }
 
-function renderMatriculaResult(data) {
-	const result = document.getElementById(MATRICULA_RESULT_ID);
-	if (!result) {
-		return;
-	}
-
-	// Check for custom consumption values
-	const customConsumption = getCustomConsumptionValues();
-	const rendimiento = data.rendimiento || {};
-	
-	// Use custom values if available, otherwise use the API values
-	const finalRendimiento = customConsumption || rendimiento;
-	const isCustom = customConsumption !== null;
-	
-	const rows = [
-		["Patente", data.patente],
-		["Marca", data.marca],
-		["Modelo", data.modelo],
-		["Año", data.anio],
-		["Combustible", data.tipo_combustible],
-		["Rendimiento mixto", finalRendimiento.mixto ? `${finalRendimiento.mixto} km/L${isCustom ? " (personalizado)" : ""}` : "—"],
-		["Rendimiento ciudad", finalRendimiento.ciudad ? `${finalRendimiento.ciudad} km/L${isCustom ? " (personalizado)" : ""}` : "—"],
-		["Rendimiento carretera", finalRendimiento.carretera ? `${finalRendimiento.carretera} km/L${isCustom ? " (personalizado)" : ""}` : "—"],
-		["Fuente", isCustom ? "Valores personalizados" : data.fuente],
-		["Actualizado", data.actualizado_en ? new Date(data.actualizado_en).toLocaleString("es-CL") : "—"],
-	];
-
-	result.innerHTML = rows
-		.filter(([, value]) => value !== undefined && value !== null)
-		.map(([label, value]) => `<div class="matricula-row"><strong>${label}:</strong> ${value}</div>`)
-		.join("");
-	
-	// Store the data for later use (e.g., in route calculations)
-	result.dataset.matriculaData = JSON.stringify({
-		...data,
-		rendimiento: finalRendimiento,
-		isCustom: isCustom
-	});
-}
 
 function setMatriculaError(message) {
 	const error = document.getElementById(MATRICULA_ERROR_ID);
@@ -352,7 +515,7 @@ async function fetchMatriculaData(patente) {
 	const submitButton = document.getElementById(MATRICULA_SUBMIT_ID);
 	if (submitButton) {
 		submitButton.disabled = true;
-		submitButton.textContent = "Consultando…";
+		submitButton.textContent = "Buscando…";
 	}
 
 	try {
@@ -364,15 +527,17 @@ async function fetchMatriculaData(patente) {
 		}
 
 		const data = await response.json();
-		renderMatriculaResult(data);
+		// Populate the form fields with the fetched data
+		setVehicleData(data);
+		// Clear any error message
+		setMatriculaError("");
 	} catch (error) {
-		renderMatriculaResult({});
 		setMatriculaError(error.message || "No se pudo consultar la matrícula.");
 	}
 
 	if (submitButton) {
 		submitButton.disabled = false;
-		submitButton.textContent = "Consultar";
+		submitButton.textContent = "Buscar";
 	}
 }
 
@@ -394,46 +559,8 @@ function handleMatriculaSubmit(event) {
 	fetchMatriculaData(value);
 }
 
-function getCustomConsumptionValues() {
-	const customToggle = document.getElementById(CUSTOM_CONSUMPTION_TOGGLE_ID);
-	if (!customToggle || !customToggle.checked) {
-		return null;
-	}
 
-	const cityInput = document.getElementById(CONSUMPTION_CITY_ID);
-	const highwayInput = document.getElementById(CONSUMPTION_HIGHWAY_ID);
-	const mixedInput = document.getElementById(CONSUMPTION_MIXED_ID);
-
-	const city = cityInput ? parseFloat(cityInput.value) : null;
-	const highway = highwayInput ? parseFloat(highwayInput.value) : null;
-	const mixed = mixedInput ? parseFloat(mixedInput.value) : null;
-
-	// Return null if all values are empty
-	if (!city && !highway && !mixed) {
-		return null;
-	}
-
-	return {
-		ciudad: city || null,
-		carretera: highway || null,
-		mixto: mixed || null
-	};
-}
-
-function toggleCustomConsumption() {
-	const toggle = document.getElementById(CUSTOM_CONSUMPTION_TOGGLE_ID);
-	const container = document.getElementById(CUSTOM_CONSUMPTION_ID);
-	
-	if (toggle && container) {
-		if (toggle.checked) {
-			container.classList.add("active");
-		} else {
-			container.classList.remove("active");
-		}
-	}
-}
-
-function setupMatriculaForm() {
+function setupVehicleForm() {
 	const form = document.getElementById(MATRICULA_FORM_ID);
 	if (!form) {
 		return;
@@ -450,46 +577,20 @@ function setupMatriculaForm() {
 		});
 	}
 
-	// Setup custom consumption toggle
-	const customToggle = document.getElementById(CUSTOM_CONSUMPTION_TOGGLE_ID);
-	if (customToggle) {
-		customToggle.addEventListener("change", () => {
-			toggleCustomConsumption();
-			// Re-render the result if we have data
-			const resultDiv = document.getElementById(MATRICULA_RESULT_ID);
-			if (resultDiv && resultDiv.dataset.matriculaData) {
-				try {
-					const data = JSON.parse(resultDiv.dataset.matriculaData);
-					// Remove the custom flag to re-fetch original data
-					delete data.isCustom;
-					renderMatriculaResult(data);
-				} catch (e) {
-					console.error("Error re-rendering matricula data:", e);
-				}
-			}
-		});
+	// Setup tank level slider
+	const tankSlider = document.getElementById(TANK_LEVEL_ID);
+	const tankCapacity = document.getElementById(TANK_CAPACITY_ID);
+	
+	if (tankSlider) {
+		tankSlider.addEventListener("input", updateTankDisplay);
 	}
-
-	// Setup custom consumption input listeners
-	const consumptionInputs = [CONSUMPTION_CITY_ID, CONSUMPTION_HIGHWAY_ID, CONSUMPTION_MIXED_ID];
-	consumptionInputs.forEach(id => {
-		const input = document.getElementById(id);
-		if (input) {
-			input.addEventListener("input", () => {
-				const resultDiv = document.getElementById(MATRICULA_RESULT_ID);
-				if (resultDiv && resultDiv.dataset.matriculaData) {
-					try {
-						const data = JSON.parse(resultDiv.dataset.matriculaData);
-						// Remove the custom flag to re-fetch original data
-						delete data.isCustom;
-						renderMatriculaResult(data);
-					} catch (e) {
-						console.error("Error re-rendering matricula data:", e);
-					}
-				}
-			});
-		}
-	});
+	
+	if (tankCapacity) {
+		tankCapacity.addEventListener("input", updateTankDisplay);
+	}
+	
+	// Initialize tank display
+	updateTankDisplay();
 }
 function updateStatus(message, isError = false) {
 	const statusEl = document.getElementById(STATUS_ELEMENT_ID);
@@ -539,7 +640,8 @@ function setMode(mode) {
 function placeMarker(latlng) {
 	const markerOptions = {
 		draggable: true,
-		opacity: 0.85
+		opacity: 0.95,
+		icon: ENDPOINT_MARKER_ICON
 	};
 
 	if (currentMode === "start") {
@@ -592,10 +694,17 @@ async function computeRoute() {
 	const start = startMarker.getLatLng();
 	const end = endMarker.getLatLng();
 
+	const mode = getSelectedMode();
+	clearHighlightedStation();
 	const payload = {
 		start: { lat: start.lat, lon: start.lng },
-		end: { lat: end.lat, lon: end.lng }
+		end: { lat: end.lat, lon: end.lng },
+		mode
 	};
+
+	if (mode === ROUTE_MODES.cheapest) {
+		payload.vehicle = collectVehicleData();
+	}
 
 	try {
 		const response = await fetch(ROUTE_ENDPOINT, {
@@ -611,7 +720,21 @@ async function computeRoute() {
 
 		const data = await response.json();
 		drawRoute(data.route);
-		updateStatus("Ruta calculada correctamente.");
+		if (mode === ROUTE_MODES.cheapest && data.cost && typeof data.cost.estimated_cost_clp === "number") {
+			const formatted = formatCurrencyCLP(data.cost.estimated_cost_clp);
+			const stations = Array.isArray(data.cost.stations) ? data.cost.stations : [];
+			if (stations.length) {
+				const firstStation = stations[0];
+				const stationLabel = ` usando ${firstStation.marca || "estación"} (${firstStation.codigo || "s/n"})`;
+				updateStatus(`Ruta más barata estimada: ${formatted}${stationLabel}.`);
+			} else {
+				updateStatus(`Ruta más barata estimada: ${formatted}.`);
+			}
+			highlightCheapestStations(stations);
+		} else {
+			updateStatus("Ruta calculada correctamente.");
+			clearHighlightedStation();
+		}
 	} catch (error) {
 		console.error("Error calculando la ruta:", error);
 		updateStatus(error.message || "No se pudo calcular la ruta.", true);
@@ -658,6 +781,7 @@ function clearRoute() {
 	setMode("start");
 	updateSummaries();
 	updateStatus("Selecciona un origen para comenzar.");
+	clearHighlightedStation();
 }
 
 function attachUiHandlers() {
@@ -665,6 +789,7 @@ function attachUiHandlers() {
 	const endButton = document.getElementById(END_BUTTON_ID);
 	const computeButton = document.getElementById(COMPUTE_BUTTON_ID);
 	const clearButton = document.getElementById(CLEAR_BUTTON_ID);
+	const modeSelect = document.getElementById(MODE_SELECT_ID);
 
 	if (startButton) {
 		startButton.addEventListener("click", () => setMode("start"));
@@ -682,8 +807,15 @@ function attachUiHandlers() {
 		clearButton.addEventListener("click", clearRoute);
 	}
 
+	if (modeSelect) {
+		modeSelect.addEventListener("change", () => {
+			updateModeUI();
+		});
+		updateModeUI();
+	}
+
 	setupStationDataHandlers();
-	setupMatriculaForm();
+	setupVehicleForm();
 }
 
 function initMap() {

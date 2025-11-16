@@ -6,15 +6,22 @@ import sys
 import threading
 import time
 import unicodedata
+from dataclasses import dataclass
 from datetime import datetime
 from decimal import Decimal
 from pathlib import Path
-from typing import Dict, Sequence, Tuple
+from typing import Any, Dict, Sequence, Tuple
 
 from flask import Flask, abort, jsonify, render_template, request, url_for
 from psycopg.rows import dict_row
 
-from db.data_access import Database, RouteResult, compute_route_between_points
+from db.data_access import (
+    Database,
+    RouteResult,
+    VehicleSettings,
+    compute_cheapest_route_between_points,
+    compute_route_between_points,
+)
 
 # Create an instance of the Flask application
 app = Flask(__name__)
@@ -73,6 +80,56 @@ def _parse_point_payload(payload: dict, key: str) -> Point:
 
     return lon, lat
 
+
+def _safe_float(value: Any) -> float | None:
+    try:
+        if value is None or value == "":
+            return None
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _parse_vehicle_payload(payload: dict | None) -> VehicleSettings:
+    if not payload:
+        return VehicleSettings()
+
+    fuel_type = payload.get("fuel_type") or payload.get("tipo_combustible") or "95"
+    fuel_type = str(fuel_type).upper()
+
+    consumption_data = payload.get("consumption") or {}
+    consumption_candidates = [
+        payload.get("consumption_km_per_l"),
+        consumption_data.get("mixed_km_l"),
+        consumption_data.get("mixto"),
+        consumption_data.get("city_km_l"),
+        consumption_data.get("city_km_per_l"),
+        consumption_data.get("ciudad"),
+        consumption_data.get("highway_km_l"),
+        consumption_data.get("highway_km_per_l"),
+        consumption_data.get("carretera"),
+    ]
+
+    km_per_l = None
+    for candidate in consumption_candidates:
+        parsed = _safe_float(candidate)
+        if parsed:
+            km_per_l = parsed
+            break
+    if km_per_l is None:
+        km_per_l = 12.0
+
+    tank_info = payload.get("tank") or {}
+    tank_capacity = _safe_float(payload.get("tank_capacity_l")) or _safe_float(tank_info.get("capacity_l"))
+    tank_level = _safe_float(payload.get("tank_level_percent")) or _safe_float(tank_info.get("level_percent"))
+
+    return VehicleSettings(
+        fuel_type=fuel_type,
+        consumption_km_per_l=km_per_l,
+        tank_capacity_l=tank_capacity,
+        tank_level_percent=tank_level,
+    )
+
 # Define a route for the homepage
 @app.route('/')
 def home():
@@ -124,15 +181,31 @@ def api_shortest_route():
     except ValueError as exc:
         abort(400, description=str(exc))
 
+    mode = str(payload.get("mode") or "shortest").lower()
+    if mode not in {"shortest", "cheapest"}:
+        mode = "shortest"
+    vehicle_profile = _parse_vehicle_payload(payload.get("vehicle") if mode == "cheapest" else None)
+
     with DATABASE.connection() as conn:
         try:
-            route = compute_route_between_points(
-                conn,
-                start_lon,
-                start_lat,
-                end_lon,
-                end_lat,
-            )
+            if mode == "cheapest":
+                route, cost_summary = compute_cheapest_route_between_points(
+                    conn,
+                    start_lon,
+                    start_lat,
+                    end_lon,
+                    end_lat,
+                    vehicle=vehicle_profile,
+                )
+            else:
+                route = compute_route_between_points(
+                    conn,
+                    start_lon,
+                    start_lat,
+                    end_lon,
+                    end_lat,
+                )
+                cost_summary = None
         except ValueError as exc:
             abort(400, description=str(exc))
         except Exception as exc:  # pragma: no cover - defensive fallback
@@ -141,13 +214,16 @@ def api_shortest_route():
 
     feature = _route_result_to_feature(route)
 
-    return jsonify(
-        {
-            "route": feature,
-            "start": {"id": route.start.id, "lon": route.start.lon, "lat": route.start.lat},
-            "end": {"id": route.end.id, "lon": route.end.lon, "lat": route.end.lat},
-        }
-    )
+    response_body = {
+        "mode": mode,
+        "route": feature,
+        "start": {"id": route.start.id, "lon": route.start.lon, "lat": route.start.lat},
+        "end": {"id": route.end.id, "lon": route.end.lon, "lat": route.end.lat},
+    }
+    if cost_summary:
+        response_body["cost"] = cost_summary
+
+    return jsonify(response_body)
 
 
 def _to_float(value: Decimal | float | None) -> float | None:
