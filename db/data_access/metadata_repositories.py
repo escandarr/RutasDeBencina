@@ -349,22 +349,58 @@ def insert_promocion(
     fuente_tipo: Optional[str] = None,
     marca_ids: Optional[Sequence[int]] = None,
     scrape_run_id: Optional[int] = None,
+    *,
+    external_id: Optional[str] = None,
+    fecha_inicio: Optional[date] = None,
+    fecha_fin: Optional[date] = None,
+    activo: bool = True,
 ) -> int:
-    """Insert a promotion and optionally link it to brands."""
+    """Insert or update a promotion and optionally link it to brands.
+
+    Upserts based on the pair (fuente_tipo, external_id) when external_id is provided.
+    """
     with conn.cursor() as cur:
         cur.execute(
             """
             INSERT INTO metadata.promociones
-                (titulo, banco, descuento, vigencia, fuente_url, fuente_tipo, scrape_run_id)
-            VALUES (%s, %s, %s, %s, %s, %s, %s)
+                (titulo, banco, descuento, vigencia, fuente_url, fuente_tipo,
+                 external_id, fecha_inicio, fecha_fin, activo, scrape_run_id)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            ON CONFLICT (fuente_tipo, external_id) DO UPDATE SET
+                titulo = EXCLUDED.titulo,
+                banco = EXCLUDED.banco,
+                descuento = EXCLUDED.descuento,
+                vigencia = EXCLUDED.vigencia,
+                fuente_url = EXCLUDED.fuente_url,
+                fecha_inicio = EXCLUDED.fecha_inicio,
+                fecha_fin = EXCLUDED.fecha_fin,
+                activo = EXCLUDED.activo,
+                scrape_run_id = COALESCE(EXCLUDED.scrape_run_id, promociones.scrape_run_id),
+                updated_at = NOW()
             RETURNING id
             """,
-            (titulo, banco, descuento, vigencia, fuente_url, fuente_tipo, scrape_run_id)
+            (
+                titulo,
+                banco,
+                descuento,
+                vigencia,
+                fuente_url,
+                fuente_tipo,
+                external_id,
+                fecha_inicio,
+                fecha_fin,
+                activo,
+                scrape_run_id,
+            )
         )
         promocion_id = cur.fetchone()[0]
         
         # Link to brands if provided
         if marca_ids:
+            cur.execute(
+                "DELETE FROM metadata.promociones_marcas WHERE promocion_id = %s",
+                (promocion_id,),
+            )
             for marca_id in marca_ids:
                 cur.execute(
                     """
@@ -674,6 +710,28 @@ def bulk_import_promociones(
     """
     count = 0
     for promo in promociones_data:
+        marca_ids_value = promo.get('marca_ids')
+        if isinstance(marca_ids_value, int):
+            marca_ids = [marca_ids_value]
+        elif isinstance(marca_ids_value, (list, tuple)):
+            marca_ids = [int(mid) for mid in marca_ids_value if mid is not None]
+        else:
+            marca_ids = None
+
+        fecha_inicio = promo.get('fecha_inicio')
+        if isinstance(fecha_inicio, str):
+            try:
+                fecha_inicio = datetime.fromisoformat(fecha_inicio).date()
+            except ValueError:
+                fecha_inicio = None
+
+        fecha_fin = promo.get('fecha_fin')
+        if isinstance(fecha_fin, str):
+            try:
+                fecha_fin = datetime.fromisoformat(fecha_fin).date()
+            except ValueError:
+                fecha_fin = None
+
         promo_id = insert_promocion(
             conn,
             titulo=promo.get('titulo', ''),
@@ -682,12 +740,29 @@ def bulk_import_promociones(
             vigencia=promo.get('vigencia'),
             fuente_url=promo.get('fuente'),
             fuente_tipo=fuente_tipo,
-            scrape_run_id=scrape_run_id
+            marca_ids=marca_ids,
+            scrape_run_id=scrape_run_id,
+            external_id=promo.get('external_id'),
+            fecha_inicio=fecha_inicio,
+            fecha_fin=fecha_fin,
+            activo=promo.get('activo', True),
         )
         
-        # Auto-link to brands based on text
-        auto_link_promocion_to_marcas(conn, promo_id)
+        # Auto-link to brands based on text if not provided explicitly
+        if not marca_ids:
+            auto_link_promocion_to_marcas(conn, promo_id)
         count += 1
     
     return count
 
+
+def delete_promociones_by_fuente(conn: Connection, fuente_tipo: str) -> int:
+    """Delete promotions for a given source type. Returns number of rows removed."""
+    with conn.cursor() as cur:
+        cur.execute(
+            "DELETE FROM metadata.promociones WHERE fuente_tipo = %s",
+            (fuente_tipo,)
+        )
+        deleted = cur.rowcount
+        conn.commit()
+        return deleted

@@ -5,173 +5,28 @@
     <title>Calculadora de Ruta</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ url_for('static', filename='js/leaflet/dist/leaflet.css') }}">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0f172a;
-            color: #f1f5f9;
-        }
-
-        header {
-            padding: 1rem 2rem;
-            background: rgba(30, 41, 59, 0.85);
-            backdrop-filter: blur(6px);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(148, 163, 184, 0.3);
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-            font-weight: 600;
-            letter-spacing: 0.03em;
-        }
-
-        header a {
-            color: #f8fafc;
-            text-decoration: none;
-            font-size: 0.95rem;
-            border: 1px solid rgba(148, 163, 184, 0.3);
-            padding: 0.4rem 0.9rem;
-            border-radius: 999px;
-            transition: all 0.2s ease-in-out;
-        }
-
-        header a:hover {
-            background-color: rgba(148, 163, 184, 0.15);
-            border-color: rgba(148, 163, 184, 0.5);
-        }
-
-        main {
-            position: relative;
-            height: calc(100vh - 82px);
-        }
-
-        main {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) 360px;
-            gap: 1.5rem;
-            padding: 1.5rem;
-        }
-
-        #map {
-            width: 100%;
-            height: calc(100vh - 180px);
-            border-radius: 1rem;
-            overflow: hidden;
-            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.45);
-        }
-
-        aside {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid rgba(148, 163, 184, 0.2);
-            border-radius: 1rem;
-            padding: 1.25rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            box-shadow: 0 20px 45px rgba(15, 23, 42, 0.45);
-        }
-
-        aside h2 {
-            margin: 0;
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-
-        .controls {
-            display: grid;
-            gap: 0.75rem;
-        }
-
-        .control-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
-            background: rgba(30, 41, 59, 0.6);
-            padding: 0.75rem;
-            border-radius: 0.75rem;
-            border: 1px solid rgba(148, 163, 184, 0.2);
-        }
-
-        .control-group strong {
-            font-size: 0.95rem;
-            letter-spacing: 0.02em;
-        }
-
-        .control-group span {
-            font-size: 0.85rem;
-            color: rgba(226, 232, 240, 0.75);
-        }
-
-        button {
-            border: none;
-            border-radius: 999px;
-            padding: 0.55rem 1rem;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        .cta {
-            background: linear-gradient(135deg, #38bdf8, #2563eb);
-            color: #0f172a;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .secondary {
-            background: rgba(148, 163, 184, 0.15);
-            color: #e2e8f0;
-            border: 1px solid rgba(148, 163, 184, 0.25);
-        }
-
-        button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        button:not(:disabled):hover {
-            transform: translateY(-1px);
-            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.35);
-        }
-
-        .status {
-            font-size: 0.9rem;
-            min-height: 2.2rem;
-            display: flex;
-            align-items: center;
-        }
-
-        @media (max-width: 980px) {
-            main {
-                grid-template-columns: minmax(0, 1fr);
-                padding: 1rem;
-            }
-
-            #map {
-                height: 60vh;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/map.css') }}">
 </head>
 <body>
     <header>
         <h1>Ruta más Corta</h1>
-        <a href="{{ url_for('about') }}">Acerca de</a>
+        <nav>
+            <a href="{{ url_for('about') }}">Acerca de</a>
+            <a href="{{ url_for('admin_dashboard') }}">Gestión de datos</a>
+        </nav>
     </header>
     <main>
         <div id="map" role="application" aria-label="Mapa interactivo"></div>
         <aside aria-live="polite" aria-atomic="true">
             <h2>Planificador de trayecto</h2>
             <div class="controls">
+                <div class="mode-select-group">
+                    <label for="mode-select">Modo de cálculo</label>
+                    <select id="mode-select" class="mode-select" aria-label="Selecciona el modo de cálculo">
+                        <option value="shortest">Ruta más corta</option>
+                        <option value="cheapest">Ruta más barata</option>
+                    </select>
+                </div>
                 <div class="control-group">
                     <strong>1. Selecciona el origen</strong>
                     <span>Haz clic en el mapa con la opción "Origen" activa.</span>
@@ -191,6 +46,114 @@
                 </div>
             </div>
             <p class="status" id="status">Selecciona un origen para comenzar.</p>
+
+            <div class="control-group hidden" id="station-section">
+                <strong>Estaciones cercanas</strong>
+                <span>Ver precios actuales de combustible.</span>
+                <div class="toggle-container">
+                    <label class="toggle-label" for="station-toggle">Mostrar estaciones</label>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="station-toggle">
+                        <div class="toggle-slider"></div>
+                    </label>
+                </div>
+                <label class="input-label" for="fuel-filter">Combustible</label>
+                <select id="fuel-filter" aria-label="Filtro de combustible">
+                    <option value="">Todos</option>
+                    <option value="93">93</option>
+                    <option value="95">95</option>
+                    <option value="97">97</option>
+                    <option value="DI">Diésel</option>
+                </select>
+                <div id="station-list" class="station-list" role="list"></div>
+            </div>
+
+            <div class="control-group hidden" id="vehicle-section">
+                <strong>Datos del vehículo</strong>
+                <span>Ingresa los datos manualmente o búscalos por matrícula.</span>
+                
+                <!-- Búsqueda por matrícula -->
+                <div class="section-divider">
+                    <div class="section-title">Búsqueda por matrícula</div>
+                </div>
+                <form id="matricula-form" novalidate>
+                    <div class="matricula-input">
+                        <input type="text" id="matricula-input" name="matricula" placeholder="Ej: AB1234"
+                               maxlength="8" autocomplete="off">
+                        <button type="submit" class="cta" id="matricula-submit">Buscar</button>
+                    </div>
+                    <div id="matricula-error" class="form-error" role="alert" aria-live="polite"></div>
+                </form>
+                
+                <!-- Datos del vehículo -->
+                <div class="section-divider">
+                    <div class="section-title">Información del vehículo</div>
+                </div>
+                <div class="vehicle-inputs">
+                    <div class="vehicle-input-group">
+                        <label for="vehicle-brand">Marca:</label>
+                        <input type="text" id="vehicle-brand" placeholder="Ej: Toyota">
+                    </div>
+                    <div class="vehicle-input-group">
+                        <label for="vehicle-model">Modelo:</label>
+                        <input type="text" id="vehicle-model" placeholder="Ej: Corolla">
+                    </div>
+                    <div class="vehicle-input-group">
+                        <label for="vehicle-year">Año:</label>
+                        <input type="number" id="vehicle-year" min="1900" max="2030" placeholder="Ej: 2020">
+                    </div>
+                    <div class="vehicle-input-group">
+                        <label for="vehicle-fuel-type">Combustible:</label>
+                        <select id="vehicle-fuel-type">
+                            <option value="">Seleccionar...</option>
+                            <option value="93">Gasolina 93</option>
+                            <option value="95">Gasolina 95</option>
+                            <option value="97">Gasolina 97</option>
+                            <option value="DI">Diésel</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Consumo -->
+                <div class="section-divider">
+                    <div class="section-title">Consumo (km/L)</div>
+                </div>
+                <div class="consumption-inputs">
+                    <div class="consumption-input-group">
+                        <label for="consumption-city">Ciudad:</label>
+                        <input type="number" id="consumption-city" step="0.1" min="0" placeholder="km/L">
+                    </div>
+                    <div class="consumption-input-group">
+                        <label for="consumption-highway">Carretera:</label>
+                        <input type="number" id="consumption-highway" step="0.1" min="0" placeholder="km/L">
+                    </div>
+                    <div class="consumption-input-group">
+                        <label for="consumption-mixed">Mixto:</label>
+                        <input type="number" id="consumption-mixed" step="0.1" min="0" placeholder="km/L">
+                    </div>
+                </div>
+                
+                <!-- Tanque de combustible -->
+                <div class="section-divider">
+                    <div class="section-title">Tanque de combustible</div>
+                </div>
+                <div class="tank-inputs">
+                    <div class="tank-input-group">
+                        <label for="tank-capacity">Capacidad (L):</label>
+                        <input type="number" id="tank-capacity" step="1" min="0" placeholder="Ej: 50">
+                    </div>
+                    <div class="tank-slider-group">
+                        <label for="tank-level">Nivel actual:</label>
+                        <div class="tank-slider-container">
+                            <input type="range" id="tank-level" min="0" max="100" value="50" class="tank-slider">
+                            <div class="tank-level-display">
+                                <span id="tank-percentage">50%</span>
+                                <span id="tank-liters">(25 L)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </aside>
     </main>
 

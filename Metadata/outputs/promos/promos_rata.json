@@ -1,0 +1,581 @@
+[
+  {
+    "id": 739,
+    "title": "⛽️🚗 $50 de descuento por litro de combustible",
+    "slug": "50-de-descuento-por-litro-de-bencina-en-la-primera-carga-con-la-app-copec",
+    "details_html": "<p>Usuarios nuevos de la app Copec, tienen $50 de rebaja por litro de combustible en la primera transacción y cupones por $50 de descuento por litro al referir amigos que hagan su primera compra. Esta promoción es válida exclusivamente en Estaciones de Servicio Copec que cuenten con app Copec disponible. Participan todos los clientes que realicen su primera compra de Gasolinas (93, 95, 97) o Petróleo Diésel con tarjetas asociadas en la app Copec y seleccionen su cupón al finalizar la compra. Cupón no válido en Estaciones de Servicio Zervo.</p>",
+    "details_text": "Usuarios nuevos de la app Copec, tienen $50 de rebaja por litro de combustible en la primera transacción y cupones por $50 de descuento por litro al referir amigos que hagan su primera compra. Esta promoción es válida exclusivamente en Estaciones de Servicio Copec que cuenten con app Copec disponible. Participan todos los clientes que realicen su primera compra de Gasolinas (93, 95, 97) o Petróleo Diésel con tarjetas asociadas en la app Copec y seleccionen su cupón al finalizar la compra. Cupón no válido en Estaciones de Servicio Zervo.",
+    "discount_amount": "$50/lt",
+    "valid_from": "2025-04-09T10:28:26-04:00",
+    "valid_to": "2026-01-01T00:00:00-03:00",
+    "is_active": true,
+    "source_url": "https://descuentosrata.com/cupones/534/ref-muevocopec",
+    "days": [
+      "lu",
+      "ma",
+      "mi",
+      "ju",
+      "vi",
+      "sa",
+      "do"
+    ],
+    "partner": {
+      "id": 1,
+      "name": "Todo medio de pago",
+      "slug": "todo-medio-de-pago",
+      "type": 0
+    },
+    "brand": {
+      "brand_id": 1,
+      "brand_name": "Copec",
+      "store_id": 99,
+      "store_name": "Copec",
+      "store_slug": "copec"
+    }
+  },
+  {
+    "id": 740,
+    "title": "⛽️🚗 $50 de descuento por litro de combustible",
+    "slug": "50-de-descuento-por-litro-de-combustible-en-app-copec-para-clientes-santander-consume",
+    "details_html": "<p>Promoción válida para clientes titulares de crédito automotriz Santander Consumer con pago de crédito al día, y que realicen el pago de combustible a través de la app Copec con las tarjetas asociadas de viernes a viernes hasta el mes de diciembre de 2025. Válido solo un cupón vigente por cliente. Válido solo un cupón vigente por semana. Usuarios nuevos recibirán su cupón correspondiente por la promoción “Santander Consumer Chile LTDA” hasta 7 días hábiles y consiste en $50/lt a través de la app Copec con un límite de 70 litros por carga, en gasolina o diésel en cualquiera de las Estaciones de Servicio COPEC que cuenten con este medio de pago.</p>",
+    "details_text": "Promoción válida para clientes titulares de crédito automotriz Santander Consumer con pago de crédito al día, y que realicen el pago de combustible a través de la app Copec con las tarjetas asociadas de viernes a viernes hasta el mes de diciembre de 2025. Válido solo un cupón vigente por cliente. Válido solo un cupón vigente por semana. Usuarios nuevos recibirán su cupón correspondiente por la promoción “Santander Consumer Chile LTDA” hasta 7 días hábiles y consiste en $50/lt a través de la app Copec con un límite de 70 litros por carga, en gasolina o diésel en cualquiera de las Estaciones de Servicio COPEC que cuenten con este medio de pago.",
+    "discount_amount": "$50/lt",
+    "valid_from": "2025-04-09T10:37:35-04:00",
+    "valid_to": "2026-01-01T00:00:00-03:00",
+    "is_active": true,
+    "source_url": "https://www.appcopec.cl/promo-y-beneficios/santander-consumer/",
+    "days": [
+      "lu",
+      "ma",
+      "mi",
+      "ju",
+      "vi",
+      "sa",
+      "do"
+    ],
+    "partner": {
+      "id": 2,
+      "name": "Santander",
+      "slug": "santander-cl",
+      "type": 1
+    },
+    "brand": {
+      "brand_id": 1,
+      "brand_name": "Copec",
+      "store_id": 99,
+      "store_name": "Copec",
+      "store_slug": "copec"
+    }
+  },
+  {
+    "id": 741,
+    "title": "⛽️🚗 $100 de descuento por litro de combustible",
+    "slug": "100-de-descuento-por-litro-de-combustible-por-app-copec-con-tarjetas-de-credito-coope",
+    "details_html": "<p>Promoción válida para todos los jueves de 2025. Válido para compra de combustible (93, 95, 97 octanos), pagando con tarjetas de Crédito Coopeuch a través de app Copec. El descuento será abonado en la cuenta del socio, en un plazo máximo de 10 días hábiles. El precio para el cálculo del descuento por litro de combustible es de $1.112. Beneficio válido solo para compras con boleta.</p>",
+    "details_text": "Promoción válida para todos los jueves de 2025. Válido para compra de combustible (93, 95, 97 octanos), pagando con tarjetas de Crédito Coopeuch a través de app Copec. El descuento será abonado en la cuenta del socio, en un plazo máximo de 10 días hábiles. El precio para el cálculo del descuento por litro de combustible es de $1.112. Beneficio válido solo para compras con boleta.",
+    "discount_amount": "$100/lt",
+    "valid_from": "2025-04-09T10:46:58-04:00",
+    "valid_to": "2026-01-01T00:00:00-03:00",
+    "is_active": true,
+    "source_url": "https://www.appcopec.cl/promo-y-beneficios/coopeuch/",
+    "days": [
+      "ju"
+    ],
+    "partner": {
+      "id": 69,
+      "name": "Tarjetas de crédito Coopeuch",
+      "slug": "tarjetas-de-credito-coopeuch",
+      "type": 1
+    },
+    "brand": {
+      "brand_id": 1,
+      "brand_name": "Copec",
+      "store_id": 99,
+      "store_name": "Copec",
+      "store_slug": "copec"
+    }
+  },
+  {
+    "id": 743,
+    "title": "⛽️🚗 $50 de descuento por litro de combustible",
+    "slug": "50-de-descuento-por-litro-de-combustible-en-copec-para-socios-del-plan-movilidad-de-a",
+    "details_html": "<p>Beneficio consiste en un cupón de $50/lt de descuento para socios del Plan Movilidad en las Estaciones de Servicios adheridas de Copec pagando con tarjetas asociadas app Copec para compras de Gasolina (93,95, 97 octanos) o Petróleo Diesel. No es válido en estaciones de servicio Zervo. El descuento estará disponible en un cupón todos los días miércoles, válido para una transacción al día. El monto máximo de descuento por mes será de $10.000 por socio titular.</p>",
+    "details_text": "Beneficio consiste en un cupón de $50/lt de descuento para socios del Plan Movilidad en las Estaciones de Servicios adheridas de Copec pagando con tarjetas asociadas app Copec para compras de Gasolina (93,95, 97 octanos) o Petróleo Diesel. No es válido en estaciones de servicio Zervo. El descuento estará disponible en un cupón todos los días miércoles, válido para una transacción al día. El monto máximo de descuento por mes será de $10.000 por socio titular.",
+    "discount_amount": "$50/lt",
+    "valid_from": "2025-04-09T11:00:22-04:00",
+    "valid_to": "2026-01-01T00:00:00-03:00",
+    "is_active": true,
+    "source_url": "https://www.appcopec.cl/promo-y-beneficios/automovil-club/",
+    "days": [
+      "mi"
+    ],
+    "partner": {
+      "id": 1,
+      "name": "Todo medio de pago",
+      "slug": "todo-medio-de-pago",
+      "type": 0
+    },
+    "brand": {
+      "brand_id": 1,
+      "brand_name": "Copec",
+      "store_id": 99,
+      "store_name": "Copec",
+      "store_slug": "copec"
+    }
+  },
+  {
+    "id": 745,
+    "title": "⛽️🚗 Hasta $100 de descuento por litro de combustible",
+    "slug": "hasta-100-de-descuento-por-litro-de-combustible-por-app-copec-para-clientes-tarjetas--9L8MYV",
+    "details_html": "<p>Promoción válida los días lunes pagando con tu Cencosud Scotiabank Mastercard asociada a la app Copec. Válido para compras de Gasolinas 93, 95, 97 o Petróleo Diesel. Tarjeta Clásica y Platinum con $50 por&nbsp;litro y Black con $100. Descuento aplica automáticamente al momento del pago en la app.</p>",
+    "details_text": "Promoción válida los días lunes pagando con tu Cencosud Scotiabank Mastercard asociada a la app Copec. Válido para compras de Gasolinas 93, 95, 97 o Petróleo Diesel. Tarjeta Clásica y Platinum con $50 por&nbsp;litro y Black con $100. Descuento aplica automáticamente al momento del pago en la app.",
+    "discount_amount": "Hasta $100/lt",
+    "valid_from": "2025-04-09T11:11:10-04:00",
+    "valid_to": "2025-12-01T00:00:00-03:00",
+    "is_active": true,
+    "source_url": "https://www.appcopec.cl/promo-y-beneficios/tarjeta-cencosud-scotiabank/",
+    "days": [
+      "lu"
+    ],
+    "partner": {
+      "id": 14,
+      "name": "Cencosud Scotiabank",
+      "slug": "cencosud",
+      "type": 1
+    },
+    "brand": {
+      "brand_id": 1,
+      "brand_name": "Copec",
+      "store_id": 99,
+      "store_name": "Copec",
+      "store_slug": "copec"
+    }
+  },
+  {
+    "id": 746,
+    "title": "⛽️🚗 $100 de descuento por litro en combustible",
+    "slug": "100-de-descuento-en-combustible-por-app-copec-para-clientes-tarjeta-de-credito-bci",
+    "details_html": "<p>$100 de descuento, equivalente a 7% de cashback, los jueves pagando con Tarjeta de Crédito Bci mediante App Copec. Las compras válidas que reciben cashback son aquellas que se activen previo a la compra a través de la plataforma BciPlus+ en los canales App Bci o web privada bci.cl y se paguen mediante App Copec. Promoción válida los jueves de abril, para una carga de máximo 70 lts. de combustible (diésel, gasolinas 93, 95 y 97) por RUT, que se pague con Tarjeta de Crédito Bci mediante App Copec. Las compras válidas que reciben cashback son aquellas que se activen previo a la compra a través de la plataforma BciPlus+ en los canales App Bci o web privada bci.cl&nbsp;y se paguen mediante App Copec.</p>",
+    "details_text": "$100 de descuento, equivalente a 7% de cashback, los jueves pagando con Tarjeta de Crédito Bci mediante App Copec. Las compras válidas que reciben cashback son aquellas que se activen previo a la compra a través de la plataforma BciPlus+ en los canales App Bci o web privada bci.cl y se paguen mediante App Copec. Promoción válida los jueves de abril, para una carga de máximo 70 lts. de combustible (diésel, gasolinas 93, 95 y 97) por RUT, que se pague con Tarjeta de Crédito Bci mediante App Copec. Las compras válidas que reciben cashback son aquellas que se activen previo a la compra a través de la plataforma BciPlus+ en los canales App Bci o web privada bci.cl&nbsp;y se paguen mediante App Copec.",
+    "discount_amount": "$100/lt",
+    "valid_from": "2025-04-09T11:13:29-04:00",
+    "valid_to": "2025-12-01T00:00:00-03:00",
+    "is_active": true,
+    "source_url": "https://www.appcopec.cl/promo-y-beneficios/banco-bci-2/",
+    "days": [
+      "ju"
+    ],
+    "partner": {
+      "id": 42,
+      "name": "BCI",
+      "slug": "tarjeta-bci",
+      "type": 1
+    },
+    "brand": {
+      "brand_id": 1,
+      "brand_name": "Copec",
+      "store_id": 99,
+      "store_name": "Copec",
+      "store_slug": "copec"
+    }
+  },
+  {
+    "id": 747,
+    "title": "⛽️🚗 $100 de descuento por litro de combustible",
+    "slug": "100-de-descuento-en-combustible-por-app-copec-para-clientes-tarjetas-de-credito-banco",
+    "details_html": "<p>$100 de descuento todos los Martes del año pagando con tus Tarjetas de Crédito Mastercard Clásica, Gold y Black de Banco Internacional asociada en la app Copec para compras de Gasolinas (93,95, 97 octanos) o Petróleo Diesel. No es válido en Estaciones Autoservicios. El descuento aplica de manera automática pagando con la aplicación Copec.</p>",
+    "details_text": "$100 de descuento todos los Martes del año pagando con tus Tarjetas de Crédito Mastercard Clásica, Gold y Black de Banco Internacional asociada en la app Copec para compras de Gasolinas (93,95, 97 octanos) o Petróleo Diesel. No es válido en Estaciones Autoservicios. El descuento aplica de manera automática pagando con la aplicación Copec.",
+    "discount_amount": "$100/lt",
+    "valid_from": "2025-04-09T11:21:18-04:00",
+    "valid_to": "2026-01-01T00:00:00-03:00",
+    "is_active": true,
+    "source_url": "https://www.appcopec.cl/promo-y-beneficios/banco-internacional/",
+    "days": [
+      "ma"
+    ],
+    "partner": {
+      "id": 67,
+      "name": "Banco Internacional",
+      "slug": "banco-internacional",
+      "type": 1
+    },
+    "brand": {
+      "brand_id": 1,
+      "brand_name": "Copec",
+      "store_id": 99,
+      "store_name": "Copec",
+      "store_slug": "copec"
+    }
+  },
+  {
+    "id": 748,
+    "title": "⛽️🚗 $50 de descuento por litro de combustible",
+    "slug": "50-de-descuento-por-litro-de-combustible-por-la-app-micopiloto-shell-para-nuevos-usua",
+    "details_html": "<p>Descuento de $50 por litro a través de la&nbsp;app MiCopiloto&nbsp;con todo medio de pago en Shell, que se aplica a los primeros 70 litros de carga.</p><p>Los usuarios de la app Micopiloto pueden recibir un $50 de descuento por litro el día de su cumpleaños y durante los seis días después de la fecha. El tope es de una carga de máximo 70 litros.</p>",
+    "details_text": "Descuento de $50 por litro a través de la&nbsp;app MiCopiloto&nbsp;con todo medio de pago en Shell, que se aplica a los primeros 70 litros de carga. Los usuarios de la app Micopiloto pueden recibir un $50 de descuento por litro el día de su cumpleaños y durante los seis días después de la fecha. El tope es de una carga de máximo 70 litros.",
+    "discount_amount": "$50/lt",
+    "valid_from": "2025-04-09T11:26:42-04:00",
+    "valid_to": "2026-01-01T00:00:00-03:00",
+    "is_active": true,
+    "source_url": "https://www.shell.cl/estaciones-de-servicio/micopiloto.html",
+    "days": [
+      "lu",
+      "ma",
+      "mi",
+      "ju",
+      "vi",
+      "sa",
+      "do"
+    ],
+    "partner": {
+      "id": 1,
+      "name": "Todo medio de pago",
+      "slug": "todo-medio-de-pago",
+      "type": 0
+    },
+    "brand": {
+      "brand_id": 2,
+      "brand_name": "Shell",
+      "store_id": 93,
+      "store_name": "Shell",
+      "store_slug": "shell-cl"
+    }
+  },
+  {
+    "id": 749,
+    "title": "⛽️🚗 $100 de descuento por litro de combustible",
+    "slug": "100-de-descuento-por-litro-de-combustible-por-app-micopiloto-shell-para-clientes-lide",
+    "details_html": "<p>Dcto. válido en la App Micopiloto de Shell todos los martes. Tope de dcto. $4.000 por transacción. Máximo de 2 transacciones por cliente al mes.<br>&nbsp;</p>",
+    "details_text": "Dcto. válido en la App Micopiloto de Shell todos los martes. Tope de dcto. $4.000 por transacción. Máximo de 2 transacciones por cliente al mes. &nbsp;",
+    "discount_amount": "$100/lt",
+    "valid_from": "2025-04-09T11:35:37-04:00",
+    "valid_to": "2025-12-01T00:00:00-03:00",
+    "is_active": true,
+    "source_url": "https://tarjetaliderbci.cl/contenidos/descuentos/detalle/737/llena-tu-estanque-de-combustible-en-abril-tienes-100-dcto-por-litro-en-app-micopiloto",
+    "days": [
+      "ma"
+    ],
+    "partner": {
+      "id": 8,
+      "name": "Líder BCI",
+      "slug": "lider-bci",
+      "type": 1
+    },
+    "brand": {
+      "brand_id": 2,
+      "brand_name": "Shell",
+      "store_id": 93,
+      "store_name": "Shell",
+      "store_slug": "shell-cl"
+    }
+  },
+  {
+    "id": 751,
+    "title": "⛽️🚗 Hasta $300 de cashback por litro de combustible",
+    "slug": "hasta-300-de-cashback-por-litro-de-combustible-por-app-micopiloto-shell-para-clientes",
+    "details_html": "<p>Al pagar con tarjetas Tenpo, los viernes puedes conseguir entre $50 y $300 de cashback por litro de bencina pagando en tus apps de bencina (Copec, Petrobras, Aramco). Tope de $4.000 por carga, sólo puede usarse dos veces al mes. Promoción acumulable con otros descuentos de cada app. Encuentra el beneficio en la sección Misiones de tu app Tenpo.</p>",
+    "details_text": "Al pagar con tarjetas Tenpo, los viernes puedes conseguir entre $50 y $300 de cashback por litro de bencina pagando en tus apps de bencina (Copec, Petrobras, Aramco). Tope de $4.000 por carga, sólo puede usarse dos veces al mes. Promoción acumulable con otros descuentos de cada app. Encuentra el beneficio en la sección Misiones de tu app Tenpo.",
+    "discount_amount": "Hasta $300/lt",
+    "valid_from": "2025-04-09T11:55:00-04:00",
+    "valid_to": "2025-12-01T00:00:00-03:00",
+    "is_active": true,
+    "source_url": "https://www.tenpo.cl/beneficios/apps-bencina-abril",
+    "days": [
+      "vi"
+    ],
+    "partner": {
+      "id": 33,
+      "name": "Tenpo Mastercard",
+      "slug": "tenpo",
+      "type": 1
+    },
+    "brand": {
+      "brand_id": 2,
+      "brand_name": "Shell",
+      "store_id": 93,
+      "store_name": "Shell",
+      "store_slug": "shell-cl"
+    }
+  },
+  {
+    "id": 752,
+    "title": "⛽️🚗 $100 de descuento por litro de combustible en 📱 app MiCopiloto",
+    "slug": "100-de-descuento-por-litro-de-combustible-por-app-micopiloto-shell-pagando-con-tarjet",
+    "details_html": "<p>Obtén $100 de dcto. por litro de combustible los domingos del mes,&nbsp;pagando con la app Micopiloto de Shell con tu Tarjeta de Crédito BICE. Tope dcto. mensual de $5.000 total, con 1 transacciones mensual por usuario Micopiloto y por Tarjeta de Crédito BICE. Promoción válida para clientes con tarjeta de crédito Signature Visa, Infinite Visa, Platinum Visa o Gold Visa BICE.</p>",
+    "details_text": "Obtén $100 de dcto. por litro de combustible los domingos del mes,&nbsp;pagando con la app Micopiloto de Shell con tu Tarjeta de Crédito BICE. Tope dcto. mensual de $5.000 total, con 1 transacciones mensual por usuario Micopiloto y por Tarjeta de Crédito BICE. Promoción válida para clientes con tarjeta de crédito Signature Visa, Infinite Visa, Platinum Visa o Gold Visa BICE.",
+    "discount_amount": "$100/lt",
+    "valid_from": "2025-04-09T11:59:39-04:00",
+    "valid_to": "2025-12-01T00:00:00-03:00",
+    "is_active": true,
+    "source_url": "https://banco.bice.cl/personas/beneficios/micopiloto-shell",
+    "days": [
+      "do"
+    ],
+    "partner": {
+      "id": 66,
+      "name": "BICE",
+      "slug": "bice",
+      "type": 1
+    },
+    "brand": {
+      "brand_id": 2,
+      "brand_name": "Shell",
+      "store_id": 93,
+      "store_name": "Shell",
+      "store_slug": "shell-cl"
+    }
+  },
+  {
+    "id": 761,
+    "title": "⛽️ $100 de descuento por litro de combustible para clientes WOM en Shell",
+    "slug": "100-de-descuento-por-litro-de-combustible-para-clientes-wom-en-shell",
+    "details_html": "<p>Para obtener tu descuento sigue los siguientes pasos:<br>1. EI miércoles, ingresa a la app WOM y solicita el código de descuento.&nbsp;<br>2.Ingresa el código en la app Micopiloto. ¡Listo! Ahora podrás acceder a $100 Dcto/Lt.<br>&nbsp;</p><p>Condiciones del descuento:<br>. Descuento de 100 $/Lt de combustible diésel y gasolinas (93, 95 y V-Power).<br>. Válido únicamente el mismo día en que se<br>realiza el canje del código desde la App WOM. • Limite de $1.800.<br>. Una carga por código.</p>",
+    "details_text": "Para obtener tu descuento sigue los siguientes pasos: 1. EI miércoles, ingresa a la app WOM y solicita el código de descuento.&nbsp; 2.Ingresa el código en la app Micopiloto. ¡Listo! Ahora podrás acceder a $100 Dcto/Lt. &nbsp; Condiciones del descuento: . Descuento de 100 $/Lt de combustible diésel y gasolinas (93, 95 y V-Power). . Válido únicamente el mismo día en que se realiza el canje del código desde la App WOM. • Limite de $1.800. . Una carga por código.",
+    "discount_amount": "$100 off por litro",
+    "valid_from": "2025-04-15T13:54:11-04:00",
+    "valid_to": "2025-12-01T00:00:00-03:00",
+    "is_active": true,
+    "source_url": "https://www.wom.cl/beneficios/marcas/micopiloto",
+    "days": [
+      "mi"
+    ],
+    "partner": {
+      "id": 38,
+      "name": "WOM",
+      "slug": "wom",
+      "type": 4
+    },
+    "brand": {
+      "brand_id": 2,
+      "brand_name": "Shell",
+      "store_id": 93,
+      "store_name": "Shell",
+      "store_slug": "shell-cl"
+    }
+  },
+  {
+    "id": 763,
+    "title": "⛽️🚗 $15 de descuento por litro de combustible para municipalidades adheridas",
+    "slug": "150-de-descuento-por-litro-de-combustible-en-petrobras-para-municipalidades-adheridas",
+    "details_html": "<p style=\"margin-left:0px;text-align:justify;\">Descuento válido en las estaciones adheridas de tu comuna los días lunes y martes con cualquier medio de pago para los municipios adheridos a la AMUCH. Puedes revisar si tu comuna está inscrita en el beneficio <a href=\"https://www.petrobrasdistribucion.cl/wp-content/uploads/2024/04/PDF-Comunas-adheridas-Amuch.pdf\">aquí.</a></p><p style=\"margin-left:0px;text-align:justify;\"><strong>Detalle descuento Alianza AMUCH.</strong></p><ul><li><p style=\"margin-left:20px;\">Dcto: De&nbsp;<strong>$15 </strong>por litro en gasolina y/o diésel.</p></li><li><p style=\"margin-left:20px;\">Dcto: De <strong>$40</strong> por litro de parafina</p></li><li><p style=\"margin-left:20px;\">Dcto: De&nbsp;<strong>$20&nbsp;</strong>por litro en gasolina y/o diésel para adultos mayores.</p></li></ul><p style=\"margin-left:0px;text-align:justify;\"><strong>Vigencia</strong>: hasta el 31 de diciembre 2025.</p><p style=\"margin-left:0px;text-align:justify;\"><strong>Topes:&nbsp;</strong>2 cargas de combustible y parafina por día</p><p style=\"margin-left:0px;text-align:justify;\"><strong>Topes de monto combustible:&nbsp;</strong>$120.000 por carga</p><p style=\"margin-left:0px;text-align:justify;\"><strong>Operatividad:&nbsp;</strong>El descuento se activa entregando tu RUT previo a la carga de&nbsp;combustible, esto significa que, con el descuento aplicado recibirás más&nbsp;litros por el monto solicitado.</p><p style=\"margin-left:0px;text-align:justify;\"><strong>Para acceder a este descuento,&nbsp;</strong>ingresa tus datos en <a href=\"https://municipalidades.petrobrasdistribucion.cl/\">este formulario</a>. Una vez validado, serás notificado mediante correo electrónico que tu beneficio se encuentra activo.</p><p style=\"margin-left:0px;text-align:justify;\">&nbsp;</p><p style=\"margin-left:0px;text-align:justify;\">&nbsp;</p>",
+    "details_text": "Descuento válido en las estaciones adheridas de tu comuna los días lunes y martes con cualquier medio de pago para los municipios adheridos a la AMUCH. Puedes revisar si tu comuna está inscrita en el beneficio aquí. Detalle descuento Alianza AMUCH. Dcto: De&nbsp; $15 por litro en gasolina y/o diésel. Dcto: De $40 por litro de parafina Dcto: De&nbsp; $20&nbsp; por litro en gasolina y/o diésel para adultos mayores. Vigencia : hasta el 31 de diciembre 2025. Topes:&nbsp; 2 cargas de combustible y parafina por día Topes de monto combustible:&nbsp; $120.000 por carga Operatividad:&nbsp; El descuento se activa entregando tu RUT previo a la carga de&nbsp;combustible, esto significa que, con el descuento aplicado recibirás más&nbsp;litros por el monto solicitado. Para acceder a este descuento,&nbsp; ingresa tus datos en este formulario . Una vez validado, serás notificado mediante correo electrónico que tu beneficio se encuentra activo. &nbsp; &nbsp;",
+    "discount_amount": "$15/lt",
+    "valid_from": "2025-05-05T14:00:46-04:00",
+    "valid_to": "2026-01-01T00:00:00-03:00",
+    "is_active": true,
+    "source_url": "https://www.petrobrasdistribucion.cl/promociones/descuento-con-tu-rut/amuch/",
+    "days": [
+      "lu",
+      "ma"
+    ],
+    "partner": {
+      "id": 1,
+      "name": "Todo medio de pago",
+      "slug": "todo-medio-de-pago",
+      "type": 0
+    },
+    "brand": {
+      "brand_id": 3,
+      "brand_name": "Petrobras",
+      "store_id": 118,
+      "store_name": "Aramco/Petrobras (Chile)",
+      "store_slug": "aramco-cl"
+    }
+  },
+  {
+    "id": 764,
+    "title": "⛽️🚗 $15 de descuento por litro de combustible",
+    "slug": "15-de-descuento-por-litro-de-combustible-y-25-de-descuento-en-parafina-para-afiliados",
+    "details_html": "<p style=\"margin-left:0px;text-align:justify;\">$15 de descuento en combustible y $25 de descuento en parafina para afiliados Caja de Los Andes sólo con tu RUT.</p><p style=\"margin-left:0px;text-align:justify;\"><strong>Vigencia promoción</strong>: hasta el 31 de diciembre de 2025.</p><p style=\"margin-left:0px;text-align:justify;\"><strong>Topes:</strong>&nbsp;4 carga al mes por afiliado con tope de monto de <strong>$120.000 </strong>para combustible y <strong>$30.000 </strong>para Parafina.</p><p style=\"margin-left:0px;text-align:justify;\"><strong>Validez</strong>: Descuento aplica los días viernes.</p><p style=\"margin-left:0px;text-align:justify;\"><strong>Operatividad:&nbsp;</strong>El descuento se activa entregando tu RUT previo a&nbsp;la carga de combustible, esto significa que, con el descuento&nbsp;aplicado recibirás más litros por el monto solicitado.</p>",
+    "details_text": "$15 de descuento en combustible y $25 de descuento en parafina para afiliados Caja de Los Andes sólo con tu RUT. Vigencia promoción : hasta el 31 de diciembre de 2025. Topes: &nbsp;4 carga al mes por afiliado con tope de monto de $120.000 para combustible y $30.000 para Parafina. Validez : Descuento aplica los días viernes. Operatividad:&nbsp; El descuento se activa entregando tu RUT previo a&nbsp;la carga de combustible, esto significa que, con el descuento&nbsp;aplicado recibirás más litros por el monto solicitado.",
+    "discount_amount": "$15/lt",
+    "valid_from": "2025-05-05T14:28:27-04:00",
+    "valid_to": "2026-01-01T00:00:00-03:00",
+    "is_active": true,
+    "source_url": "https://www.petrobrasdistribucion.cl/promociones/descuento-con-tu-rut/caja-los-andes/",
+    "days": [
+      "vi"
+    ],
+    "partner": {
+      "id": 73,
+      "name": "Caja Los Andes",
+      "slug": "caja-los-andes",
+      "type": 3
+    },
+    "brand": {
+      "brand_id": 3,
+      "brand_name": "Petrobras",
+      "store_id": 118,
+      "store_name": "Aramco/Petrobras (Chile)",
+      "store_slug": "aramco-cl"
+    }
+  },
+  {
+    "id": 1092,
+    "title": "⛽️ Hasta $150 de descuento por litro de combustible con Banco Ripley en Petrobras",
+    "slug": "hasta-150-de-descuento-por-litro-de-combustible-con-banco-ripley-en-petrobras",
+    "details_html": "<p>Hasta $150 de descuento por litro los miércoles pagando con tarjeta de crédito o débito Banco Ripley Mastercard. La promoción tiene un tope de $8.000 mensuales. El beneficio se abona en 48 horas y se verá en tu estado de cuenta. Los clientes Plus tienen $100 de descuento por litro; los clientes Silver tendrán $125 y los clientes Gold $150.</p>",
+    "details_text": "Hasta $150 de descuento por litro los miércoles pagando con tarjeta de crédito o débito Banco Ripley Mastercard. La promoción tiene un tope de $8.000 mensuales. El beneficio se abona en 48 horas y se verá en tu estado de cuenta. Los clientes Plus tienen $100 de descuento por litro; los clientes Silver tendrán $125 y los clientes Gold $150.",
+    "discount_amount": "Hasta $150 off x lt",
+    "valid_from": "2025-07-08T16:03:20-04:00",
+    "valid_to": "2025-12-01T00:00:00-03:00",
+    "is_active": true,
+    "source_url": "https://www.petrobrasdistribucion.cl/promociones/descuento-con-medios-de-pago/descuento-ripley/",
+    "days": [
+      "mi"
+    ],
+    "partner": {
+      "id": 7,
+      "name": "Banco Ripley",
+      "slug": "banco-ripley",
+      "type": 1
+    },
+    "brand": {
+      "brand_id": 3,
+      "brand_name": "Petrobras",
+      "store_id": 118,
+      "store_name": "Aramco/Petrobras (Chile)",
+      "store_slug": "aramco-cl"
+    }
+  },
+  {
+    "id": 1093,
+    "title": "⛽️ $100 de descuento por litro de combustible pagando con Rutpay en Copec",
+    "slug": "100-de-descuento-por-litro-de-combustible-pagando-con-rutpay-en-copec",
+    "details_html": "<p>Pagando con Rut Pay de Banco Estado, tienes $100 de descuento por litro de bencina en Copec todos los viernes. Límite de 50 litros por carga de gasolina, diésel y kerosene. Además, pagando con Rutpay acumulas puntos Full Copec.</p>",
+    "details_text": "Pagando con Rut Pay de Banco Estado, tienes $100 de descuento por litro de bencina en Copec todos los viernes. Límite de 50 litros por carga de gasolina, diésel y kerosene. Además, pagando con Rutpay acumulas puntos Full Copec.",
+    "discount_amount": "$100/lt",
+    "valid_from": "2025-07-08T16:14:11-04:00",
+    "valid_to": "2026-01-01T00:00:00-03:00",
+    "is_active": true,
+    "source_url": "",
+    "days": [
+      "vi"
+    ],
+    "partner": {
+      "id": 72,
+      "name": "Rutpay, de BancoEstado",
+      "slug": "rutpay",
+      "type": 2
+    },
+    "brand": {
+      "brand_id": 1,
+      "brand_name": "Copec",
+      "store_id": 99,
+      "store_name": "Copec",
+      "store_slug": "copec"
+    }
+  },
+  {
+    "id": 1213,
+    "title": "⛽️🚗 Hasta $100 de descuento por litro en combustible pagando con Cencosud Scotiabank en Copec",
+    "slug": "hasta-100-de-descuento-por-litro-en-combustible-pagando-con-visa-scotiabank-en-copec",
+    "details_html": "<p>Promoción válida los días miércoles pagando con las tarjetas de crédito Visa Scotiabank asociada en la app Copec para compras de Gasolinas (93,95, 97 octanos) o Petróleo Diesel. Descuento diferenciado por tipo de tarjeta: $25 planitum y Gold, $50 Visa Scotia Signature, $75 Visa Scotia Infinite y $100 Singular. Descuento aplica automáticamente al momento del pago en la app.</p>",
+    "details_text": "Promoción válida los días miércoles pagando con las tarjetas de crédito Visa Scotiabank asociada en la app Copec para compras de Gasolinas (93,95, 97 octanos) o Petróleo Diesel. Descuento diferenciado por tipo de tarjeta: $25 planitum y Gold, $50 Visa Scotia Signature, $75 Visa Scotia Infinite y $100 Singular. Descuento aplica automáticamente al momento del pago en la app.",
+    "discount_amount": "Desde $25/lt",
+    "valid_from": "2025-09-04T11:40:30-04:00",
+    "valid_to": "2026-01-01T00:00:00-03:00",
+    "is_active": true,
+    "source_url": "https://www.appcopec.cl/beneficios-appcopec/combustible/scotiabank/",
+    "days": [
+      "mi"
+    ],
+    "partner": {
+      "id": 14,
+      "name": "Cencosud Scotiabank",
+      "slug": "cencosud",
+      "type": 1
+    },
+    "brand": {
+      "brand_id": 1,
+      "brand_name": "Copec",
+      "store_id": 618,
+      "store_name": "app MiCopiloto & app Muevo Copec",
+      "store_slug": "app-micopiloto--app-muevo-copec"
+    }
+  },
+  {
+    "id": 1489,
+    "title": "⛽️ $100 de descuento por litro de bencina con tarjetas de crédito MACHBANK en Copec",
+    "slug": "100-de-descuento-por-litro-de-bencina-con-tarjetas-de-credito-machbank-en-copec",
+    "details_html": "<p>Aprovecha $100 de descuento el día Sábado pagando con tus Tarjetas de crédito MACHBANK asociadas en la app Copec para compras de combustible (93,95, 97 octanos) o Petróleo Diesel.</p>",
+    "details_text": "Aprovecha $100 de descuento el día Sábado pagando con tus Tarjetas de crédito MACHBANK asociadas en la app Copec para compras de combustible (93,95, 97 octanos) o Petróleo Diesel.",
+    "discount_amount": "$100/lt",
+    "valid_from": "2025-11-03T15:39:37-03:00",
+    "valid_to": "2025-12-01T00:00:00-03:00",
+    "is_active": true,
+    "source_url": "https://www.appcopec.cl/beneficios-appcopec/combustible/mach/",
+    "days": [
+      "sa"
+    ],
+    "partner": {
+      "id": 51,
+      "name": "MACHBANK",
+      "slug": "mach",
+      "type": 1
+    },
+    "brand": {
+      "brand_id": 1,
+      "brand_name": "Copec",
+      "store_id": 99,
+      "store_name": "Copec",
+      "store_slug": "copec"
+    }
+  },
+  {
+    "id": 1490,
+    "title": "⛽️ Hasta $100 de descuento por litro en combustible con Visa Scotiaban en Copec",
+    "slug": "hasta-100-de-descuento-por-litro-en-combustible-con-visa-scotiaban-en-copec",
+    "details_html": "<p>Aprovecha tu descuento todos los miércoles del año. Tienes hasta $100 de descuento por litro en combustible pagando con tus tarjetas de crédito Visa Scotiabank a través de app Copec todos los miércoles.</p>",
+    "details_text": "Aprovecha tu descuento todos los miércoles del año. Tienes hasta $100 de descuento por litro en combustible pagando con tus tarjetas de crédito Visa Scotiabank a través de app Copec todos los miércoles.",
+    "discount_amount": "Hasta $100 off x lt",
+    "valid_from": "2025-11-03T15:47:35-03:00",
+    "valid_to": "2025-12-01T00:00:00-03:00",
+    "is_active": true,
+    "source_url": "https://www.appcopec.cl/beneficios-appcopec/combustible/scotiabank/",
+    "days": [
+      "mi"
+    ],
+    "partner": {
+      "id": 20,
+      "name": "Scotia",
+      "slug": "scotiabank-cl",
+      "type": 1
+    },
+    "brand": {
+      "brand_id": 1,
+      "brand_name": "Copec",
+      "store_id": 99,
+      "store_name": "Copec",
+      "store_slug": "copec"
+    }
+  },
+  {
+    "id": 1491,
+    "title": "⛽️🚗 $100 de descuento por litro en combustible con Banco Internacional en Copec",
+    "slug": "100-de-descuento-por-litro-en-combustible-con-banco-internacional-en-copec",
+    "details_html": "<p><span style=\"background-color:rgb(253,253,253);color:rgb(101,112,133);\">Aprovecha $100 de descuento todos los Martes del año pagando con tus Tarjetas de Crédito Mastercard Clásica, Gold y Black de Banco Internacional asociada en la app Copec para compras de Gasolinas (93,95, 97 octanos) o Petróleo Diesel.</span></p>",
+    "details_text": "Aprovecha $100 de descuento todos los Martes del año pagando con tus Tarjetas de Crédito Mastercard Clásica, Gold y Black de Banco Internacional asociada en la app Copec para compras de Gasolinas (93,95, 97 octanos) o Petróleo Diesel.",
+    "discount_amount": "$100/lt",
+    "valid_from": "2025-11-03T15:52:04-03:00",
+    "valid_to": "2025-12-01T00:00:00-03:00",
+    "is_active": true,
+    "source_url": "https://www.appcopec.cl/beneficios-appcopec/combustible/banco-internacional/",
+    "days": [
+      "ma"
+    ],
+    "partner": {
+      "id": 67,
+      "name": "Banco Internacional",
+      "slug": "banco-internacional",
+      "type": 1
+    },
+    "brand": {
+      "brand_id": 1,
+      "brand_name": "Copec",
+      "store_id": 99,
+      "store_name": "Copec",
+      "store_slug": "copec"
+    }
+  }
+]

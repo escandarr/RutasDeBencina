@@ -4,7 +4,12 @@
 from .connection import Database
 from .pgrouting import RouteSegment, shortest_path
 from .repositories import iter_edges, iter_nodes
-from .services import RouteResult, compute_route_between_points
+from .services import (
+	RouteResult,
+	VehicleSettings,
+	compute_route_between_points,
+	compute_cheapest_route_between_points,
+)
 
 # Metadata models
 from .metadata_models import (
@@ -45,6 +50,7 @@ from .metadata_repositories import (
 	insert_promocion,
 	link_promocion_to_marca,
 	auto_link_promocion_to_marcas,
+	delete_promociones_by_fuente,
 	# Estaciones con promociones
 	get_estaciones_con_promociones,
 	get_promociones_estacion,
@@ -62,6 +68,7 @@ from .metadata_services import (
 	StationOnRoute,
 	RouteWithFuelCost,
 	FuelSavingsReport,
+	StationPricePoint,
 	find_stations_on_route,
 	calculate_route_fuel_cost,
 	find_cheapest_stations_in_region,
@@ -69,6 +76,7 @@ from .metadata_services import (
 	compare_fuel_costs_across_brands,
 	get_promotions_for_day,
 	calculate_savings_with_promotion,
+	get_cheapest_stations_in_bbox,
 )
 
 __all__ = [
@@ -78,6 +86,8 @@ __all__ = [
 	"shortest_path",
 	"RouteResult",
 	"compute_route_between_points",
+	"VehicleSettings",
+	"compute_cheapest_route_between_points",
 	"iter_edges",
 	"iter_nodes",
 	# Models
@@ -111,6 +121,7 @@ __all__ = [
 	"insert_promocion",
 	"link_promocion_to_marca",
 	"auto_link_promocion_to_marcas",
+	"delete_promociones_by_fuente",
 	"get_estaciones_con_promociones",
 	"get_promociones_estacion",
 	"create_scrape_run",
@@ -120,6 +131,7 @@ __all__ = [
 	"bulk_import_promociones",
 	# Service functions
 	"StationOnRoute",
+	"StationPricePoint",
 	"RouteWithFuelCost",
 	"FuelSavingsReport",
 	"find_stations_on_route",
@@ -129,4 +141,5 @@ __all__ = [
 	"compare_fuel_costs_across_brands",
 	"get_promotions_for_day",
 	"calculate_savings_with_promotion",
+	"get_cheapest_stations_in_bbox",
 ]

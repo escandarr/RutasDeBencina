@@ -46,6 +46,82 @@ class RouteWithFuelCost:
     nearby_stations: List[StationOnRoute]
 
 
+@dataclass
+class StationPricePoint:
+    """Simple representation of a station with pricing info."""
+    codigo: str
+    marca: str
+    direccion: str
+    lat: float
+    lng: float
+    precio: Decimal
+
+
+def get_cheapest_stations_in_bbox(
+    conn: Connection,
+    *,
+    fuel_type: str,
+    min_lat: float,
+    max_lat: float,
+    min_lng: float,
+    max_lng: float,
+    limit: int = 5,
+) -> List[StationPricePoint]:
+    """Fetch the cheapest stations for a fuel type inside a bounding box."""
+    if min_lat > max_lat:
+        min_lat, max_lat = max_lat, min_lat
+    if min_lng > max_lng:
+        min_lng, max_lng = max_lng, min_lng
+
+    # Expand extremely small boxes to ensure we find stations
+    if abs(max_lat - min_lat) < 0.05:
+        padding = 0.05
+        min_lat -= padding
+        max_lat += padding
+    if abs(max_lng - min_lng) < 0.05:
+        padding = 0.05
+        min_lng -= padding
+        max_lng += padding
+
+    with conn.cursor(row_factory=dict_row) as cur:
+        cur.execute(
+            """
+            SELECT 
+                e.codigo,
+                e.marca,
+                e.direccion,
+                e.lat,
+                e.lng,
+                pa.precio
+            FROM metadata.precios_actuales pa
+            JOIN metadata.estaciones_cne e ON e.id = pa.estacion_id
+            WHERE pa.tipo_combustible = %s
+              AND pa.precio IS NOT NULL
+              AND e.lat BETWEEN %s AND %s
+              AND e.lng BETWEEN %s AND %s
+            ORDER BY pa.precio ASC
+            LIMIT %s
+            """,
+            (fuel_type, min_lat, max_lat, min_lng, max_lng, limit),
+        )
+
+        stations: List[StationPricePoint] = []
+        for row in cur.fetchall():
+            if row["lat"] is None or row["lng"] is None:
+                continue
+            stations.append(
+                StationPricePoint(
+                    codigo=row["codigo"],
+                    marca=row.get("marca") or "",
+                    direccion=row.get("direccion") or "",
+                    lat=row["lat"],
+                    lng=row["lng"],
+                    precio=row["precio"],
+                )
+            )
+        return stations
+
+
 def find_stations_on_route(
     conn: Connection,
     route_coords: List[Tuple[float, float]],

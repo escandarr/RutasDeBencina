@@ -61,6 +61,8 @@ def probe_token(token: str) -> bool:
     try:
         r = requests.get(EST_URL, headers={"Authorization": f"Bearer {token}"}, timeout=30)
         if r.status_code == 200:
+            if isinstance(j, dict) and j.get("status", "").lower().startswith("token is expired"):
+                return False
             return True
         # algunos expirados devuelven 200 con {"status":"Token is Expired"}
         if r.status_code == 401:

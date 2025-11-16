@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Gestión de Datos | Rutas de Bencina</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='js/leaflet/dist/leaflet.css') }}">
+    <style>
+        :root {
+            color-scheme: dark;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #0f172a;
+            color: #f1f5f9;
+        }
+
+        header {
+            padding: 1rem 2rem;
+            background: rgba(30, 41, 59, 0.85);
+            backdrop-filter: blur(6px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+        }
+
+        header nav {
+            display: flex;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        header a {
+            color: #f8fafc;
+            text-decoration: none;
+            font-size: 0.95rem;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            transition: all 0.2s ease-in-out;
+        }
+
+        header a:hover {
+            background-color: rgba(148, 163, 184, 0.15);
+            border-color: rgba(148, 163, 184, 0.5);
+        }
+
+        main {
+            max-width: 1080px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 3rem;
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .intro {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.45);
+            display: grid;
+            gap: 0.8rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: rgba(15, 23, 42, 0.78);
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            display: grid;
+            gap: 1.1rem;
+            box-shadow: 0 22px 45px rgba(15, 23, 42, 0.48);
+        }
+
+        .card h2 {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+
+        .card small {
+            color: rgba(226, 232, 240, 0.65);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            align-items: center;
+        }
+
+        button {
+            border: none;
+            border-radius: 999px;
+            padding: 0.65rem 1.4rem;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #38bdf8, #2563eb);
+            color: #0f172a;
+            box-shadow: 0 12px 28px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-secondary {
+            background: rgba(148, 163, 184, 0.15);
+            color: #e2e8f0;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+        }
+
+        button:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        button:not(:disabled):hover {
+            transform: translateY(-1px);
+            box-shadow: 0 16px 36px rgba(37, 99, 235, 0.45);
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.87rem;
+            color: rgba(226, 232, 240, 0.7);
+        }
+
+        label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: #38bdf8;
+        }
+
+        .status-area {
+            border-radius: 0.9rem;
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            background: rgba(15, 23, 42, 0.78);
+            padding: 1.2rem;
+            display: grid;
+            gap: 0.75rem;
+            max-height: 340px;
+            overflow-y: auto;
+            font-family: "Consolas", "SFMono-Regular", Menlo, Monaco, monospace;
+            font-size: 0.85rem;
+        }
+
+        .status-entry {
+            border-radius: 0.75rem;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            padding: 0.8rem;
+            background: rgba(30, 41, 59, 0.7);
+            display: grid;
+            gap: 0.4rem;
+        }
+
+        .status-entry[data-success="true"] {
+            border-color: rgba(34, 197, 94, 0.35);
+        }
+
+        .status-entry[data-success="false"] {
+            border-color: rgba(248, 113, 113, 0.45);
+        }
+
+        .status-entry header {
+            all: unset;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .status-entry pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-break: break-word;
+            color: rgba(226, 232, 240, 0.8);
+        }
+
+        .chip {
+            border-radius: 999px;
+            padding: 0.2rem 0.65rem;
+            font-size: 0.75rem;
+            background: rgba(148, 163, 184, 0.15);
+            color: rgba(226, 232, 240, 0.8);
+        }
+
+        @media (max-width: 720px) {
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.9rem;
+            }
+
+            header nav {
+                width: 100%;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gestión de Datos</h1>
+        <nav>
+            <a href="{{ url_for('home') }}">Mapa</a>
+            <a href="{{ url_for('about') }}">Acerca de</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="intro">
+            <p>Dispara las tareas de extracción e importación para mantener los datos de estaciones, precios y promociones al día. Cada acción se ejecuta secuencialmente y muestra su resultado al finalizar.</p>
+            <p>Los logs se recortan automáticamente para evitar salidas excesivamente largas. Revisa el servidor para obtener trazas completas si es necesario.</p>
+        </section>
+
+        <section class="grid">
+            <article class="card" data-target="cne">
+                <div>
+                    <h2>Actualizar CNE</h2>
+                    <small>Ejecuta la extracción de estaciones y precios desde la API de la CNE, luego importa los datos al esquema <code>metadata</code>.</small>
+                </div>
+                <div class="actions">
+                    <button class="btn-primary" data-action="run">Ejecutar</button>
+                    <label><input type="checkbox" data-option="truncate_prices"> Truncar precios antes de importar</label>
+                    <label><input type="checkbox" data-option="continue_on_error"> Continuar si falla algún paso</label>
+                </div>
+            </article>
+
+            <article class="card" data-target="promotions">
+                <div>
+                    <h2>Actualizar Promociones</h2>
+                    <small>Ejecuta las extracciones de promociones (aliados + estáticos) y carga las promociones resultantes en la base de datos.</small>
+                </div>
+                <div class="actions">
+                    <button class="btn-primary" data-action="run">Ejecutar</button>
+                    <label><input type="checkbox" data-option="truncate"> Reemplazar promociones existentes</label>
+                    <label><input type="checkbox" data-option="continue_on_error"> Continuar si falla algún paso</label>
+                </div>
+            </article>
+        </section>
+
+        <section class="card">
+            <div>
+                <h2>Historial reciente</h2>
+                <small>Los resultados de la ejecución más reciente se muestran aquí. La vista no guarda estado; los datos se borrarán al recargar la página.</small>
+            </div>
+            <div id="status-area" class="status-area" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/admin.js') }}" defer></script>
+</body>
+</html>
+
