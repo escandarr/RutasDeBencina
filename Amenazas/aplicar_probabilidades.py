@@ -45,13 +45,14 @@ def aplicar_probabilidades_en_db(amenazas):
                     
                     print(f"-> Aplicando {prob}% de falla a calles llamadas '{nombre}'...")
                     
-                    # Ejecutamos el UPDATE en la tabla correcta
-                    # (Usamos 'tags->'name'' que es como Overpass guarda los nombres)
+                    # =========================================================
+                    # AQUÍ ESTÁ LA CORRECCIÓN: Usamos ->> en lugar de ->
+                    # =========================================================
                     cur.execute(
                         """
                         UPDATE osm.road_edges
                         SET probabilidad_falla = %s
-                        WHERE tags->'name' = %s
+                        WHERE tags->>'name' = %s
                         """,
                         (prob, nombre)
                     )
@@ -62,10 +63,10 @@ def aplicar_probabilidades_en_db(amenazas):
                         total_actualizado += cur.rowcount
 
                 conn.commit()
-                print(f"\n Éxito: Se actualizaron un total de {total_actualizado} calles en la BD.")
+                print(f"\n✅ Éxito: Se actualizaron un total de {total_actualizado} calles en la BD.")
 
     except Exception as e:
-        print(f"\n ERROR al conectar o actualizar la base de datos:", file=sys.stderr)
+        print(f"\n❌ ERROR al conectar o actualizar la base de datos:", file=sys.stderr)
         print(e, file=sys.stderr)
 
 def main():
