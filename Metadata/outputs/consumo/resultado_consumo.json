@@ -1,6 +1,6 @@
 {
   "patente": "gyvb70",
-  "generadoEn": "2025-10-12T15:43:01.318135+00:00",
+  "generadoEn": "2025-11-16T21:27:16.607128+00:00",
   "vehiculo": {
     "RUT": "20041422-5",
     "Nombre": "CRISTOFER ANDRÉS ENCINA CÁCERES",
@@ -19,8 +19,24 @@
   },
   "consumoMixtoKmL": 12.0,
   "detalleConsumo": {
+    "id": 4774,
+    "nombre": "Great Wall Wingle 5 2.0 MT 2P. 4x4 M Diésel",
+    "marcaId": 42,
+    "nombreMarca": "Great Wall",
+    "modeloId": 4638,
+    "nombreModelo": "Wingle 5 2.0 MT 2P. 4x4",
+    "detalle": "Wingle 5 2.0 MT 2P. 4x4",
+    "traccion": "4x4",
+    "transmision": "M",
+    "combustible": "Diésel",
+    "propulsion": "Combustión",
+    "cilindrada": 2.0,
+    "tipoVehiculo": "Camioneta",
+    "codigoInformeTecnico": "GW8404E50821M02-8",
+    "fechaHomologacion": "2021-09-16T00:00:00",
+    "categoria": "MC3D",
     "empresaHomologa": "Derco S.P.A.",
-    "norma": "EURO 5",
+    "norma": "Euro 5",
     "co2": 218.0,
     "rendimientoUrbano": 10.0,
     "rendimientoCarretera": 13.5,
@@ -41,7 +57,7 @@
     "tipoConectorDc": null,
     "capacidadAcumulacionEnergia": null,
     "capacidadConvertidor": null,
-    "fechaModificacion": null,
+    "fechaModificacion": "2025-11-11T18:08:59.3467585",
     "etiquetaId": "COMBUSTION DIESEL"
   }
 }
